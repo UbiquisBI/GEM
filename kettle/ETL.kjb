@@ -168,7 +168,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>320</xloc>
-      <yloc>768</yloc>
+      <yloc>832</yloc>
       </entry>
     <entry>
       <name>Error Email Active&#x3f;</name>
@@ -193,7 +193,7 @@
       <yloc>576</yloc>
       </entry>
     <entry>
-      <name>Mail&#x3a; SUCCESS</name>
+      <name>Mail&#x3a; OK</name>
       <description/>
       <type>MAIL</type>
       <server>&#x24;&#x7b;EMAIL_SMTP_HOST&#x7d;</server>
@@ -230,8 +230,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>736</xloc>
-      <yloc>768</yloc>
+      <xloc>704</xloc>
+      <yloc>832</yloc>
       </entry>
     <entry>
       <name>Success Email Active&#x3f;</name>
@@ -263,7 +263,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>832</xloc>
-      <yloc>832</yloc>
+      <yloc>960</yloc>
       </entry>
     <entry>
       <name>ERROR</name>
@@ -274,7 +274,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>448</xloc>
-      <yloc>832</yloc>
+      <yloc>960</yloc>
       </entry>
     <entry>
       <name>Watchdog</name>
@@ -492,7 +492,7 @@
       <yloc>384</yloc>
       </entry>
     <entry>
-      <name>Authentication Active&#x3f;</name>
+      <name>SSL&#x3f;</name>
       <description/>
       <type>SIMPLE_EVAL</type>
       <valuetype>variable</valuetype>
@@ -511,10 +511,10 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>320</xloc>
-      <yloc>672</yloc>
+      <yloc>704</yloc>
       </entry>
     <entry>
-      <name>Mail with authentication&#x3a; ERROR </name>
+      <name>Mail w&#x2f; SSL&#x3a; ERROR </name>
       <description/>
       <type>MAIL</type>
       <server>&#x24;&#x7b;EMAIL_SMTP_HOST&#x7d;</server>
@@ -551,11 +551,11 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>128</xloc>
+      <xloc>192</xloc>
       <yloc>832</yloc>
       </entry>
     <entry>
-      <name>Authentication Active&#x3f; 2</name>
+      <name>SSL&#x3f; &#x28;2&#x29;</name>
       <description/>
       <type>SIMPLE_EVAL</type>
       <valuetype>variable</valuetype>
@@ -573,11 +573,11 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>736</xloc>
-      <yloc>640</yloc>
+      <xloc>704</xloc>
+      <yloc>704</yloc>
       </entry>
     <entry>
-      <name>Mail with authentication&#x3a; Success</name>
+      <name>Mail w&#x2f;SSL&#x3a; OK</name>
       <description/>
       <type>MAIL</type>
       <server>&#x24;&#x7b;EMAIL_SMTP_HOST&#x7d;</server>
@@ -614,7 +614,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>608</xloc>
+      <xloc>576</xloc>
       <yloc>832</yloc>
       </entry>
   </entries>
@@ -683,7 +683,7 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Mail&#x3a; SUCCESS</from>
+      <from>Mail&#x3a; OK</from>
       <to>Success 3</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -792,15 +792,15 @@
     </hop>
     <hop>
       <from>Error Email Active&#x3f;</from>
-      <to>Authentication Active&#x3f;</to>
+      <to>SSL&#x3f;</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
-      <unconditional>Y</unconditional>
+      <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Authentication Active&#x3f;</from>
+      <from>SSL&#x3f;</from>
       <to>Mail&#x3a; ERROR</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -809,8 +809,8 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Authentication Active&#x3f;</from>
-      <to>Mail with authentication&#x3a; ERROR </to>
+      <from>SSL&#x3f;</from>
+      <to>Mail w&#x2f; SSL&#x3a; ERROR </to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -818,7 +818,7 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Mail with authentication&#x3a; ERROR </from>
+      <from>Mail w&#x2f; SSL&#x3a; ERROR </from>
       <to>ERROR</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -828,7 +828,7 @@
     </hop>
     <hop>
       <from>Success Email Active&#x3f;</from>
-      <to>Authentication Active&#x3f; 2</to>
+      <to>SSL&#x3f; &#x28;2&#x29;</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -836,8 +836,8 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Authentication Active&#x3f; 2</from>
-      <to>Mail&#x3a; SUCCESS</to>
+      <from>SSL&#x3f; &#x28;2&#x29;</from>
+      <to>Mail&#x3a; OK</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -845,8 +845,8 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Authentication Active&#x3f; 2</from>
-      <to>Mail with authentication&#x3a; Success</to>
+      <from>SSL&#x3f; &#x28;2&#x29;</from>
+      <to>Mail w&#x2f;SSL&#x3a; OK</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -854,7 +854,7 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Mail with authentication&#x3a; Success</from>
+      <from>Mail w&#x2f;SSL&#x3a; OK</from>
       <to>Success 3</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
