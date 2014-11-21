@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <task>
 
-	<name>stage_contact_type</name>
+	<name>stage_storecontact</name>
 	<blocker>true</blocker>
 
 	<parameter>
@@ -18,11 +18,12 @@
 		<type>DB</type>
 		<query>
 			<![CDATA[
-				SELECT
-				  ContactTypeID					as contact_type_id	
-				, Name							as name 				
+				SELECT  
+ 				  CustomerID					as customer_id		
+				, ContactID						as contact_id 		
+				, ContactTypeID					as contact_type_id
 				, cast(ModifiedDate as char) 	as modified_date
-				FROM contacttype
+				FROM storecontact
 				Where ModifiedDate > '${last_modified_date}'
 			]]>
 		</query>
@@ -35,7 +36,7 @@
 	<target>
 		<loader>MySQL</loader>
 		<table>
-			<name>stage_contact_type</name>
+			<name>stage_storecontact</name>
 		</table>
 	</target>
 

@@ -224,7 +224,7 @@ CREATE INDEX idx_stage_store_batch_id 	on stage_store(batch_id);
 CREATE INDEX idx_stage_store_modified_date on stage_store(modified_date);
 
 
-CREATE TABLE stage_store_contact(
+CREATE TABLE stage_storecontact(
 	  customer_id				INT				NOT NULL
 	, contact_id 				INT 			NOT NULL
 	, contact_type_id			INT				
@@ -232,18 +232,18 @@ CREATE TABLE stage_store_contact(
 	, row_number 				INT
 	, batch_id 					INT
 ) engine=myisam;
-CREATE INDEX idx_stage_store_contact_batch_id 	on stage_store_contact(batch_id);
-CREATE INDEX idx_stage_store_contact_modified_date on stage_store_contact(modified_date);
+CREATE INDEX idx_stage_storecontact_batch_id 	on stage_storecontact(batch_id);
+CREATE INDEX idx_stage_storecontact_modified_date on stage_storecontact(modified_date);
 
-CREATE TABLE stage_contact_type(
+CREATE TABLE stage_contacttype(
 	  contact_type_id			INT				NOT NULL			
 	, name 						VARCHAR(50)		NOT NULL
 	, modified_date				TIMESTAMP		NOT NULL
 	, row_number 				INT
 	, batch_id 					INT
 ) engine=myisam;
-CREATE INDEX idx_stage_contact_type_batch_id 	on stage_contact_type(batch_id);
-CREATE INDEX idx_stage_contact_type_modified_date on stage_contact_type(modified_date);
+CREATE INDEX idx_stage_contacttype_batch_id 	on stage_contacttype(batch_id);
+CREATE INDEX idx_stage_contacttype_modified_date on stage_contacttype(modified_date);
 
 
 CREATE TABLE stage_contact(
@@ -262,28 +262,28 @@ CREATE TABLE stage_contact(
 CREATE INDEX idx_stage_contact_batch_id on stage_contact(batch_id);
 CREATE INDEX idx_stage_contact_modified_date on stage_contact(modified_date);
 
-CREATE TABLE stage_sales_person(
+CREATE TABLE stage_salesperson(
 	  sales_person_id			INT				NOT NULL
 	, territory_id				INT				
 	, modified_date				TIMESTAMP		NOT NULL
 	, row_number 				INT
 	, batch_id		 			INT
 ) engine=myisam;
-CREATE INDEX idx_stage_sales_person_batch_id on stage_sales_person(batch_id);
-CREATE INDEX idx_stage_sales_person_modified_date on stage_sales_person(modified_date);
+CREATE INDEX idx_stage_salesperson_batch_id on stage_salesperson(batch_id);
+CREATE INDEX idx_stage_salesperson_modified_date on stage_salesperson(modified_date);
 
 
-CREATE TABLE stage_sales_header_reason(
+CREATE TABLE stage_salesheaderreason(
 	  sales_order_id			INT				NOT NULL
 	, sales_reason_id			INT				NOT NULL
 	, modified_date				TIMESTAMP		NOT NULL
 	, row_number 				INT
 	, batch_id		 			INT
 ) engine=myisam;
-CREATE INDEX idx_stage_sales_header_reason_batch_id on stage_sales_header_reason(batch_id);
-CREATE INDEX idx_stage_sales_header_reason_modified_date on stage_sales_header_reason(modified_date);
+CREATE INDEX idx_stage_salesheaderreason_batch_id on stage_salesheaderreason(batch_id);
+CREATE INDEX idx_stage_salesheaderreason_modified_date on stage_salesheaderreason(modified_date);
 
-CREATE TABLE stage_sales_reason(
+CREATE TABLE stage_salesreason(
 	  sales_order_id			INT				NOT NULL
 	, name						VARCHAR(50)		NOT NULL
 	, reason_type				VARCHAR(50)		NOT NULL
@@ -291,5 +291,5 @@ CREATE TABLE stage_sales_reason(
 	, row_number 				INT
 	, batch_id		 			INT
 ) engine=myisam;
-CREATE INDEX idx_stage_sales_reason_batch_id on stage_sales_reason(batch_id);
-CREATE INDEX idx_stage_sales_reason_modified_date on stage_sales_reason(modified_date);
+CREATE INDEX idx_stage_sales_reason_batch_id on stage_salesreason(batch_id);
+CREATE INDEX idx_stage_sales_reason_modified_date on stage_salesreason(modified_date);

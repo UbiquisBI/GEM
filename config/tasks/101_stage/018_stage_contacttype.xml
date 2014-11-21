@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <task>
 
-	<name>stage_sales_header_reason</name>
+	<name>stage_contacttype</name>
 	<blocker>true</blocker>
 
 	<parameter>
@@ -9,7 +9,7 @@
 		<default>1900-01-01 00:00:00</default>
 		<query>
 			<![CDATA[
-				select max(modified_date) 		as last_modified_date 
+				select max(modified_date) as last_modified_date 
 				from ${TARGET_TABLE_NAME}
 			]]>
 		</query>
@@ -19,10 +19,10 @@
 		<query>
 			<![CDATA[
 				SELECT
-				SalesOrderID					as sales_order_id	
-				, SalesReasonID					as sales_reason_id	 	
+				  ContactTypeID					as contact_type_id	
+				, Name							as name 				
 				, cast(ModifiedDate as char) 	as modified_date
-				FROM salesorderheadersalesreason
+				FROM contacttype
 				Where ModifiedDate > '${last_modified_date}'
 			]]>
 		</query>
@@ -35,7 +35,7 @@
 	<target>
 		<loader>MySQL</loader>
 		<table>
-			<name>stage_sales_header_reason</name>
+			<name>stage_contacttype</name>
 		</table>
 	</target>
 

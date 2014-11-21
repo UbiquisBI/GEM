@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <task>
 
-	<name>stage_sales_reason</name>
+	<name>stage_salesreason</name>
 	<blocker>true</blocker>
 
 	<parameter>
@@ -36,7 +36,7 @@
 	<target>
 		<loader>MySQL</loader>
 		<table>
-			<name>stage_sales_reason</name>
+			<name>stage_salesreason</name>
 		</table>
 	</target>
 

@@ -3,11 +3,15 @@
 
 	<!-- ETL File locations -->
 	<locations>
-        <root>/Users/nelson/Work/projects/ubiquis/ETL</root>
-        <log>/Users/nelson/Work/projects/ubiquis/ETL/log</log>
-        <tmp>/Users/nelson/Work/projects/ubiquis/ETL/tmp</tmp>
-        <tasks>/Users/nelson/Work/projects/ubiquis/ETL/config/tasks</tasks>
-        <transformations>/Users/nelson/Work/projects/ubiquis/ETL/transformations</transformations>
+        <root>/home/pentaho/GEM/</root>
+        <log>/home/pentaho/GEM/log</log>
+        <tmp>/home/pentaho/GEM/tmp</tmp>
+        <tasks>/home/pentaho/GEM/config/tasks</tasks>
+        <transformations>/home/pentaho/GEM/transformations</transformations>
+        <!-- File Inbox path prefix: for dev purposes only -->
+		<inbox>/home/cunhal/pentaho/GEM/inbox</inbox>
+	</locations>
+
         <!-- File Inbox path prefix: for dev purposes only -->
 		<!-- inbox>/home/pentaho/ETL/inbox</inbox -->
 	</locations>
