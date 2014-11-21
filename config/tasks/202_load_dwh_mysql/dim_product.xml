@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<task>
+
+	<name>dim_product</name>
+	<blocker>true</blocker>
+
+	<parameter>
+		<name>batch_id</name>
+		<default>0</default>
+		<query>
+			<![CDATA[
+				select max(batch_id) as batch_id 
+				from ${TARGET_TABLE_NAME}
+			]]>
+		</query>
+	</parameter>
+
+	<source>
+		<type>DB</type>
+		<query>
+			<![CDATA[
+			select 
+			  p.product_id
+			, p.name as product
+			, c.name as category
+			, sc.name as subcategory
+			, p.standard_cost
+			, p.list_price
+			, p.modified_date
+			, p.row_number as stage_product_row_number
+			, p.batch_id as stage_product_batch_id
+			from 
+			  stage_product p
+			, stage_productcategory c
+			, stage_productsubcategory sc
+			where 
+			    p.product_subcategory_id = sc.product_subcategory_id
+			AND sc.product_category_id = c.product_category_id
+			AND c.batch_id > ${batch_id}
+			]]>
+		</query>
+	</source>
+
+	<transform>
+		<transformation>dim_product.ktr</transformation>
+	</transform>
+
+	<target>
+		<loader>MySQL</loader>
+		<table>
+			<name>dim_product</name>
+		</table>
+	</target>
+
+
+</task>

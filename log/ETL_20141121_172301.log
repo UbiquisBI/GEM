@@ -1,0 +1,316 @@
+2014/11/21 17:23:01 - Watchdog - Loading transformation from XML file [file:///home/cunhal/ubiquis/GEM/kettle/_watchdog.ktr]
+2014/11/21 17:23:01 - _watchdog_MySQL - Dispatching started for transformation [_watchdog_MySQL]
+2014/11/21 17:23:01 - Table input.0 - Finished reading query, closing connection.
+2014/11/21 17:23:01 - Table input.0 - Finished processing (I=1, O=0, R=0, W=1, U=0, E=0)
+2014/11/21 17:23:01 - count=0 ? .0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:01 - Carry on.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:01 - _run_tasks - Starting entry [List processes]
+2014/11/21 17:23:01 - List processes - Loading transformation from XML file [file:///home/cunhal/ubiquis/GEM/kettle/_get_file_names.ktr]
+2014/11/21 17:23:01 - _get_file_names - Dispatching started for transformation [_get_file_names]
+2014/11/21 17:23:01 - Get File Names.0 - Finished processing (I=0, O=0, R=0, W=2, U=0, E=0)
+2014/11/21 17:23:01 - Get Variables.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Join Rows (cartesian product).0 - Finished processing (I=0, O=0, R=3, W=2, U=0, E=0)
+2014/11/21 17:23:02 - Filter rows.0 - Finished processing (I=0, O=0, R=2, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Select values.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Copy rows to result.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - _run_tasks - Starting entry [Run single process]
+2014/11/21 17:23:02 - _run_single_process - Starting entry [Set connection variables]
+2014/11/21 17:23:02 - Set connection variables - Loading transformation from XML file [file:///home/cunhal/ubiquis/GEM/kettle/_set_connection_variables.ktr]
+2014/11/21 17:23:02 - _set_connection_variables - Dispatching started for transformation [_set_connection_variables]
+2014/11/21 17:23:02 - Property Input.0 - Finished processing (I=8, O=0, R=0, W=8, U=0, E=0)
+2014/11/21 17:23:02 - Row denormaliser.0 - Finished processing (I=0, O=0, R=8, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Set Variables.0 - Setting environment variables...
+2014/11/21 17:23:02 - Set Variables.0 - Set variable SOURCE_DATABASE_DRIVER to value [com.mysql.jdbc.Driver]
+2014/11/21 17:23:02 - Set Variables.0 - Set variable SOURCE_DATABASE_URL to value [jdbc:mysql://localhost:3306/stage_adventureworks?useOldAliasMetadataBehavior=true&useCursorFetch=true&defaultFetchSize=1000]
+2014/11/21 17:23:02 - Set Variables.0 - Set variable SOURCE_DATABASE_USERNAME to value [ubiquis]
+2014/11/21 17:23:02 - Set Variables.0 - Set variable SOURCE_DATABASE_PASSWORD to value [password]
+2014/11/21 17:23:02 - Set Variables.0 - Set variable TARGET_DATABASE_DRIVER to value [com.mysql.jdbc.Driver]
+2014/11/21 17:23:02 - Set Variables.0 - Set variable TARGET_DATABASE_URL to value [jdbc:mysql://localhost:3306/dwh_adventureworks?useOldAliasMetadataBehavior=true&useCursorFetch=true&defaultFetchSize=1000]
+2014/11/21 17:23:02 - Set Variables.0 - Set variable TARGET_DATABASE_USERNAME to value [ubiquis]
+2014/11/21 17:23:02 - Set Variables.0 - Set variable TARGET_DATABASE_PASSWORD to value [password]
+2014/11/21 17:23:02 - Set Variables.0 - Finished after 1 rows.
+2014/11/21 17:23:02 - Set Variables.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - _run_single_process - Starting entry [List tasks]
+2014/11/21 17:23:02 - List tasks - Loading transformation from XML file [file:///home/cunhal/ubiquis/GEM/kettle/_get_file_names.ktr]
+2014/11/21 17:23:02 - _get_file_names - Dispatching started for transformation [_get_file_names]
+2014/11/21 17:23:02 - Get File Names.0 - Finished processing (I=0, O=0, R=0, W=8, U=0, E=0)
+2014/11/21 17:23:02 - Get Variables.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Join Rows (cartesian product).0 - Finished processing (I=0, O=0, R=9, W=8, U=0, E=0)
+2014/11/21 17:23:02 - Filter rows.0 - Finished processing (I=0, O=0, R=8, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Select values.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Copy rows to result.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - _run_single_process - Starting entry [Run single task]
+2014/11/21 17:23:02 - _run_single_task - Starting entry [Set CONFIG_FILE]
+2014/11/21 17:23:02 - _run_single_task - Starting entry [Read config file]
+2014/11/21 17:23:02 - Read config file - Loading transformation from XML file [file:///home/cunhal/ubiquis/GEM/kettle/_task_config.ktr]
+2014/11/21 17:23:02 - read_config_file - Dispatching started for transformation [read_config_file]
+2014/11/21 17:23:02 - Get data from XML.0 - Finished processing (I=1, O=0, R=0, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Set Variables.0 - Setting environment variables...
+2014/11/21 17:23:02 - Set Variables.0 - Set variable TASK_NAME to value [dim_product]
+2014/11/21 17:23:02 - Set Variables.0 - Set variable TASK_BLOCKER to value [true]
+2014/11/21 17:23:02 - Set Variables.0 - Set variable PARAMETER_NAME to value [batch_id]
+2014/11/21 17:23:02 - Set Variables.0 - Set variable PARAMETER_DEFAULT to value [0]
+2014/11/21 17:23:02 - Set Variables.0 - Set variable PARAMETER_QUERY to value [select max(batch_id) as batch_id 
+2014/11/21 17:23:02 - Set Variables.0 - 				from ${TARGET_TABLE_NAME}]
+2014/11/21 17:23:02 - Set Variables.0 - Set variable SOURCE_TYPE to value [DB]
+2014/11/21 17:23:02 - Set Variables.0 - Set variable SOURCE_QUERY to value [select 
+2014/11/21 17:23:02 - Set Variables.0 - 			  p.product_id
+2014/11/21 17:23:02 - Set Variables.0 - 			, p.name as product
+2014/11/21 17:23:02 - Set Variables.0 - 			, c.name as category
+2014/11/21 17:23:02 - Set Variables.0 - 			, sc.name as subcategory
+2014/11/21 17:23:02 - Set Variables.0 - 			, p.standard_cost
+2014/11/21 17:23:02 - Set Variables.0 - 			, p.list_price
+2014/11/21 17:23:02 - Set Variables.0 - 			, p.modified_date
+2014/11/21 17:23:02 - Set Variables.0 - 			, p.row_number as stage_product_row_number
+2014/11/21 17:23:02 - Set Variables.0 - 			, p.batch_id as stage_product_batch_id
+2014/11/21 17:23:02 - Set Variables.0 - 			from 
+2014/11/21 17:23:02 - Set Variables.0 - 			  stage_product p
+2014/11/21 17:23:02 - Set Variables.0 - 			, stage_productcategory c
+2014/11/21 17:23:02 - Set Variables.0 - 			, stage_productsubcategory sc
+2014/11/21 17:23:02 - Set Variables.0 - 			where 
+2014/11/21 17:23:02 - Set Variables.0 - 			    p.product_subcategory_id = sc.product_subcategory_id
+2014/11/21 17:23:02 - Set Variables.0 - 			AND sc.product_category_id = c.product_category_id
+2014/11/21 17:23:02 - Set Variables.0 - 			AND c.batch_id > ${batch_id}]
+2014/11/21 17:23:02 - Set Variables.0 - Set variable SOURCE_FILE_LOCATION to value []
+2014/11/21 17:23:02 - Set Variables.0 - Set variable SOURCE_FILE_PATTERN to value []
+2014/11/21 17:23:02 - Set Variables.0 - Set variable TARGET_LOADER to value [MySQL]
+2014/11/21 17:23:02 - Set Variables.0 - Set variable TARGET_TABLE_NAME to value [dim_product]
+2014/11/21 17:23:02 - Set Variables.0 - Set variable TARGET_TABLE_CREATE to value []
+2014/11/21 17:23:02 - Set Variables.0 - Set variable TARGET_TABLE_DROP to value []
+2014/11/21 17:23:02 - Set Variables.0 - Set variable EXTRACT_SPECIFIC_KTR to value []
+2014/11/21 17:23:02 - Set Variables.0 - Set variable TRANSFORM_SPECIFIC_KTR to value [dim_product.ktr]
+2014/11/21 17:23:02 - Set Variables.0 - Set variable LOAD_SPECIFIC_KTR to value []
+2014/11/21 17:23:02 - Set Variables.0 - Set variable TRANSFORM_OUTPUT_MODE to value [CSV]
+2014/11/21 17:23:02 - Set Variables.0 - Set variable PRE_PROCESSING_SOURCE_QUERY to value []
+2014/11/21 17:23:02 - Set Variables.0 - Set variable PRE_PROCESSING_TARGET_QUERY to value []
+2014/11/21 17:23:02 - Set Variables.0 - Set variable PRE_PROCESSING_TRANSFORMATION to value []
+2014/11/21 17:23:02 - Set Variables.0 - Set variable POST_PROCESSING_SOURCE_QUERY to value []
+2014/11/21 17:23:02 - Set Variables.0 - Set variable POST_PROCESSING_TARGET_QUERY to value []
+2014/11/21 17:23:02 - Set Variables.0 - Set variable POST_PROCESSING_TRANSFORMATION to value []
+2014/11/21 17:23:02 - MySQL/InfiniDB: load from CSV.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Set Variables.0 - Finished after 1 rows.
+2014/11/21 17:23:02 - Set Variables.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - _run_single_task - Starting entry [Set status='running']
+2014/11/21 17:23:02 - Set status='running' - Loading transformation from XML file [file:///home/cunhal/ubiquis/GEM/kettle/_update_task.ktr]
+2014/11/21 17:23:02 - _update_task - Dispatching started for transformation [_update_task]
+2014/11/21 17:23:02 - Insert new task.0 - Connected to database [etl] (commit=1)
+2014/11/21 17:23:02 - Get Variables.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Get current timestamp.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Is new task?.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Set BATCH_ID.0 - Setting environment variables...
+2014/11/21 17:23:02 - Set BATCH_ID.0 - Set variable BATCH_ID to value [285]
+2014/11/21 17:23:02 - Insert new task.0 - Finished processing (I=0, O=1, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Set BATCH_ID.0 - Finished after 1 rows.
+2014/11/21 17:23:02 - Set BATCH_ID.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - _run_single_task - Starting entry [Set stage='pre-processing']
+2014/11/21 17:23:02 - Set status='running' - Loading transformation from XML file [file:///home/cunhal/ubiquis/GEM/kettle/_update_task.ktr]
+2014/11/21 17:23:02 - _update_task - Dispatching started for transformation [_update_task]
+2014/11/21 17:23:02 - Insert new task.0 - Connected to database [etl] (commit=1)
+2014/11/21 17:23:02 - Get Variables.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Get current timestamp.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Is new task?.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Get BATCH_ID.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Set BATCH_ID.0 - We didn't receive a row while setting the default values.
+2014/11/21 17:23:02 - Set BATCH_ID.0 - Finished after 0 rows.
+2014/11/21 17:23:02 - Update task.0 - Finished processing (I=1, O=0, R=1, W=1, U=1, E=0)
+2014/11/21 17:23:02 - _run_single_task - Starting entry [Pre-processing]
+2014/11/21 17:23:02 - _task_pre_process - Starting entry [Has query on source?]
+2014/11/21 17:23:02 - _task_pre_process - Starting entry [Has query on target?]
+2014/11/21 17:23:02 - _task_pre_process - Starting entry [Has transformation?]
+2014/11/21 17:23:02 - _task_pre_process - Starting entry [Success]
+2014/11/21 17:23:02 - _task_pre_process - Finished job entry [Success] (result=[true])
+2014/11/21 17:23:02 - _task_pre_process - Finished job entry [Has transformation?] (result=[true])
+2014/11/21 17:23:02 - _task_pre_process - Finished job entry [Has query on target?] (result=[true])
+2014/11/21 17:23:02 - _task_pre_process - Finished job entry [Has query on source?] (result=[true])
+2014/11/21 17:23:02 - _run_single_task - Starting entry [Set stage='extract']
+2014/11/21 17:23:02 - Set status='running' - Loading transformation from XML file [file:///home/cunhal/ubiquis/GEM/kettle/_update_task.ktr]
+2014/11/21 17:23:02 - _update_task - Dispatching started for transformation [_update_task]
+2014/11/21 17:23:02 - Insert new task.0 - Connected to database [etl] (commit=1)
+2014/11/21 17:23:02 - Get Variables.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Get current timestamp.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Is new task?.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Get BATCH_ID.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Set BATCH_ID.0 - We didn't receive a row while setting the default values.
+2014/11/21 17:23:02 - Set BATCH_ID.0 - Finished after 0 rows.
+2014/11/21 17:23:02 - Set parameter value - Loading transformation from XML file [file:///home/cunhal/ubiquis/GEM/kettle/_set_parameter_value.ktr]
+2014/11/21 17:23:02 - set_parameter_value - Dispatching started for transformation [set_parameter_value]
+2014/11/21 17:23:02 - Read param value.0 - Finished reading query, closing connection.
+2014/11/21 17:23:02 - Read param value.0 - Finished processing (I=1, O=0, R=0, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Get defaults.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Set parameter.0 - Optimization level set to 9.
+2014/11/21 17:23:02 - Write to log.0 - 
+2014/11/21 17:23:02 - Write to log.0 - ------------> Linenr 1------------------------------
+2014/11/21 17:23:02 - Write to log.0 - SET PARAMETER VALUE:
+2014/11/21 17:23:02 - Write to log.0 - 
+2014/11/21 17:23:02 - Write to log.0 - PARAMETER_NAME = batch_id
+2014/11/21 17:23:02 - Write to log.0 - PARAMETER_VALUE = 0
+2014/11/21 17:23:02 - Write to log.0 - 
+2014/11/21 17:23:02 - Write to log.0 - ====================
+2014/11/21 17:23:02 - Set parameter.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Write to log.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Read from source - Loading transformation from XML file [file:///home/cunhal/ubiquis/GEM/kettle/_read_from_source_DB.ktr]
+2014/11/21 17:23:02 - read_from_source_DB - Dispatching started for transformation [read_from_source_DB]
+2014/11/21 17:23:02 - Table input.0 - Finished reading query, closing connection.
+2014/11/21 17:23:02 - Table input.0 - Finished processing (I=295, O=0, R=0, W=590, U=0, E=0)
+2014/11/21 17:23:02 - Count records.0 - Finished processing (I=0, O=0, R=295, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Set RECORDS_READ.0 - Setting environment variables...
+2014/11/21 17:23:02 - Set RECORDS_READ.0 - Set variable RECORDS_READ to value [295]
+2014/11/21 17:23:02 - If empty stream, RECORDS_READ=0.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Set RECORDS_READ.0 - Finished after 1 rows.
+2014/11/21 17:23:02 - Set RECORDS_READ.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Add row number.0 - Finished processing (I=0, O=0, R=295, W=295, U=0, E=0)
+2014/11/21 17:23:02 - Get batch_id.0 - Finished processing (I=0, O=0, R=295, W=295, U=0, E=0)
+2014/11/21 17:23:02 - Serialize EXTRACT file.0 - Finished processing (I=0, O=295, R=295, W=295, U=0, E=0)
+2014/11/21 17:23:02 - Update task.0 - Finished processing (I=1, O=0, R=1, W=1, U=1, E=0)
+2014/11/21 17:23:02 - _run_single_task - Starting entry [Extract]
+2014/11/21 17:23:02 - _task_extract - Starting entry [Is Parameter defined?]
+2014/11/21 17:23:02 - _task_extract - Starting entry [Set parameter value]
+2014/11/21 17:23:02 - Set parameter value - Loading transformation from XML file [file:///home/cunhal/ubiquis/GEM/kettle/_set_parameter_value.ktr]
+2014/11/21 17:23:02 - set_parameter_value - Dispatching started for transformation [set_parameter_value]
+2014/11/21 17:23:02 - Read param value.0 - Finished reading query, closing connection.
+2014/11/21 17:23:02 - Read param value.0 - Finished processing (I=1, O=0, R=0, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Get defaults.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Set parameter.0 - Optimization level set to 9.
+2014/11/21 17:23:02 - Write to log.0 - 
+2014/11/21 17:23:02 - Write to log.0 - ------------> Linenr 1------------------------------
+2014/11/21 17:23:02 - Write to log.0 - SET PARAMETER VALUE:
+2014/11/21 17:23:02 - Write to log.0 - 
+2014/11/21 17:23:02 - Write to log.0 - PARAMETER_NAME = batch_id
+2014/11/21 17:23:02 - Write to log.0 - PARAMETER_VALUE = 0
+2014/11/21 17:23:02 - Write to log.0 - 
+2014/11/21 17:23:02 - Write to log.0 - ====================
+2014/11/21 17:23:02 - Set parameter.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Write to log.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - _task_extract - Starting entry [Read from source]
+2014/11/21 17:23:02 - Read from source - Loading transformation from XML file [file:///home/cunhal/ubiquis/GEM/kettle/_read_from_source_DB.ktr]
+2014/11/21 17:23:02 - read_from_source_DB - Dispatching started for transformation [read_from_source_DB]
+2014/11/21 17:23:02 - Table input.0 - Finished reading query, closing connection.
+2014/11/21 17:23:02 - Table input.0 - Finished processing (I=295, O=0, R=0, W=590, U=0, E=0)
+2014/11/21 17:23:02 - Count records.0 - Finished processing (I=0, O=0, R=295, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Set RECORDS_READ.0 - Setting environment variables...
+2014/11/21 17:23:02 - Set RECORDS_READ.0 - Set variable RECORDS_READ to value [295]
+2014/11/21 17:23:02 - If empty stream, RECORDS_READ=0.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Set RECORDS_READ.0 - Finished after 1 rows.
+2014/11/21 17:23:02 - Set RECORDS_READ.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Add row number.0 - Finished processing (I=0, O=0, R=295, W=295, U=0, E=0)
+2014/11/21 17:23:02 - Get batch_id.0 - Finished processing (I=0, O=0, R=295, W=295, U=0, E=0)
+2014/11/21 17:23:02 - Serialize EXTRACT file.0 - Finished processing (I=0, O=295, R=295, W=295, U=0, E=0)
+2014/11/21 17:23:02 - _task_extract - Starting entry [Success]
+2014/11/21 17:23:02 - _task_extract - Finished job entry [Success] (result=[true])
+2014/11/21 17:23:02 - _task_extract - Finished job entry [Read from source] (result=[true])
+2014/11/21 17:23:02 - _task_extract - Finished job entry [Set parameter value] (result=[true])
+2014/11/21 17:23:02 - _task_extract - Finished job entry [Is Parameter defined?] (result=[true])
+2014/11/21 17:23:02 - _run_single_task - Starting entry [Set stage='transform']
+2014/11/21 17:23:02 - Set status='running' - Loading transformation from XML file [file:///home/cunhal/ubiquis/GEM/kettle/_update_task.ktr]
+2014/11/21 17:23:02 - _update_task - Dispatching started for transformation [_update_task]
+2014/11/21 17:23:02 - Insert new task.0 - Connected to database [etl] (commit=1)
+2014/11/21 17:23:02 - Get Variables.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Get current timestamp.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Is new task?.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Get BATCH_ID.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:02 - Set BATCH_ID.0 - We didn't receive a row while setting the default values.
+2014/11/21 17:23:02 - Set BATCH_ID.0 - Finished after 0 rows.
+2014/11/21 17:23:02 - Update task.0 - Finished processing (I=1, O=0, R=1, W=1, U=1, E=0)
+2014/11/21 17:23:02 - _run_single_task - Starting entry [Transform]
+2014/11/21 17:23:02 - _task_transform - Starting entry [EXTRACT File Exists?]
+2014/11/21 17:23:02 - _task_transform - Starting entry [Task transform]
+2014/11/21 17:23:02 - Task transform - Loading transformation from XML file [file:///home/cunhal/ubiquis/GEM/kettle/_task_transform.ktr]
+2014/11/21 17:23:02 - _task_transform - Dispatching started for transformation [_task_transform]
+2014/11/21 17:23:02 - dim_product - Dispatching started for transformation [dim_product]
+2014/11/21 17:23:03 - _task_transform_CSV - Dispatching started for transformation [_task_transform_CSV]
+2014/11/21 17:23:03 - De-serialize EXTRACT file.0 - Finished processing (I=295, O=0, R=0, W=295, U=0, E=0)
+2014/11/21 17:23:03 - INPUT.0 - Finished processing (I=0, O=0, R=295, W=295, U=0, E=0)
+2014/11/21 17:23:03 - Dimension lookup/update.0 - Finished processing (I=295, O=295, R=295, W=295, U=0, E=0)
+2014/11/21 17:23:03 - SPECIFIC TRANSFORMATION.0 - Finished processing (I=0, O=0, R=295, W=0, U=0, E=0)
+2014/11/21 17:23:03 - _task_transform - Starting entry [Delete EXTRACT file]
+2014/11/21 17:23:03 - EXTRACT File Exists? - File [/home/cunhal/ubiquis/GEM/tmp/EXTRACT_dim_product.data] deleted!
+2014/11/21 17:23:03 - _task_transform - Starting entry [Success]
+2014/11/21 17:23:03 - _task_transform - Finished job entry [Success] (result=[true])
+2014/11/21 17:23:03 - _task_transform - Finished job entry [Delete EXTRACT file] (result=[true])
+2014/11/21 17:23:03 - _task_transform - Finished job entry [Task transform] (result=[true])
+2014/11/21 17:23:03 - _task_transform - Finished job entry [EXTRACT File Exists?] (result=[true])
+2014/11/21 17:23:03 - _run_single_task - Starting entry [Set stage='load']
+2014/11/21 17:23:03 - Set status='running' - Loading transformation from XML file [file:///home/cunhal/ubiquis/GEM/kettle/_update_task.ktr]
+2014/11/21 17:23:03 - _update_task - Dispatching started for transformation [_update_task]
+2014/11/21 17:23:03 - Insert new task.0 - Connected to database [etl] (commit=1)
+2014/11/21 17:23:03 - Get Variables.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:03 - Get current timestamp.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:03 - Is new task?.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:03 - Get BATCH_ID.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:03 - Set BATCH_ID.0 - We didn't receive a row while setting the default values.
+2014/11/21 17:23:03 - Set BATCH_ID.0 - Finished after 0 rows.
+2014/11/21 17:23:03 - Update task.0 - Finished processing (I=1, O=0, R=1, W=1, U=1, E=0)
+2014/11/21 17:23:03 - _run_single_task - Starting entry [Load]
+2014/11/21 17:23:03 - _task_load - Starting entry [LOAD File Exists?]
+2014/11/21 17:23:03 - _task_load - Starting entry [Statistics on target]
+2014/11/21 17:23:03 - Statistics on target - Loading transformation from XML file [file:///home/cunhal/ubiquis/GEM/kettle/_statistics_target.ktr]
+2014/11/21 17:23:03 - _statistics_target - Dispatching started for transformation [_statistics_target]
+2014/11/21 17:23:03 - Count records.0 - Finished reading query, closing connection.
+2014/11/21 17:23:03 - Count records.0 - Finished processing (I=1, O=0, R=0, W=1, U=0, E=0)
+2014/11/21 17:23:03 - Set Variables.0 - Setting environment variables...
+2014/11/21 17:23:03 - Set Variables.0 - Set variable RECORDS_WRITTEN to value [295]
+2014/11/21 17:23:03 - Set Variables.0 - Finished after 1 rows.
+2014/11/21 17:23:03 - Set Variables.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:03 - _task_load - Starting entry [Delete file]
+2014/11/21 17:23:03 - LOAD File Exists? - File [/home/cunhal/ubiquis/GEM/tmp/LOAD_dim_product.data] already deleted.
+2014/11/21 17:23:03 - _task_load - Starting entry [Success]
+2014/11/21 17:23:03 - _task_load - Finished job entry [Success] (result=[true])
+2014/11/21 17:23:03 - _task_load - Finished job entry [Delete file] (result=[true])
+2014/11/21 17:23:03 - _task_load - Finished job entry [Statistics on target] (result=[true])
+2014/11/21 17:23:03 - _task_load - Finished job entry [LOAD File Exists?] (result=[true])
+2014/11/21 17:23:03 - _run_single_task - Starting entry [Set stage='post-processing']
+2014/11/21 17:23:03 - Set status='running' - Loading transformation from XML file [file:///home/cunhal/ubiquis/GEM/kettle/_update_task.ktr]
+2014/11/21 17:23:03 - _update_task - Dispatching started for transformation [_update_task]
+2014/11/21 17:23:03 - Insert new task.0 - Connected to database [etl] (commit=1)
+2014/11/21 17:23:03 - Get Variables.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:03 - Get current timestamp.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:03 - Is new task?.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:03 - Get BATCH_ID.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:03 - Set BATCH_ID.0 - We didn't receive a row while setting the default values.
+2014/11/21 17:23:03 - Set BATCH_ID.0 - Finished after 0 rows.
+2014/11/21 17:23:03 - Update task.0 - Finished processing (I=1, O=0, R=1, W=1, U=1, E=0)
+2014/11/21 17:23:03 - _run_single_task - Starting entry [Post-processing]
+2014/11/21 17:23:03 - _task_post_process - Starting entry [Has query on source?]
+2014/11/21 17:23:03 - _task_post_process - Starting entry [Has query on target?]
+2014/11/21 17:23:03 - _task_post_process - Starting entry [Has transformation?]
+2014/11/21 17:23:03 - _task_post_process - Starting entry [Success]
+2014/11/21 17:23:03 - _task_post_process - Finished job entry [Success] (result=[true])
+2014/11/21 17:23:03 - _task_post_process - Finished job entry [Has transformation?] (result=[true])
+2014/11/21 17:23:03 - _task_post_process - Finished job entry [Has query on target?] (result=[true])
+2014/11/21 17:23:03 - _task_post_process - Finished job entry [Has query on source?] (result=[true])
+2014/11/21 17:23:03 - _run_single_task - Starting entry [Set stage='finished']
+2014/11/21 17:23:03 - Set status='running' - Loading transformation from XML file [file:///home/cunhal/ubiquis/GEM/kettle/_update_task.ktr]
+2014/11/21 17:23:03 - _update_task - Dispatching started for transformation [_update_task]
+2014/11/21 17:23:03 - Insert new task.0 - Connected to database [etl] (commit=1)
+2014/11/21 17:23:03 - Get Variables.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:03 - Get current timestamp.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:03 - Is new task?.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:03 - Get BATCH_ID.0 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+2014/11/21 17:23:03 - Set BATCH_ID.0 - We didn't receive a row while setting the default values.
+2014/11/21 17:23:03 - Set BATCH_ID.0 - Finished after 0 rows.
+2014/11/21 17:23:03 - Update task.0 - Finished processing (I=1, O=0, R=1, W=1, U=1, E=0)
+2014/11/21 17:23:03 - _run_single_task - Starting entry [Success]
+2014/11/21 17:23:03 - _run_single_task - Finished job entry [Success] (result=[true])
+2014/11/21 17:23:03 - _run_single_task - Finished job entry [Set stage='finished'] (result=[true])
+2014/11/21 17:23:03 - _run_single_task - Finished job entry [Post-processing] (result=[true])
+2014/11/21 17:23:03 - _run_single_task - Finished job entry [Set stage='post-processing'] (result=[true])
+2014/11/21 17:23:03 - _run_single_task - Finished job entry [Load] (result=[true])
+2014/11/21 17:23:03 - _run_single_task - Finished job entry [Set stage='load'] (result=[true])
+2014/11/21 17:23:03 - _run_single_task - Finished job entry [Transform] (result=[true])
+2014/11/21 17:23:03 - _run_single_task - Finished job entry [Set stage='transform'] (result=[true])
+2014/11/21 17:23:03 - _run_single_task - Finished job entry [Extract] (result=[true])
+2014/11/21 17:23:03 - _run_single_task - Finished job entry [Set stage='extract'] (result=[true])
+2014/11/21 17:23:03 - _run_single_task - Finished job entry [Pre-processing] (result=[true])
+2014/11/21 17:23:03 - _run_single_task - Finished job entry [Set stage='pre-processing'] (result=[true])
+2014/11/21 17:23:03 - _run_single_task - Finished job entry [Set status='running'] (result=[true])
+2014/11/21 17:23:03 - _run_single_task - Finished job entry [Read config file] (result=[true])
+2014/11/21 17:23:03 - _run_single_task - Finished job entry [Set CONFIG_FILE] (result=[true])
+2014/11/21 17:23:03 - _run_single_process - Starting entry [Success 2]
+2014/11/21 17:23:03 - _run_single_process - Finished job entry [Success 2] (result=[true])
+2014/11/21 17:23:03 - _run_single_process - Finished job entry [Run single task] (result=[true])
+2014/11/21 17:23:03 - _run_single_process - Finished job entry [List tasks] (result=[true])
+2014/11/21 17:23:03 - _run_single_process - Finished job entry [Set connection variables] (result=[true])
+2014/11/21 17:23:03 - _run_tasks - Starting entry [Success]
+2014/11/21 17:23:03 - _run_tasks - Finished job entry [Success] (result=[true])
+2014/11/21 17:23:03 - _run_tasks - Finished job entry [Run single process] (result=[true])
+2014/11/21 17:23:03 - _run_tasks - Finished job entry [List processes] (result=[true])

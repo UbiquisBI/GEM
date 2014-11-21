@@ -51,3 +51,39 @@ CREATE TABLE dim_date(
 	CREATE INDEX idx_dim_time_hms24 ON dim_time( time_id, hours24, minutes, seconds, time_formatted24_hms );
 	CREATE INDEX idx_dim_time_hms24lpad ON dim_time( time_id, hours24_lpad, minutes_lpad, time_formatted24_hms );
 	CREATE INDEX idx_dim_time_lookup ON dim_time( time_id, time_formatted24_hms );
+
+
+
+CREATE TABLE dim_customers(
+	  customer_id				INTEGER			NOT NULL 	PRIMARY KEY 	AUTO_INCREMENT
+	, version					INTEGER
+	, date_from					DATETIME
+	, date_to					DATETIME
+	, account_number			VARCHAR(30)		
+	, customer_type				VARCHAR(3)	
+	, territory					VARCHAR(150)	
+	, country_region_code		VARCHAR(9)		
+	, country_name				VARCHAR(150)	
+	, stage_customer_row_number	INTEGER			
+	, stage_customer_batch_id	INTEGER			
+	, row_number				INTEGER
+	, batch_id					INTEGER
+);
+
+
+CREATE TABLE dim_product(
+	  product_id				INTEGER 		NOT NULL 	PRIMARY KEY 	AUTO_INCREMENT
+	, version					INTEGER
+	, date_from					DATETIME
+	, date_to					DATETIME
+	, product					VARCHAR(450)
+	, category 					VARCHAR(150)
+	, subcategory				VARCHAR(150)
+	, standard_cost				DOUBLE
+	, list_price				DOUBLE
+	, modified_date				DATETIME
+	, stage_product_row_number	INTEGER
+	, stage_product_batch_id	INTEGER
+	, row_number				INTEGER
+	, batch_id					INTEGER
+);

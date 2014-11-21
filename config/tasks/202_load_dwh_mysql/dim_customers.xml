@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<task>
+
+	<name>dim_customers</name>
+	<blocker>true</blocker>
+
+	<parameter>
+		<name>batch_id</name>
+		<default>0</default>
+		<query>
+			<![CDATA[
+				select max(batch_id) as batch_id 
+				from ${TARGET_TABLE_NAME}
+			]]>
+		</query>
+	</parameter>
+
+	<source>
+		<type>DB</type>
+		<query>
+			<![CDATA[
+			select
+			  c.customer_id
+			, c.account_number  
+			, c.customer_type
+			, t.name as territory
+			, t.country_region_code
+			, cr.name as country_name
+			, c.modified_date
+			, c.row_number as stage_customer_row_number
+			, c.batch_id as stage_customer_batch_id
+			from 
+		stage_customer c ,	stage_salesterritory t,stage_countryregion cr
+  			where c.territory_id = t.territory_id 
+  			AND cr.country_region_code = t.country_region_code
+			AND c.batch_id > ${batch_id}
+			]]>
+		</query>
+	</source>
+
+	<transform>
+		<transformation>dim_customers.ktr</transformation>
+	</transform>
+
+	<target>
+		<loader>MySQL</loader>
+		<table>
+			<name>dim_customers</name>
+		</table>
+	</target>
+
+
+</task>
