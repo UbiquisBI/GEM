@@ -256,8 +256,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>544</xloc>
-      <yloc>448</yloc>
+      <xloc>800</xloc>
+      <yloc>512</yloc>
       </entry>
     <entry>
       <name>Warning Email Active&#x3f;</name>
@@ -288,11 +288,11 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>800</xloc>
-      <yloc>544</yloc>
+      <xloc>992</xloc>
+      <yloc>512</yloc>
       </entry>
     <entry>
-      <name>Mail with authentication&#x3a; Warning</name>
+      <name>Mail w&#x2f;SSL&#x3a; Warning</name>
       <description/>
       <type>MAIL</type>
       <server>&#x24;&#x7b;EMAIL_SMTP_HOST&#x7d;</server>
@@ -329,8 +329,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>384</xloc>
-      <yloc>544</yloc>
+      <xloc>800</xloc>
+      <yloc>640</yloc>
       </entry>
     <entry>
       <name>Authentication Active&#x3f;</name>
@@ -351,8 +351,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>384</xloc>
-      <yloc>384</yloc>
+      <xloc>608</xloc>
+      <yloc>512</yloc>
       </entry>
   </entries>
   <hops>
@@ -439,7 +439,7 @@
     </hop>
     <hop>
       <from>Authentication Active&#x3f;</from>
-      <to>Mail with authentication&#x3a; Warning</to>
+      <to>Mail w&#x2f;SSL&#x3a; Warning</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -447,7 +447,7 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Mail with authentication&#x3a; Warning</from>
+      <from>Mail w&#x2f;SSL&#x3a; Warning</from>
       <to>Success 2</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -497,10 +497,10 @@
       <note>Step 1&#x3a; Read process settings &#x28;source and target definitions&#x29;&#xa;&#xa;Step 2&#x3a; List tasks &#x28;files in sub-folder&#x29;&#xa;&#xa;Step 3&#x3a; Iterate over tasks</note>
       <xloc>64</xloc>
       <yloc>32</yloc>
-      <width>412</width>
-      <heigth>95</heigth>
-      <fontname/>
-      <fontsize>-1</fontsize>
+      <width>337</width>
+      <heigth>80</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>12</fontsize>
       <fontbold>N</fontbold>
       <fontitalic>N</fontitalic>
       <fontcolorred>0</fontcolorred>
@@ -516,12 +516,12 @@
     </notepad>
     <notepad>
       <note>Blocking task&#x3a; when returns an &#xa;error, the ETL process stops.&#xa;Non blocking task&#x3a; ETL continues &#xa;despite errors.</note>
-      <xloc>672</xloc>
-      <yloc>160</yloc>
-      <width>211</width>
-      <heigth>74</heigth>
+      <xloc>704</xloc>
+      <yloc>224</yloc>
+      <width>194</width>
+      <heigth>66</heigth>
       <fontname>Arial</fontname>
-      <fontsize>10</fontsize>
+      <fontsize>12</fontsize>
       <fontbold>N</fontbold>
       <fontitalic>N</fontitalic>
       <fontcolorred>0</fontcolorred>
