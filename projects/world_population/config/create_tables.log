@@ -1,0 +1,4 @@
+2014/01/07 17:22:29 - Create tables - Loading transformation from XML file [file:///pentaho/project-ubiquis/ETL/projects/world_population/config/create_tables.ktr]
+2014/01/07 17:22:29 - create_tables - Dispatching started for transformation [create_tables]
+2014/01/07 17:22:30 - Execute SQL script.0 - Finished reading query, closing connection.
+2014/01/07 17:22:30 - Execute SQL script.0 - Finished processing (I=0, O=0, R=0, W=1, U=0, E=0)

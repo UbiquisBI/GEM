@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<config>
+
+	<!-- ETL File locations -->
+	<locations>
+        <root>/home/pentaho/GEM/</root>
+        <log>/home/cunhal/pentaho/GEM/log</log>
+        <tmp>/home/cunhal/pentaho/GEM/tmp</tmp>
+        <tasks>/home/cunhal/pentaho/GEM/config/tasks</tasks>
+        <transformations>/home/cunhal/pentaho/GEM/transformations</transformations>
+        <!-- File Inbox path prefix: for dev purposes only -->
+		<inbox>/home/cunhal/pentaho/GEM/inbox</inbox>
+	</locations>
+
+	<!-- 
+		email settings: 
+		success: if all goes well
+		error: when a blocking task fails or a serious error occurred
+		warning: when a non-blocking task fails
+		authentication="true" configures an authenticated SSL connection
+	-->
+	<email>
+		<smtp host="smtp.gmail.com" port="465" authentication="true" username="the.gem.manager@gmail.com" password="GEMISAWESOME"/>
+		<sender name="ETL Manager" email="etl@localhost"/>
+		<destination to="mcunhal+GEM@ubiquis.co.uk" cc="" bcc=""/>
+		<success active="true" subject="ETL ran ok">
+			<![CDATA[The latest ETL run was successful. Please see attached logs for details.]]>
+		</success>
+		<warning active="true" subject="ETL WARNING">
+			<![CDATA[There was an error while running a non-blocking ETL task. Please see attached logs for details.]]>
+		</warning>
+		<error active="false" subject="ETL ERROR">
+			<![CDATA[There was an error while running the ETL process. Please see attached logs for details.]]>
+		</error>
+	</email>
+
+	<!-- ETL database location. Needs to be initialized first, running INIT.kjb -->
+	<!-- to do: add support for encrypted passwords -->
+	<database driver="com.mysql.jdbc.Driver" url="jdbc:mysql://127.0.0.1:3306/etl" username="ubiquis" password="password"/>
+</config>

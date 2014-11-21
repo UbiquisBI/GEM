@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<task>
+
+	<name>stage_productcategory</name>
+	<blocker>true</blocker>
+
+	<parameter>
+		<name>last_modified_date</name>
+		<default>1900-01-01 00:00:00</default>
+		<query>
+			<![CDATA[
+				select max(Modified_Date) as last_modified_date 
+				from ${TARGET_TABLE_NAME}
+			]]>
+		</query>
+	</parameter>
+	<source>
+		<type>DB</type>
+		<query>
+
+			<![CDATA[
+				SELECT
+					ProductCategoryID
+					Name
+					cast(ModifiedDate as char) as Modified_Date
+				FROM productcategory
+				Where ModifiedDate > '${last_modified_date}'
+			]]>
+		</query>
+	</source>
+
+	<transform>
+		<transformation>dummy.ktr</transformation>
+	</transform>
+
+	<target>
+		<loader>MySQL</loader>
+		<table>
+			<name>stage_productcategory</name>
+		</table>
+	</target>
+
+
+</task>

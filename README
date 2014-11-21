@@ -1,0 +1,66 @@
+GEM - Generic ETL Machine
+
+---- Motivation -----
+
+
+
+
+
+----Key Concepts-----
+
+- A process is an independent part of the GEM. Config information about each process is stored
+inside each process' folder. 
+- A task is a  
+- Blocking task: when returns an error, the ETL process stops.
+- Non blocking task: ETL continues despite errors.
+- 
+
+
+
+
+---- Instal instructions ----
+
+1. Use the gem_mysql.sql Blocking task: when returns an 
+error, the ETL process stops.
+Non blocking task: ETL continues 
+despite errors.script located in the ./config/scripts folder to create the tables for the logging process of GEM. 
+
+2. Move the GEM folder into your local directory
+
+3. Setup the config.dev.xml and the config.prod.xml files in the folder ./config/
+	a. In locations/@root insert the path for your GEM home folder;
+	b. In locations/@log insert the path to where the log files will be saved;
+	c. In locations/@tmp insert the path to where the temporary files will be stored;
+	d. In locations/@transformations the path where the ktr files used by the tasks.
+
+4. (optional) Configure email settings in the <email> node. 
+
+5. Configure the database access for the GEM database you created on step 1. 
+
+6. In the .kettle_properties add ETL_ENVIRONMENT=dev
+6.1 Optionally set the ETL_CONFIG_FILE
+
+7. Congratulations! GEM is ready to run. All you have to do now is create tasks in the ./config/tasks and transformations folder and run the ./kettle/GEM.kjb
+
+----Using the sample task files----
+
+1. Download and install the AdventureWorks database for MySQL from http://awmysql.sourceforge.net/
+
+2. Run the stage_mysql.sql and the dwh_mysql.sql to create the .
+
+3. Move the 001_init_dimensions, 101_stage and the 201_load_dwh_mysql folders from ./config/disabled_tasks to ./config/tasks 
+
+4. Configure the database.dev.properties located inside the folder of each task. IMPORTANT: keep the ?useOldAliasMetadataBehavior=true in the database URL if using MySQL. 
+
+5. Run ./kettle/GEM.kjb.
+
+
+----Creating your own tasks----
+
+1. In the ./config/disabled_tasks you will find the 000_template that contains the templates for the connections configuration and task files.
+2. In the ./template folder you will find the templates for creating the jobs and transformations.
+
+
+
+---- Known Bugs ----
+1. When using MySQL useOldAliasMetadataBehavior=true needs to be used in the database URL. Since MariaDB does not support this option it can't be used with GEM.

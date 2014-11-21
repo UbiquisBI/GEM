@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+<task>
+
+	<!-- Name of the task: 
+			This will be the name logged in the task_log table-->
+	<name></name>
+
+
+
+	<!-- Blocker behaviour: 
+			- Default is true.
+			- false sets the task as non-blocking. If the task fails the transformation will procede. If the warning email configuration activated a warning email will be sent.
+ 	-->
+	<blocker></blocker>
+
+
+
+
+	<!-- 
+		********************
+		*Preprocessing step*
+		********************
+		
+		- Step performed before the main steps start;
+		- Queries to the source and target tables (if applicable) and a transformation can be run in this setp.
+	-->
+	<preProcessing>
+
+
+
+		<!--Query performed on the source database. Query should be inserted inside the <![CDATA[ ]]> -->
+		<sourceQuery>
+			<![CDATA[ ]]>
+		</sourceQuery>
+
+
+
+		<!--Query performed on the target database. Query should be inserted inside the <![CDATA[ ]]> -->
+		<targetQuery>
+			<![CDATA[ ]]>
+		</targetQuery>
+
+
+		
+		<!-- Name of the transformation to be used in the pre-processing step located in the transformation's folder defined in the config file-->
+		<transformation>
+			
+		</transformation>
+
+	</preProcessing>
+
+
+
+	<!--
+	**************
+	*Extract Step*
+	**************
+	-->
+	<source>
+
+
+		<!-- Type of extraction:
+			- CSV - Requires a path and a pattern
+			- DB (database) - Requires a query
+			- File - Requires a path and a pattern
+			- Custom - Requires a transformation
+		-->
+		<type>
+			
+		</type>
+
+	<!--Path and pattern for file or CSV -->	
+		<path>		</path>
+		<pattern	</pattern>
+
+
+
+	<!--Query performed if database -->
+		<query>
+			<![CDATA[ ]]>
+		</query>
+
+
+	<!-- If custom insert transformation -->
+	<transformation> 
+
+	</transformation>
+
+	
+
+	</source>
+
+
+
+
+	<!--
+	****************
+	*Transform Step*
+	****************
+	-->
+	<transform>
+		
+
+
+		<!--Name of the transformation to be used in the pre-processing step located in the transformation's folder defined in the config file -->
+		<transformation>
+			
+		</transformation>
+
+
+	</transform>
+
+
+
+
+	<!--
+	***********
+	*Load Step*
+	***********
+	 
+	 This step should not be used for dimensions.
+	-->
+	<target>
+
+		
+		<!--
+		Target database loader:
+			- MySQL
+			- InfiniDB
+			- MonetDB
+		-->
+		<loader>
+			
+		</loader>
+
+		
+		<!--
+		Target table where the data will be bulkloaded.
+		-->
+		<table>
+			<name>
+				
+			</name>
+		</table>
+	</target>
+
+
+
+<!--
+	*********************
+	*Postprocessing step*
+	*********************
+
+	- Step performed after the main steps end;
+	- Queries to the source and target tables (if applicable) and a transformation can be run in this step.
+	-->
+	<postProcessing>
+
+
+
+		<!--Query performed on the source database. Query should be inserted inside the <![CDATA[ ]]> -->
+		<sourceQuery>
+			<![CDATA[ ]]>
+		</sourceQuery>
+
+
+
+		<!--Query performed on the target database. Query should be inserted inside the <![CDATA[ ]]> -->
+		<targetQuery>
+			<![CDATA[ ]]>
+		</targetQuery>
+
+
+		
+		<!-- Name of the transformation to be used in the pre-processing step located in the transformation's folder defined in the config file-->
+		<transformation>
+			
+		</transformation>
+
+
+
+	</preProcessing>
+</task>
