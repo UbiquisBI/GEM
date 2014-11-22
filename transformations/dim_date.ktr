@@ -89,7 +89,6 @@
   <hop> <from>Stream lookup</from><to>Stream lookup 2</to><enabled>Y</enabled> </hop>
   <hop> <from>INPUT</from><to>Clone row</to><enabled>Y</enabled> </hop>
   <hop> <from>Clone row</from><to>Calculator</to><enabled>Y</enabled> </hop>
-  <hop> <from>Generate Rows</from><to>Clone row</to><enabled>N</enabled> </hop>
   <hop> <from>Stream lookup 2</from><to>Select values</to><enabled>Y</enabled> </hop>
   <hop> <from>Select values</from><to>OUTPUT</to><enabled>Y</enabled> </hop>
   <hop> <from>Calculator</from><to>Filter row Zero</to><enabled>Y</enabled> </hop>
@@ -401,56 +400,6 @@
     </step>
 
   <step>
-    <name>Generate Rows</name>
-    <type>RowGenerator</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <name>start_date</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>2009-12-31</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>number_of_rows</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>20000</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <limit>1</limit>
-    <never_ending>N</never_ending>
-    <interval_in_ms>5000</interval_in_ms>
-    <row_time_field>now</row_time_field>
-    <last_time_field>FiveSecondsAgo</last_time_field>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>96</xloc>
-      <yloc>32</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
     <name>INPUT</name>
     <type>MappingInput</type>
     <description/>
@@ -721,6 +670,10 @@
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>date_value</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>batch_id</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>

@@ -116,19 +116,6 @@
     </file>
     <fields>
       <field>
-        <name>key</name>
-        <column>key</column>
-        <type>String</type>
-        <format/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <currency/>
-        <decimal/>
-        <group/>
-        <trim_type>none</trim_type>
-        <repeat>Y</repeat>
-      </field>
-      <field>
         <name>value</name>
         <column>value</column>
         <type>String</type>
@@ -138,7 +125,20 @@
         <currency/>
         <decimal/>
         <group/>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
+        <repeat>Y</repeat>
+      </field>
+      <field>
+        <name>key</name>
+        <column>key</column>
+        <type>String</type>
+        <format/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <currency/>
+        <decimal/>
+        <group/>
+        <trim_type>both</trim_type>
         <repeat>Y</repeat>
       </field>
     </fields>
@@ -176,8 +176,8 @@
       <fields>
         <field>
           <field_name>value</field_name>
-          <key_value>SOURCE_DATABASE_DRIVER</key_value>
-          <target_name>SOURCE_DATABASE_DRIVER</target_name>
+          <key_value>SOURCE_DATABASE_TYPE</key_value>
+          <target_name>SOURCE_DATABASE_TYPE</target_name>
           <target_type>String</target_type>
           <target_format/>
           <target_length>-1</target_length>
@@ -190,8 +190,36 @@
           </field>
         <field>
           <field_name>value</field_name>
-          <key_value>SOURCE_DATABASE_URL</key_value>
-          <target_name>SOURCE_DATABASE_URL</target_name>
+          <key_value>SOURCE_DATABASE_HOST</key_value>
+          <target_name>SOURCE_DATABASE_HOST</target_name>
+          <target_type>String</target_type>
+          <target_format/>
+          <target_length>-1</target_length>
+          <target_precision>-1</target_precision>
+          <target_decimal_symbol/>
+          <target_grouping_symbol/>
+          <target_currency_symbol/>
+          <target_null_string/>
+          <target_aggregation_type>-</target_aggregation_type>
+          </field>
+        <field>
+          <field_name>value</field_name>
+          <key_value>SOURCE_DATABASE_PORT</key_value>
+          <target_name>SOURCE_DATABASE_PORT</target_name>
+          <target_type>String</target_type>
+          <target_format/>
+          <target_length>-1</target_length>
+          <target_precision>-1</target_precision>
+          <target_decimal_symbol/>
+          <target_grouping_symbol/>
+          <target_currency_symbol/>
+          <target_null_string/>
+          <target_aggregation_type>-</target_aggregation_type>
+          </field>
+        <field>
+          <field_name>value</field_name>
+          <key_value>SOURCE_DATABASE_NAME</key_value>
+          <target_name>SOURCE_DATABASE_NAME</target_name>
           <target_type>String</target_type>
           <target_format/>
           <target_length>-1</target_length>
@@ -232,8 +260,8 @@
           </field>
         <field>
           <field_name>value</field_name>
-          <key_value>TARGET_DATABASE_DRIVER</key_value>
-          <target_name>TARGET_DATABASE_DRIVER</target_name>
+          <key_value>TARGET_DATABASE_TYPE</key_value>
+          <target_name>TARGET_DATABASE_TYPE</target_name>
           <target_type>String</target_type>
           <target_format/>
           <target_length>-1</target_length>
@@ -246,8 +274,36 @@
           </field>
         <field>
           <field_name>value</field_name>
-          <key_value>TARGET_DATABASE_URL</key_value>
-          <target_name>TARGET_DATABASE_URL</target_name>
+          <key_value>TARGET_DATABASE_HOST</key_value>
+          <target_name>TARGET_DATABASE_HOST</target_name>
+          <target_type>String</target_type>
+          <target_format/>
+          <target_length>-1</target_length>
+          <target_precision>-1</target_precision>
+          <target_decimal_symbol/>
+          <target_grouping_symbol/>
+          <target_currency_symbol/>
+          <target_null_string/>
+          <target_aggregation_type>-</target_aggregation_type>
+          </field>
+        <field>
+          <field_name>value</field_name>
+          <key_value>TARGET_DATABASE_PORT</key_value>
+          <target_name>TARGET_DATABASE_PORT</target_name>
+          <target_type>String</target_type>
+          <target_format/>
+          <target_length>-1</target_length>
+          <target_precision>-1</target_precision>
+          <target_decimal_symbol/>
+          <target_grouping_symbol/>
+          <target_currency_symbol/>
+          <target_null_string/>
+          <target_aggregation_type>-</target_aggregation_type>
+          </field>
+        <field>
+          <field_name>value</field_name>
+          <key_value>TARGET_DATABASE_NAME</key_value>
+          <target_name>TARGET_DATABASE_NAME</target_name>
           <target_type>String</target_type>
           <target_format/>
           <target_length>-1</target_length>
@@ -308,51 +364,75 @@
            </partitioning>
     <fields>
       <field>
-        <field_name>SOURCE_DATABASE_DRIVER</field_name>
-        <variable_name>SOURCE_DATABASE_DRIVER</variable_name>
-        <variable_type>PARENT_JOB</variable_type>
+        <field_name>SOURCE_DATABASE_TYPE</field_name>
+        <variable_name>SOURCE_DATABASE_TYPE</variable_name>
+        <variable_type>ROOT_JOB</variable_type>
         <default_value/>
         </field>
       <field>
-        <field_name>SOURCE_DATABASE_URL</field_name>
-        <variable_name>SOURCE_DATABASE_URL</variable_name>
-        <variable_type>PARENT_JOB</variable_type>
+        <field_name>SOURCE_DATABASE_HOST</field_name>
+        <variable_name>SOURCE_DATABASE_HOST</variable_name>
+        <variable_type>ROOT_JOB</variable_type>
+        <default_value/>
+        </field>
+      <field>
+        <field_name>SOURCE_DATABASE_PORT</field_name>
+        <variable_name>SOURCE_DATABASE_PORT</variable_name>
+        <variable_type>ROOT_JOB</variable_type>
+        <default_value/>
+        </field>
+      <field>
+        <field_name>SOURCE_DATABASE_NAME</field_name>
+        <variable_name>SOURCE_DATABASE_NAME</variable_name>
+        <variable_type>ROOT_JOB</variable_type>
         <default_value/>
         </field>
       <field>
         <field_name>SOURCE_DATABASE_USERNAME</field_name>
         <variable_name>SOURCE_DATABASE_USERNAME</variable_name>
-        <variable_type>PARENT_JOB</variable_type>
+        <variable_type>ROOT_JOB</variable_type>
         <default_value/>
         </field>
       <field>
         <field_name>SOURCE_DATABASE_PASSWORD</field_name>
         <variable_name>SOURCE_DATABASE_PASSWORD</variable_name>
-        <variable_type>PARENT_JOB</variable_type>
+        <variable_type>ROOT_JOB</variable_type>
         <default_value/>
         </field>
       <field>
-        <field_name>TARGET_DATABASE_DRIVER</field_name>
-        <variable_name>TARGET_DATABASE_DRIVER</variable_name>
-        <variable_type>PARENT_JOB</variable_type>
+        <field_name>TARGET_DATABASE_TYPE</field_name>
+        <variable_name>TARGET_DATABASE_TYPE</variable_name>
+        <variable_type>ROOT_JOB</variable_type>
         <default_value/>
         </field>
       <field>
-        <field_name>TARGET_DATABASE_URL</field_name>
-        <variable_name>TARGET_DATABASE_URL</variable_name>
-        <variable_type>PARENT_JOB</variable_type>
+        <field_name>TARGET_DATABASE_HOST</field_name>
+        <variable_name>TARGET_DATABASE_HOST</variable_name>
+        <variable_type>ROOT_JOB</variable_type>
+        <default_value/>
+        </field>
+      <field>
+        <field_name>TARGET_DATABASE_PORT</field_name>
+        <variable_name>TARGET_DATABASE_PORT</variable_name>
+        <variable_type>ROOT_JOB</variable_type>
+        <default_value/>
+        </field>
+      <field>
+        <field_name>TARGET_DATABASE_NAME</field_name>
+        <variable_name>TARGET_DATABASE_NAME</variable_name>
+        <variable_type>ROOT_JOB</variable_type>
         <default_value/>
         </field>
       <field>
         <field_name>TARGET_DATABASE_USERNAME</field_name>
         <variable_name>TARGET_DATABASE_USERNAME</variable_name>
-        <variable_type>PARENT_JOB</variable_type>
+        <variable_type>ROOT_JOB</variable_type>
         <default_value/>
         </field>
       <field>
         <field_name>TARGET_DATABASE_PASSWORD</field_name>
         <variable_name>TARGET_DATABASE_PASSWORD</variable_name>
-        <variable_type>PARENT_JOB</variable_type>
+        <variable_type>ROOT_JOB</variable_type>
         <default_value/>
         </field>
       </fields>

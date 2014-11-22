@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>_update_task</name>
+    <name>_update_task_PostgreSQL</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -91,7 +91,7 @@
   <connection>
     <name>etl</name>
     <server>&#x24;&#x7b;ETL_DATABASE_HOST&#x7d;</server>
-    <type>GENERIC</type>
+    <type>POSTGRESQL</type>
     <access>Native</access>
     <database>&#x24;&#x7b;ETL_DATABASE_NAME&#x7d;</database>
     <port>&#x24;&#x7b;ETL_DATABASE_PORT&#x7d;</port>
@@ -101,8 +101,6 @@
     <data_tablespace/>
     <index_tablespace/>
     <attributes>
-      <attribute><code>CUSTOM_DRIVER_CLASS</code><attribute>&#x24;&#x7b;ETL_DATABASE_DRIVER&#x7d;</attribute></attribute>
-      <attribute><code>CUSTOM_URL</code><attribute>&#x24;&#x7b;ETL_DATABASE_URL&#x7d;</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>

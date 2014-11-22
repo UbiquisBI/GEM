@@ -12,32 +12,6 @@
   <modified_date>2014&#x2f;09&#x2f;01 11&#x3a;57&#x3a;02.250</modified_date>
     <parameters>
     </parameters>
-  <connection>
-    <name>target</name>
-    <server>&#x24;&#x7b;TARGET_DATABASE_HOST&#x7d;</server>
-    <type>GENERIC</type>
-    <access>Native</access>
-    <database>&#x24;&#x7b;TARGET_DATABASE_NAME&#x7d;</database>
-    <port>&#x24;&#x7b;TARGET_DATABASE_PORT&#x7d;</port>
-    <username>&#x24;&#x7b;TARGET_DATABASE_USERNAME&#x7d;</username>
-    <password>&#x24;&#x7b;TARGET_DATABASE_PASSWORD&#x7d;</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
-    <attributes>
-      <attribute><code>CUSTOM_DRIVER_CLASS</code><attribute>&#x24;&#x7b;TARGET_DATABASE_DRIVER&#x7d;</attribute></attribute>
-      <attribute><code>CUSTOM_URL</code><attribute>&#x24;&#x7b;TARGET_DATABASE_URL&#x7d;</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;TARGET_DATABASE_PORT&#x7d;</attribute></attribute>
-      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
-      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
-      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
-      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
-    </attributes>
-  </connection>
     <slaveservers>
     </slaveservers>
 <job-log-table><connection/>

@@ -8,12 +8,8 @@
         <tmp>/home/pentaho/GEM/tmp</tmp>
         <tasks>/home/pentaho/GEM/config/tasks</tasks>
         <transformations>/home/pentaho/GEM/transformations</transformations>
-        <!-- File Inbox path prefix: for dev purposes only -->
-		<inbox>/home/cunhal/pentaho/GEM/inbox</inbox>
-	</locations>
-
-        <!-- File Inbox path prefix: for dev purposes only -->
-		<!-- inbox>/home/pentaho/ETL/inbox</inbox -->
+        <!-- File Inbox path prefix: for dev purposes only; normaly left blank in prod -->
+		<!--inbox>/home/pentaho/GEM/inbox</inbox-->
 	</locations>
 
 	<!-- 
@@ -23,9 +19,9 @@
 		warning: when a non-blocking task fails
 	-->
 	<email>
-		<smtp host="localhost" port="25"/>
-		<sender name="ETL Manager" email="etl@ubiquis.co.uk"/>
-		<destination to="nsousa@ubiquis.co.uk" cc="" bcc=""/>
+		<smtp host="smtp.mycompany.com" port="465" authentication="true" username="etl@mycompany.com" password="secret"/>
+		<sender name="ETL Manager" email="etl@mycompany.com"/>
+		<destination to="sysops@mycompany.com" cc="etldevs@mycompany.com" bcc=""/>
 		<success active="false" subject="ETL ran ok">
 			<![CDATA[The latest ETL run was successful. Please see attached logs for details.]]>
 		</success>
@@ -37,8 +33,7 @@
 		</error>
 	</email>
 
-	<!-- ETL database location. Needs to be initialized first, running INIT.kjb -->
-	<!-- to do: add support for encrypted passwords -->
-	<database driver="com.mysql.jdbc.Driver" url="jdbc:mysql://127.0.0.1:3306/etl_prod" username="ubiquis" password="password"/>
+	<!-- Database used to monitor ETL runs. Currently supported types: MySQL, PostgreSQL -->
+	<database type="MySQL" host="localhost" port="3306" name="etl" username="root" password=""/>
 </config>
 

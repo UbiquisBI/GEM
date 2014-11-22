@@ -72,32 +72,6 @@
   </info>
   <notepads>
   </notepads>
-  <connection>
-    <name>target</name>
-    <server/>
-    <type>GENERIC</type>
-    <access>Native</access>
-    <database/>
-    <port>1521</port>
-    <username>&#x24;&#x7b;TARGET_DATABASE_USERNAME&#x7d;</username>
-    <password>&#x24;&#x7b;TARGET_DATABASE_PASSWORD&#x7d;</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
-    <attributes>
-      <attribute><code>CUSTOM_DRIVER_CLASS</code><attribute>&#x24;&#x7b;TARGET_DATABASE_DRIVER&#x7d;</attribute></attribute>
-      <attribute><code>CUSTOM_URL</code><attribute>&#x24;&#x7b;TARGET_DATABASE_URL&#x7d;</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>1521</attribute></attribute>
-      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
-      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
-      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
-      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
-    </attributes>
-  </connection>
   <order>
   <hop> <from>De-serialize from file</from><to>Metadata structure of stream</to><enabled>Y</enabled> </hop>
   <hop> <from>Metadata structure of stream</from><to>ETL Metadata Injection</to><enabled>Y</enabled> </hop>
@@ -148,12 +122,12 @@
     <stream_source_step/>
     <stream_target_step/>
     <mappings>      <mapping>        <target_step_name>MonetDB Bulk Loader</target_step_name>
-        <target_attribute_key>FIELDNAME</target_attribute_key>
+        <target_attribute_key>STREAMNAME</target_attribute_key>
         <target_detail>Y</target_detail>
         <source_step>Metadata structure of stream</source_step>
         <source_field>Fieldname</source_field>
       </mapping>      <mapping>        <target_step_name>MonetDB Bulk Loader</target_step_name>
-        <target_attribute_key>STREAMNAME</target_attribute_key>
+        <target_attribute_key>FIELDNAME</target_attribute_key>
         <target_detail>Y</target_detail>
         <source_step>Metadata structure of stream</source_step>
         <source_field>Fieldname</source_field>

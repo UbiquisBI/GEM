@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>_update_run</name>
+    <name>_set_parameter_value_MySQL</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -9,16 +9,6 @@
     <trans_status>0</trans_status>
     <directory>&#x2f;</directory>
     <parameters>
-        <parameter>
-            <name>insert</name>
-            <default_value>N</default_value>
-            <description/>
-        </parameter>
-        <parameter>
-            <name>status</name>
-            <default_value>unknown</default_value>
-            <description/>
-        </parameter>
     </parameters>
     <log>
 <trans-log-table><connection/>
@@ -77,48 +67,46 @@
     <clusterschemas>
     </clusterschemas>
   <created_user>-</created_user>
-  <created_date>2014&#x2f;08&#x2f;29 16&#x3a;32&#x3a;35.197</created_date>
+  <created_date>2014&#x2f;07&#x2f;10 13&#x3a;46&#x3a;37.454</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2014&#x2f;08&#x2f;29 16&#x3a;32&#x3a;35.197</modified_date>
+  <modified_date>2014&#x2f;07&#x2f;10 13&#x3a;46&#x3a;37.454</modified_date>
   </info>
   <notepads>
   </notepads>
   <connection>
-    <name>etl</name>
-    <server>&#x24;&#x7b;ETL_DATABASE_HOST&#x7d;</server>
-    <type>GENERIC</type>
+    <name>target</name>
+    <server>&#x24;&#x7b;TARGET_DATABASE_HOST&#x7d;</server>
+    <type>MYSQL</type>
     <access>Native</access>
-    <database>&#x24;&#x7b;ETL_DATABASE_NAME&#x7d;</database>
-    <port>&#x24;&#x7b;ETL_DATABASE_PORT&#x7d;</port>
-    <username>&#x24;&#x7b;ETL_DATABASE_USERNAME&#x7d;</username>
-    <password>&#x24;&#x7b;ETL_DATABASE_PASSWORD&#x7d;</password>
+    <database>&#x24;&#x7b;TARGET_DATABASE_NAME&#x7d;</database>
+    <port>&#x24;&#x7b;TARGET_DATABASE_PORT&#x7d;</port>
+    <username>&#x24;&#x7b;TARGET_DATABASE_USERNAME&#x7d;</username>
+    <password>&#x24;&#x7b;TARGET_DATABASE_PASSWORD&#x7d;</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
     <attributes>
-      <attribute><code>CUSTOM_DRIVER_CLASS</code><attribute>&#x24;&#x7b;ETL_DATABASE_DRIVER&#x7d;</attribute></attribute>
-      <attribute><code>CUSTOM_URL</code><attribute>&#x24;&#x7b;ETL_DATABASE_URL&#x7d;</attribute></attribute>
+      <attribute><code>EXTRA_OPTION_MYSQL.defaultFetchSize</code><attribute>1000</attribute></attribute>
+      <attribute><code>EXTRA_OPTION_MYSQL.useCursorFetch</code><attribute>true</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;ETL_DATABASE_PORT&#x7d;</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;TARGET_DATABASE_PORT&#x7d;</attribute></attribute>
       <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>STREAM_RESULTS</code><attribute>Y</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
       <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
     </attributes>
   </connection>
   <order>
-  <hop> <from>Get Variables</from><to>Is new run&#x3f;</to><enabled>Y</enabled> </hop>
-  <hop> <from>Is new run&#x3f;</from><to>Insert new run</to><enabled>Y</enabled> </hop>
-  <hop> <from>Get current timestamp</from><to>Update run</to><enabled>Y</enabled> </hop>
-  <hop> <from>Insert new run</from><to>Set RUN_ID</to><enabled>Y</enabled> </hop>
-  <hop> <from>Is new run&#x3f;</from><to>Get RUN_ID</to><enabled>Y</enabled> </hop>
-  <hop> <from>Get RUN_ID</from><to>Get current timestamp</to><enabled>Y</enabled> </hop>
+  <hop> <from>Read param value</from><to>Get defaults</to><enabled>Y</enabled> </hop>
+  <hop> <from>Get defaults</from><to>Set parameter</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set parameter</from><to>Write to log</to><enabled>Y</enabled> </hop>
   </order>
   <step>
-    <name>Get RUN_ID</name>
+    <name>Get defaults</name>
     <type>GetVariable</type>
     <description/>
     <distribute>Y</distribute>
@@ -130,41 +118,8 @@
            </partitioning>
     <fields>
       <field>
-        <name>run_id</name>
-        <variable>&#x24;&#x7b;RUN_ID&#x7d;</variable>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>480</xloc>
-      <yloc>224</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Get Variables</name>
-    <type>GetVariable</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <name>status</name>
-        <variable>&#x24;&#x7b;status&#x7d;</variable>
+        <name>PARAMETER_NAME</name>
+        <variable>&#x24;&#x7b;PARAMETER_NAME&#x7d;</variable>
         <type>String</type>
         <format/>
         <currency/>
@@ -175,20 +130,8 @@
         <trim_type>both</trim_type>
       </field>
       <field>
-        <name>etl_timestamp</name>
-        <variable>&#x24;&#x7b;ETL_TIMESTAMP&#x7d;</variable>
-        <type>Date</type>
-        <format>yyyy&#x2f;MM&#x2f;dd HH&#x3a;mm&#x3a;ss.SSS</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>pdi_version</name>
-        <variable>&#x24;&#x7b;PDI_VERSION&#x7d;</variable>
+        <name>PARAMETER_DEFAULT</name>
+        <variable>&#x24;&#x7b;PARAMETER_DEFAULT&#x7d;</variable>
         <type>String</type>
         <format/>
         <currency/>
@@ -198,30 +141,74 @@
         <precision>-1</precision>
         <trim_type>both</trim_type>
       </field>
-      <field>
-        <name>insert</name>
-        <variable>&#x24;&#x7b;insert&#x7d;</variable>
-        <type>Boolean</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>256</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Read param value</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>target</connection>
+    <sql>&#x24;&#x7b;PARAMETER_QUERY&#x7d;</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>Y</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>64</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Set parameter</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>&#xa;&#xa;&#xa;&#xa;&#x2f;&#x2f; Check if 1st field of input is null&#x3b; if so use PARAMETER_DEFAULT as value&#xa;PARAMETER_VALUE &#x3d; &#x28; row&#x5b;0&#x5d; &#x3d;&#x3d;&#x3d; null &#x7c;&#x7c; row&#x5b;0&#x5d; &#x3d;&#x3d;&#x3d; &#x22;&#x22; &#x3f; PARAMETER_DEFAULT &#x3a; row&#x5b;0&#x5d; &#x29;&#xa;&#xa;&#xa;&#x2f;&#x2f; Set variable PARAMETER_NAME with value PARAMETER_VALUE, valid at the Parent job level&#xa;setVariable&#x28; PARAMETER_NAME, PARAMETER_VALUE, &#x22;r&#x22; &#x29;&#x3b;&#xa;setVariable&#x28; &#x22;PARAMETER_VALUE&#x22;, PARAMETER_VALUE, &#x22;r&#x22; &#x29;&#x3b;&#xa;</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>PARAMETER_VALUE</name>
+        <rename>PARAMETER_VALUE</rename>
+        <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-    </fields>
-     <cluster_schema/>
+        <replace>N</replace>
+      </field>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>96</xloc>
-      <yloc>224</yloc>
+      <xloc>448</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Get current timestamp</name>
-    <type>SystemInfo</type>
+    <name>Write to log</name>
+    <type>WriteToLog</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -230,170 +217,23 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
+      <loglevel>log_level_basic</loglevel>
+      <displayHeader>Y</displayHeader>
+      <limitRows>N</limitRows>
+      <limitRowsNumber>0</limitRowsNumber>
+      <logmessage>SET PARAMETER VALUE&#x3a;</logmessage>
     <fields>
       <field>
-        <name>now</name>
-        <type>system date &#x28;variable&#x29;</type>
+        <name>PARAMETER_NAME</name>
+        </field>
+      <field>
+        <name>PARAMETER_VALUE</name>
         </field>
       </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>672</xloc>
-      <yloc>224</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Insert new run</name>
-    <type>TableOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>etl</connection>
-    <schema/>
-    <table>etl_log</table>
-    <commit>1</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>N</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>Y</return_keys>
-    <return_field>run_id</return_field>
-    <fields>
-        <field>
-          <column_name>start_date</column_name>
-          <stream_name>etl_timestamp</stream_name>
-        </field>
-        <field>
-          <column_name>pdi_version</column_name>
-          <stream_name>pdi_version</stream_name>
-        </field>
-        <field>
-          <column_name>status</column_name>
-          <stream_name>status</stream_name>
-        </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>288</xloc>
-      <yloc>352</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Is new run&#x3f;</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to>Insert new run</send_true_to>
-<send_false_to>Get RUN_ID</send_false_to>
-    <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>insert</leftvalue>
- <function>&#x3d;</function>
- <rightvalue/>
- <value><name>constant</name><type>Boolean</type><text>Y</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask>&#x23;&#x3b;-&#x23;</mask></value> </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>288</xloc>
-      <yloc>224</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Set RUN_ID</name>
-    <type>SetVariable</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <field_name>run_id</field_name>
-        <variable_name>RUN_ID</variable_name>
-        <variable_type>ROOT_JOB</variable_type>
-        <default_value/>
-        </field>
-      </fields>
-    <use_formatting>Y</use_formatting>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>288</xloc>
-      <yloc>480</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Update run</name>
-    <type>Update</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>etl</connection>
-    <skip_lookup>N</skip_lookup>
-    <commit>100</commit>
-    <use_batch>N</use_batch>
-    <error_ignored>N</error_ignored>
-    <ignore_flag_field/>
-    <lookup>
-      <schema/>
-      <table>etl_log</table>
-      <key>
-        <name>run_id</name>
-        <field>run_id</field>
-        <condition>&#x3d;</condition>
-        <name2/>
-        </key>
-      <value>
-        <name>status</name>
-        <rename>status</rename>
-        </value>
-      <value>
-        <name>end_date</name>
-        <rename>now</rename>
-        </value>
-      <value>
-        <name>pdi_version</name>
-        <rename>pdi_version</rename>
-        </value>
-      </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>864</xloc>
-      <yloc>224</yloc>
+      <xloc>640</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

@@ -1,38 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <job>
-  <name>_init</name>
+  <name>_sql_on_source_MySQL</name>
     <description/>
     <extended_description/>
     <job_version/>
     <job_status>0</job_status>
   <directory>&#x2f;</directory>
   <created_user>-</created_user>
-  <created_date>2014&#x2f;08&#x2f;28 09&#x3a;48&#x3a;14.817</created_date>
+  <created_date>2014&#x2f;11&#x2f;14 11&#x3a;46&#x3a;27.796</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2014&#x2f;08&#x2f;28 09&#x3a;48&#x3a;14.817</modified_date>
+  <modified_date>2014&#x2f;11&#x2f;14 11&#x3a;46&#x3a;27.796</modified_date>
     <parameters>
+        <parameter>
+            <name>SQL_ON_SOURCE</name>
+            <default_value/>
+            <description/>
+        </parameter>
     </parameters>
   <connection>
-    <name>etl</name>
-    <server>&#x24;&#x7b;ETL_DATABASE_HOST&#x7d;</server>
-    <type>GENERIC</type>
+    <name>source</name>
+    <server>&#x24;&#x7b;TARGET_DATABASE_HOST&#x7d;</server>
+    <type>MYSQL</type>
     <access>Native</access>
-    <database>&#x24;&#x7b;ETL_DATABASE_NAME&#x7d;</database>
-    <port>&#x24;&#x7b;ETL_DATABASE_PORT&#x7d;</port>
-    <username>&#x24;&#x7b;ETL_DATABASE_USERNAME&#x7d;</username>
-    <password>&#x24;&#x7b;ETL_DATABASE_PASSWORD&#x7d;</password>
+    <database>&#x24;&#x7b;TARGET_DATABASE_NAME&#x7d;</database>
+    <port>&#x24;&#x7b;TARGET_DATABASE_PORT&#x7d;</port>
+    <username>&#x24;&#x7b;SOURCE_DATABASE_USERNAME&#x7d;</username>
+    <password>&#x24;&#x7b;SOURCE_DATABASE_PASSWORD&#x7d;</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
     <attributes>
-      <attribute><code>CUSTOM_DRIVER_CLASS</code><attribute>&#x24;&#x7b;ETL_DATABASE_DRIVER&#x7d;</attribute></attribute>
-      <attribute><code>CUSTOM_URL</code><attribute>&#x24;&#x7b;ETL_DATABASE_URL&#x7d;</attribute></attribute>
+      <attribute><code>EXTRA_OPTION_MYSQL.defaultFetchSize</code><attribute>1000</attribute></attribute>
+      <attribute><code>EXTRA_OPTION_MYSQL.useCursorFetch</code><attribute>true</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;ETL_DATABASE_PORT&#x7d;</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;TARGET_DATABASE_PORT&#x7d;</attribute></attribute>
       <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>STREAM_RESULTS</code><attribute>Y</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
       <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
@@ -78,7 +84,34 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>224</xloc>
-      <yloc>192</yloc>
+      <yloc>96</yloc>
+      </entry>
+    <entry>
+      <name>SQL on Source</name>
+      <description/>
+      <type>SQL</type>
+      <sql>&#x24;&#x7b;SQL_ON_SOURCE&#x7d;</sql>
+      <useVariableSubstitution>T</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename/>
+      <sendOneStatement>F</sendOneStatement>
+      <connection>source</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>416</xloc>
+      <yloc>96</yloc>
+      </entry>
+    <entry>
+      <name>Failed SQL on source</name>
+      <description/>
+      <type>ABORT</type>
+      <message>ERROR&#x3a; Couldn&#x27;t run Pre-processing Source Query</message>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>416</xloc>
+      <yloc>224</yloc>
       </entry>
     <entry>
       <name>Success</name>
@@ -87,49 +120,22 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>736</xloc>
-      <yloc>192</yloc>
-      </entry>
-    <entry>
-      <name>SQL</name>
-      <description/>
-      <type>SQL</type>
-      <sql>&#xa;create table etl_log&#x28;&#xa;	run_id int not null primary key auto_increment,&#xa;	start_date datetime,&#xa;	end_date datetime,&#xa;	pdi_version varchar&#x28;20&#x29;,&#xa;	status enum&#x28; &#x27;aborted&#x27;, &#x27;running&#x27;, &#x27;failed&#x27;, &#x27;success&#x27;, &#x27;deleted&#x27;, &#x27;unknown&#x27;&#x29;&#xa;&#x29;&#x3b;&#xa;&#xa;create table task_log&#x28;&#xa;	batch_id int not null primary key auto_increment,&#xa;	run_id int not null,&#xa;	task_name varchar&#x28;100&#x29; not null,&#xa;    config_file varchar&#x28;255&#x29;,&#xa;	start_date datetime,&#xa;	end_date datetime,&#xa;	stage enum&#x28; &#x27;not started&#x27;, &#x27;pre-processing&#x27;, &#x27;extract&#x27;, &#x27;transform&#x27;, &#x27;load&#x27;, &#x27;post-processing&#x27;, &#x27;finished&#x27;&#x29;,&#xa;	status enum&#x28; &#x27;running&#x27;, &#x27;failed&#x27;, &#x27;success&#x27;, &#x27;deleted&#x27;, &#x27;unknown&#x27;&#x29;,&#xa;	records_read int,&#xa;	records_written int&#xa;&#x29;&#x3b;</sql>
-      <useVariableSubstitution>F</useVariableSubstitution>
-      <sqlfromfile>F</sqlfromfile>
-      <sqlfilename/>
-      <sendOneStatement>F</sendOneStatement>
-      <connection>etl</connection>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>448</xloc>
-      <yloc>192</yloc>
-      </entry>
-    <entry>
-      <name>Abort job</name>
-      <description/>
-      <type>ABORT</type>
-      <message>ERROR&#x3a; Could not create ETL database tables</message>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>448</xloc>
-      <yloc>384</yloc>
+      <xloc>608</xloc>
+      <yloc>96</yloc>
       </entry>
   </entries>
   <hops>
     <hop>
-      <from>START</from>
-      <to>SQL</to>
+      <from>SQL on Source</from>
+      <to>Failed SQL on source</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>Y</unconditional>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>SQL</from>
+      <from>SQL on Source</from>
       <to>Success</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -138,13 +144,13 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>SQL</from>
-      <to>Abort job</to>
+      <from>START</from>
+      <to>SQL on Source</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
-      <evaluation>N</evaluation>
-      <unconditional>N</unconditional>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
     </hop>
   </hops>
   <notepads>

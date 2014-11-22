@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>_statistics_target</name>
+    <name>_watchdog_MySQL</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -67,43 +67,108 @@
     <clusterschemas>
     </clusterschemas>
   <created_user>-</created_user>
-  <created_date>2014&#x2f;09&#x2f;03 13&#x3a;51&#x3a;31.989</created_date>
+  <created_date>2014&#x2f;08&#x2f;27 15&#x3a;30&#x3a;59.129</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2014&#x2f;09&#x2f;03 13&#x3a;51&#x3a;31.989</modified_date>
+  <modified_date>2014&#x2f;08&#x2f;27 15&#x3a;30&#x3a;59.129</modified_date>
   </info>
   <notepads>
+    <notepad>
+      <note>Count instances on ETL database with status&#x3d;&#x27;running&#x27;&#xa;&#xa;Abort if count &#x3e; 0</note>
+      <xloc>64</xloc>
+      <yloc>96</yloc>
+      <width>266</width>
+      <heigth>43</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <connection>
-    <name>target</name>
-    <server/>
-    <type>GENERIC</type>
+    <name>etl</name>
+    <server>&#x24;&#x7b;ETL_DATABASE_HOST&#x7d;</server>
+    <type>MYSQL</type>
     <access>Native</access>
-    <database/>
-    <port>1521</port>
-    <username>&#x24;&#x7b;TARGET_DATABASE_USERNAME&#x7d;</username>
-    <password>&#x24;&#x7b;TARGET_DATABASE_PASSWORD&#x7d;</password>
+    <database>&#x24;&#x7b;ETL_DATABASE_NAME&#x7d;</database>
+    <port>&#x24;&#x7b;ETL_DATABASE_PORT&#x7d;</port>
+    <username>&#x24;&#x7b;ETL_DATABASE_USERNAME&#x7d;</username>
+    <password>&#x24;&#x7b;ETL_DATABASE_PASSWORD&#x7d;</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
     <attributes>
-      <attribute><code>CUSTOM_DRIVER_CLASS</code><attribute>&#x24;&#x7b;TARGET_DATABASE_DRIVER&#x7d;</attribute></attribute>
-      <attribute><code>CUSTOM_URL</code><attribute>&#x24;&#x7b;TARGET_DATABASE_URL&#x7d;</attribute></attribute>
+      <attribute><code>EXTRA_OPTION_MYSQL.defaultFetchSize</code><attribute>1000</attribute></attribute>
+      <attribute><code>EXTRA_OPTION_MYSQL.useCursorFetch</code><attribute>true</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>1521</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;ETL_DATABASE_PORT&#x7d;</attribute></attribute>
       <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>STREAM_RESULTS</code><attribute>Y</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
       <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
     </attributes>
   </connection>
   <order>
-  <hop> <from>Count records</from><to>Set Variables</to><enabled>Y</enabled> </hop>
+  <hop> <from>Table input</from><to>count&#x3d;0 &#x3f; </to><enabled>Y</enabled> </hop>
+  <hop> <from>count&#x3d;0 &#x3f; </from><to>Carry on</to><enabled>Y</enabled> </hop>
+  <hop> <from>count&#x3d;0 &#x3f; </from><to>Abort</to><enabled>Y</enabled> </hop>
   </order>
   <step>
-    <name>Count records</name>
+    <name>Abort</name>
+    <type>Abort</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <row_threshold>0</row_threshold>
+      <message>ETL ABORT&#x3a; Previous instance is running</message>
+      <always_log_rows>Y</always_log_rows>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>384</xloc>
+      <yloc>416</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Carry on</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>608</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Table input</name>
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -113,24 +178,24 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <connection>target</connection>
-    <sql>SELECT count&#x28;&#x2a;&#x29; as RECORDS_WRITTEN &#xa;FROM &#x24;&#x7b;TARGET_TABLE_NAME&#x7d; &#xa;WHERE batch_id &#x3d; &#x24;&#x7b;BATCH_ID&#x7d;</sql>
+    <connection>etl</connection>
+    <sql>SELECT count&#x28;&#x2a;&#x29; as running_processes&#xa;FROM etl_log&#xa;WHERE status&#x3d;&#x27;running&#x27;</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
-    <variables_active>Y</variables_active>
+    <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>160</xloc>
-      <yloc>128</yloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Set Variables</name>
-    <type>SetVariable</type>
+    <name>count&#x3d;0 &#x3f; </name>
+    <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -139,19 +204,20 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <fields>
-      <field>
-        <field_name>RECORDS_WRITTEN</field_name>
-        <variable_name>RECORDS_WRITTEN</variable_name>
-        <variable_type>ROOT_JOB</variable_type>
-        <default_value>0</default_value>
-        </field>
-      </fields>
-    <use_formatting>Y</use_formatting>
+<send_true_to>Carry on</send_true_to>
+<send_false_to>Abort</send_false_to>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>running_processes</leftvalue>
+ <function>&#x3d;</function>
+ <rightvalue/>
+ <value><name>constant</name><type>Integer</type><text>0</text><length>-1</length><precision>0</precision><isnull>N</isnull><mask>&#x23;&#x3b;-&#x23;</mask></value> </condition>
+    </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>384</xloc>
-      <yloc>128</yloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -161,7 +227,5 @@
    <slave-step-copy-partition-distribution>
 </slave-step-copy-partition-distribution>
    <slave_transformation>N</slave_transformation>
-<attributes><group><name>DataService</name>
-</group></attributes>
 
 </transformation>

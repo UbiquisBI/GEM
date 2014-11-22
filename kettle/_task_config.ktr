@@ -401,8 +401,8 @@
         <repeat>N</repeat>
       </field>
       <field>
-        <name>PRE_PROCESSING_TRANSFORMATION</name>
-        <xpath>preProcessing&#x2f;transformation</xpath>
+        <name>PRE_PROCESSING_JOB</name>
+        <xpath>preProcessing&#x2f;job</xpath>
         <element_type>node</element_type>
         <result_type>valueof</result_type>
         <type>String</type>
@@ -446,8 +446,8 @@
         <repeat>N</repeat>
       </field>
       <field>
-        <name>POST_PROCESSING_TRANSFORMATION</name>
-        <xpath>postProcessing&#x2f;transformation</xpath>
+        <name>POST_PROCESSING_JOB</name>
+        <xpath>postProcessing&#x2f;job</xpath>
         <element_type>node</element_type>
         <result_type>valueof</result_type>
         <type>String</type>
@@ -636,9 +636,9 @@
         <default_value/>
         </field>
       <field>
-        <field_name>PRE_PROCESSING_TRANSFORMATION</field_name>
-        <variable_name>PRE_PROCESSING_TRANSFORMATION</variable_name>
-        <variable_type>PARENT_JOB</variable_type>
+        <field_name>PRE_PROCESSING_JOB</field_name>
+        <variable_name>PRE_PROCESSING_JOB</variable_name>
+        <variable_type>ROOT_JOB</variable_type>
         <default_value/>
         </field>
       <field>
@@ -654,9 +654,9 @@
         <default_value/>
         </field>
       <field>
-        <field_name>POST_PROCESSING_TRANSFORMATION</field_name>
-        <variable_name>POST_PROCESSING_TRANSFORMATION</variable_name>
-        <variable_type>PARENT_JOB</variable_type>
+        <field_name>POST_PROCESSING_JOB</field_name>
+        <variable_name>POST_PROCESSING_JOB</variable_name>
+        <variable_type>ROOT_JOB</variable_type>
         <default_value/>
         </field>
       </fields>

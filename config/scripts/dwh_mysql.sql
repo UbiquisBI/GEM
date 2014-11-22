@@ -18,6 +18,7 @@ CREATE TABLE dim_date(
 	, day_of_week_short 		VARCHAR(3)
 	, date_string 				VARCHAR(10)
 	, date_value				DATE
+	, batch_id 					INT
 	) engine=myisam;
 	CREATE INDEX idx_dim_date_yqm ON dim_date( date_id, year, quarter, month_number, month_name_full );
 	CREATE INDEX idx_dim_date_yqmd ON dim_date( date_id, year, quarter, month_number, month_name_full, day_of_month, date_string );
@@ -41,6 +42,7 @@ CREATE TABLE dim_date(
 	, time_formatted24_hm 		VARCHAR(5)
 	, time_formatted12_hms 		VARCHAR(11)
 	, time_formatted24_hms 		VARCHAR(9)
+	, batch_id 					INT
 	) engine=myisam;
 	CREATE INDEX idx_dim_time_hm12 ON dim_time( time_id, hours12, minutes, time_formatted12_hm, am_pm_indicator );
 	CREATE INDEX idx_dim_time_hm12lpad ON dim_time( time_id, hours12_lpad, minutes_lpad, time_formatted12_hm, am_pm_indicator );

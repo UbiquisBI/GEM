@@ -553,8 +553,8 @@
         <repeat>N</repeat>
       </field>
       <field>
-        <name>ETL_DATABASE_DRIVER</name>
-        <xpath>database&#x2f;&#x40;driver</xpath>
+        <name>ETL_DATABASE_TYPE</name>
+        <xpath>database&#x2f;&#x40;type</xpath>
         <element_type>attribut</element_type>
         <result_type>valueof</result_type>
         <type>String</type>
@@ -568,8 +568,8 @@
         <repeat>N</repeat>
       </field>
       <field>
-        <name>ETL_DATABASE_URL</name>
-        <xpath>database&#x2f;&#x40;url</xpath>
+        <name>ETL_DATABASE_HOST</name>
+        <xpath>database&#x2f;&#x40;host</xpath>
         <element_type>attribut</element_type>
         <result_type>valueof</result_type>
         <type>String</type>
@@ -580,6 +580,36 @@
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>both</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>ETL_DATABASE_PORT</name>
+        <xpath>database&#x2f;&#x40;port</xpath>
+        <element_type>attribut</element_type>
+        <result_type>valueof</result_type>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>ETL_DATABASE_NAME</name>
+        <xpath>database&#x2f;&#x40;name</xpath>
+        <element_type>attribut</element_type>
+        <result_type>valueof</result_type>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
         <repeat>N</repeat>
       </field>
       <field>
@@ -839,14 +869,26 @@
         <default_value/>
         </field>
       <field>
-        <field_name>ETL_DATABASE_DRIVER</field_name>
-        <variable_name>ETL_DATABASE_DRIVER</variable_name>
+        <field_name>ETL_DATABASE_TYPE</field_name>
+        <variable_name>ETL_DATABASE_TYPE</variable_name>
         <variable_type>ROOT_JOB</variable_type>
         <default_value/>
         </field>
       <field>
-        <field_name>ETL_DATABASE_URL</field_name>
-        <variable_name>ETL_DATABASE_URL</variable_name>
+        <field_name>ETL_DATABASE_HOST</field_name>
+        <variable_name>ETL_DATABASE_HOST</variable_name>
+        <variable_type>ROOT_JOB</variable_type>
+        <default_value/>
+        </field>
+      <field>
+        <field_name>ETL_DATABASE_PORT</field_name>
+        <variable_name>ETL_DATABASE_PORT</variable_name>
+        <variable_type>ROOT_JOB</variable_type>
+        <default_value/>
+        </field>
+      <field>
+        <field_name>ETL_DATABASE_NAME</field_name>
+        <variable_name>ETL_DATABASE_NAME</variable_name>
         <variable_type>ROOT_JOB</variable_type>
         <default_value/>
         </field>

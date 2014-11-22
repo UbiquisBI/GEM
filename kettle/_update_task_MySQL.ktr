@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>read_from_source_DB</name>
+    <name>_update_task_MySQL</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -9,6 +9,21 @@
     <trans_status>0</trans_status>
     <directory>&#x2f;</directory>
     <parameters>
+        <parameter>
+            <name>insert</name>
+            <default_value>N</default_value>
+            <description/>
+        </parameter>
+        <parameter>
+            <name>stage</name>
+            <default_value>unknown</default_value>
+            <description/>
+        </parameter>
+        <parameter>
+            <name>status</name>
+            <default_value>unknown</default_value>
+            <description/>
+        </parameter>
     </parameters>
     <log>
 <trans-log-table><connection/>
@@ -67,156 +82,49 @@
     <clusterschemas>
     </clusterschemas>
   <created_user>-</created_user>
-  <created_date>2014&#x2f;07&#x2f;10 13&#x3a;46&#x3a;52.154</created_date>
+  <created_date>2014&#x2f;08&#x2f;29 16&#x3a;32&#x3a;35.197</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2014&#x2f;07&#x2f;10 13&#x3a;46&#x3a;52.154</modified_date>
+  <modified_date>2014&#x2f;08&#x2f;29 16&#x3a;32&#x3a;35.197</modified_date>
   </info>
   <notepads>
-    <notepad>
-      <note>Set RECORDS_READ</note>
-      <xloc>320</xloc>
-      <yloc>288</yloc>
-      <width>147</width>
-      <heigth>26</heigth>
-      <fontname>Arial</fontname>
-      <fontsize>10</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>Extract from source and materialize to a file</note>
-      <xloc>288</xloc>
-      <yloc>64</yloc>
-      <width>264</width>
-      <heigth>26</heigth>
-      <fontname>Arial</fontname>
-      <fontsize>10</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
   </notepads>
   <connection>
-    <name>source</name>
-    <server>&#x24;&#x7b;SOURCE_DATABASE_HOST&#x7d;</server>
-    <type>GENERIC</type>
+    <name>etl</name>
+    <server>&#x24;&#x7b;ETL_DATABASE_HOST&#x7d;</server>
+    <type>MYSQL</type>
     <access>Native</access>
-    <database>&#x24;&#x7b;SOURCE_DATABASE_NAME&#x7d;</database>
-    <port>&#x24;&#x7b;SOURCE_DATABASE_PORT&#x7d;</port>
-    <username>&#x24;&#x7b;SOURCE_DATABASE_USERNAME&#x7d;</username>
-    <password>&#x24;&#x7b;SOURCE_DATABASE_PASSWORD&#x7d;</password>
+    <database>&#x24;&#x7b;ETL_DATABASE_NAME&#x7d;</database>
+    <port>&#x24;&#x7b;ETL_DATABASE_PORT&#x7d;</port>
+    <username>&#x24;&#x7b;ETL_DATABASE_USERNAME&#x7d;</username>
+    <password>&#x24;&#x7b;ETL_DATABASE_PASSWORD&#x7d;</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
     <attributes>
-      <attribute><code>CUSTOM_DRIVER_CLASS</code><attribute>&#x24;&#x7b;SOURCE_DATABASE_DRIVER&#x7d;</attribute></attribute>
-      <attribute><code>CUSTOM_URL</code><attribute>&#x24;&#x7b;SOURCE_DATABASE_URL&#x7d;</attribute></attribute>
+      <attribute><code>EXTRA_OPTION_MYSQL.defaultFetchSize</code><attribute>1000</attribute></attribute>
+      <attribute><code>EXTRA_OPTION_MYSQL.useCursorFetch</code><attribute>true</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;SOURCE_DATABASE_PORT&#x7d;</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;ETL_DATABASE_PORT&#x7d;</attribute></attribute>
       <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>STREAM_RESULTS</code><attribute>Y</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
       <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
     </attributes>
   </connection>
   <order>
-  <hop> <from>Table input</from><to>Count records</to><enabled>Y</enabled> </hop>
-  <hop> <from>Count records</from><to>If empty stream, RECORDS_READ&#x3d;0</to><enabled>Y</enabled> </hop>
-  <hop> <from>If empty stream, RECORDS_READ&#x3d;0</from><to>Set RECORDS_READ</to><enabled>Y</enabled> </hop>
-  <hop> <from>Add row number</from><to>Get batch_id</to><enabled>Y</enabled> </hop>
-  <hop> <from>Get batch_id</from><to>Serialize EXTRACT file</to><enabled>Y</enabled> </hop>
-  <hop> <from>Table input</from><to>Add row number</to><enabled>Y</enabled> </hop>
+  <hop> <from>Is new task&#x3f;</from><to>Insert new task</to><enabled>Y</enabled> </hop>
+  <hop> <from>Insert new task</from><to>Set BATCH_ID</to><enabled>Y</enabled> </hop>
+  <hop> <from>Is new task&#x3f;</from><to>Get BATCH_ID</to><enabled>Y</enabled> </hop>
+  <hop> <from>Get current timestamp</from><to>Is new task&#x3f;</to><enabled>Y</enabled> </hop>
+  <hop> <from>Get Variables</from><to>Get current timestamp</to><enabled>Y</enabled> </hop>
+  <hop> <from>Get BATCH_ID</from><to>Update task</to><enabled>Y</enabled> </hop>
   </order>
   <step>
-    <name>Add row number</name>
-    <type>Sequence</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <valuename>row_number</valuename>
-      <use_database>N</use_database>
-      <connection>source</connection>
-      <schema/>
-      <seqname>SEQ_</seqname>
-      <use_counter>Y</use_counter>
-      <counter_name/>
-      <start_at>1</start_at>
-      <increment_by>1</increment_by>
-      <max_value>999999999</max_value>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>256</xloc>
-      <yloc>160</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Count records</name>
-    <type>GroupBy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <all_rows>N</all_rows>
-      <ignore_aggregate>N</ignore_aggregate>
-      <field_ignore/>
-      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
-      <prefix>grp</prefix>
-      <add_linenr>N</add_linenr>
-      <linenr_fieldname/>
-      <give_back_row>Y</give_back_row>
-      <group>
-      </group>
-      <fields>
-        <field>
-          <aggregate>RECORDS_READ</aggregate>
-          <subject/>
-          <type>COUNT_ANY</type>
-          <valuefield/>
-        </field>
-      </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>256</xloc>
-      <yloc>320</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Get batch_id</name>
+    <name>Get BATCH_ID</name>
     <type>GetVariable</type>
     <description/>
     <distribute>Y</distribute>
@@ -242,15 +150,15 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>448</xloc>
-      <yloc>160</yloc>
+      <xloc>576</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>If empty stream, RECORDS_READ&#x3d;0</name>
-    <type>IfNull</type>
+    <name>Get Variables</name>
+    <type>GetVariable</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -259,32 +167,140 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-      <replaceAllByValue/>
-      <replaceAllMask/>
-      <selectFields>Y</selectFields>
-      <selectValuesType>N</selectValuesType>
-      <setEmptyStringAll>N</setEmptyStringAll>
-    <valuetypes>
-      </valuetypes>
     <fields>
       <field>
-        <name>RECORDS_READ</name>
-        <value>0</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
+        <name>status</name>
+        <variable>&#x24;&#x7b;status&#x7d;</variable>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>both</trim_type>
+      </field>
+      <field>
+        <name>stage</name>
+        <variable>&#x24;&#x7b;stage&#x7d;</variable>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>both</trim_type>
+      </field>
+      <field>
+        <name>insert</name>
+        <variable>&#x24;&#x7b;insert&#x7d;</variable>
+        <type>Boolean</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>both</trim_type>
+      </field>
+      <field>
+        <name>task_name</name>
+        <variable>&#x24;&#x7b;TASK_NAME&#x7d;</variable>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>both</trim_type>
+      </field>
+      <field>
+        <name>config_file</name>
+        <variable>&#x24;&#x7b;CONFIG_FILE&#x7d;</variable>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>both</trim_type>
+      </field>
+      <field>
+        <name>run_id</name>
+        <variable>&#x24;&#x7b;RUN_ID&#x7d;</variable>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>both</trim_type>
+      </field>
+      <field>
+        <name>records_read</name>
+        <variable>&#x24;&#x7b;RECORDS_READ&#x7d;</variable>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>both</trim_type>
+      </field>
+      <field>
+        <name>records_written</name>
+        <variable>&#x24;&#x7b;RECORDS_WRITTEN&#x7d;</variable>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>both</trim_type>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>96</xloc>
+      <yloc>224</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Get current timestamp</name>
+    <type>SystemInfo</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>now</name>
+        <type>system date &#x28;variable&#x29;</type>
         </field>
       </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>448</xloc>
-      <yloc>320</yloc>
+      <xloc>288</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Serialize EXTRACT file</name>
-    <type>CubeOutput</type>
+    <name>Insert new task</name>
+    <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -293,21 +309,88 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <file>
-      <name>&#x24;&#x7b;ETL_TMP_LOCATION&#x7d;&#x2f;EXTRACT_&#x24;&#x7b;TARGET_TABLE_NAME&#x7d;.data</name>
-      <add_to_result_filenames>N</add_to_result_filenames>
-      <do_not_open_newfile_init>Y</do_not_open_newfile_init>
-    </file>
+    <connection>etl</connection>
+    <schema/>
+    <table>task_log</table>
+    <commit>1</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>N</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>Y</return_keys>
+    <return_field>batch_id</return_field>
+    <fields>
+        <field>
+          <column_name>status</column_name>
+          <stream_name>status</stream_name>
+        </field>
+        <field>
+          <column_name>stage</column_name>
+          <stream_name>stage</stream_name>
+        </field>
+        <field>
+          <column_name>task_name</column_name>
+          <stream_name>task_name</stream_name>
+        </field>
+        <field>
+          <column_name>config_file</column_name>
+          <stream_name>config_file</stream_name>
+        </field>
+        <field>
+          <column_name>run_id</column_name>
+          <stream_name>run_id</stream_name>
+        </field>
+        <field>
+          <column_name>start_date</column_name>
+          <stream_name>now</stream_name>
+        </field>
+    </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>640</xloc>
-      <yloc>160</yloc>
+      <xloc>384</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Set RECORDS_READ</name>
+    <name>Is new task&#x3f;</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to>Insert new task</send_true_to>
+<send_false_to>Get BATCH_ID</send_false_to>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>insert</leftvalue>
+ <function>&#x3d;</function>
+ <rightvalue/>
+ <value><name>constant</name><type>Boolean</type><text>Y</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask>&#x23;&#x3b;-&#x23;</mask></value> </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>480</xloc>
+      <yloc>224</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Set BATCH_ID</name>
     <type>SetVariable</type>
     <description/>
     <distribute>Y</distribute>
@@ -319,43 +402,72 @@
            </partitioning>
     <fields>
       <field>
-        <field_name>RECORDS_READ</field_name>
-        <variable_name>RECORDS_READ</variable_name>
-        <variable_type>ROOT_JOB</variable_type>
-        <default_value>0</default_value>
+        <field_name>batch_id</field_name>
+        <variable_name>BATCH_ID</variable_name>
+        <variable_type>PARENT_JOB</variable_type>
+        <default_value/>
         </field>
       </fields>
     <use_formatting>Y</use_formatting>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>640</xloc>
-      <yloc>320</yloc>
+      <xloc>384</xloc>
+      <yloc>480</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Table input</name>
-    <type>TableInput</type>
+    <name>Update task</name>
+    <type>Update</type>
     <description/>
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <connection>source</connection>
-    <sql>&#x24;&#x7b;SOURCE_QUERY&#x7d;</sql>
-    <limit>0</limit>
-    <lookup/>
-    <execute_each_row>N</execute_each_row>
-    <variables_active>Y</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
+    <connection>etl</connection>
+    <skip_lookup>N</skip_lookup>
+    <commit>100</commit>
+    <use_batch>N</use_batch>
+    <error_ignored>N</error_ignored>
+    <ignore_flag_field/>
+    <lookup>
+      <schema/>
+      <table>task_log</table>
+      <key>
+        <name>batch_id</name>
+        <field>batch_id</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+        </key>
+      <value>
+        <name>status</name>
+        <rename>status</rename>
+        </value>
+      <value>
+        <name>stage</name>
+        <rename>stage</rename>
+        </value>
+      <value>
+        <name>records_read</name>
+        <rename>records_read</rename>
+        </value>
+      <value>
+        <name>records_written</name>
+        <rename>records_written</rename>
+        </value>
+      <value>
+        <name>end_date</name>
+        <rename>now</rename>
+        </value>
+      </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>64</xloc>
-      <yloc>160</yloc>
+      <xloc>576</xloc>
+      <yloc>480</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -365,5 +477,7 @@
    <slave-step-copy-partition-distribution>
 </slave-step-copy-partition-distribution>
    <slave_transformation>N</slave_transformation>
+<attributes><group><name>DataService</name>
+</group></attributes>
 
 </transformation>

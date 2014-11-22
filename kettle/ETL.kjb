@@ -282,7 +282,7 @@
       <type>TRANS</type>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;_watchdog.ktr</filename>
+      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;_watchdog_&#x24;&#x7b;ETL_DATABASE_TYPE&#x7d;.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -347,7 +347,7 @@
       <type>TRANS</type>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;_update_run.ktr</filename>
+      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;_update_run_&#x24;&#x7b;ETL_DATABASE_TYPE&#x7d;.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -386,7 +386,7 @@
       <type>TRANS</type>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;_update_run.ktr</filename>
+      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;_update_run_&#x24;&#x7b;ETL_DATABASE_TYPE&#x7d;.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -422,7 +422,7 @@
       <type>TRANS</type>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;_update_run.ktr</filename>
+      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;_update_run_&#x24;&#x7b;ETL_DATABASE_TYPE&#x7d;.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -458,7 +458,7 @@
       <type>TRANS</type>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;_update_run.ktr</filename>
+      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;_update_run_&#x24;&#x7b;ETL_DATABASE_TYPE&#x7d;.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -492,7 +492,7 @@
       <yloc>384</yloc>
       </entry>
     <entry>
-      <name>SSL&#x3f;</name>
+      <name>Authenticated&#x3f;</name>
       <description/>
       <type>SIMPLE_EVAL</type>
       <valuetype>variable</valuetype>
@@ -555,7 +555,7 @@
       <yloc>832</yloc>
       </entry>
     <entry>
-      <name>SSL&#x3f; &#x28;2&#x29;</name>
+      <name>Authenticated&#x3f; &#x28;2&#x29;</name>
       <description/>
       <type>SIMPLE_EVAL</type>
       <valuetype>variable</valuetype>
@@ -792,7 +792,7 @@
     </hop>
     <hop>
       <from>Error Email Active&#x3f;</from>
-      <to>SSL&#x3f;</to>
+      <to>Authenticated&#x3f;</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -800,7 +800,7 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>SSL&#x3f;</from>
+      <from>Authenticated&#x3f;</from>
       <to>Mail&#x3a; ERROR</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -809,7 +809,7 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>SSL&#x3f;</from>
+      <from>Authenticated&#x3f;</from>
       <to>Mail w&#x2f; SSL&#x3a; ERROR </to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -828,7 +828,7 @@
     </hop>
     <hop>
       <from>Success Email Active&#x3f;</from>
-      <to>SSL&#x3f; &#x28;2&#x29;</to>
+      <to>Authenticated&#x3f; &#x28;2&#x29;</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -836,7 +836,7 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>SSL&#x3f; &#x28;2&#x29;</from>
+      <from>Authenticated&#x3f; &#x28;2&#x29;</from>
       <to>Mail&#x3a; OK</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -845,7 +845,7 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>SSL&#x3f; &#x28;2&#x29;</from>
+      <from>Authenticated&#x3f; &#x28;2&#x29;</from>
       <to>Mail w&#x2f;SSL&#x3a; OK</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -872,27 +872,6 @@
       <heigth>90</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>TO DO&#x3a;&#xa;&#xa;- Add drop and create table support&#xa;- Add full&#x2f;incremental support&#xa;- Improve SCD data lineage&#xa;- Develop infiniDB bulk loader &#x28;sh script&#x29;&#xa;</note>
-      <xloc>512</xloc>
-      <yloc>32</yloc>
-      <width>276</width>
-      <heigth>129</heigth>
-      <fontname/>
-      <fontsize>-1</fontsize>
       <fontbold>N</fontbold>
       <fontitalic>N</fontitalic>
       <fontcolorred>0</fontcolorred>
