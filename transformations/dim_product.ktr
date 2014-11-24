@@ -81,8 +81,8 @@
       <note>Table input step for dev purposes only&#x3a; &#xa;Allows running a hardcoded sample query&#xa;and have the complete list of fields inside Spoon.&#xa;Should be deleted in final code reviews.</note>
       <xloc>192</xloc>
       <yloc>64</yloc>
-      <width>275</width>
-      <heigth>66</heigth>
+      <width>356</width>
+      <heigth>86</heigth>
       <fontname>Arial</fontname>
       <fontsize>12</fontsize>
       <fontbold>N</fontbold>
@@ -176,11 +176,11 @@
       <update>Y</update>
       <fields>
         <key>
-          <name>product_id</name>
-          <lookup>product_id</lookup>
+          <name>product_number</name>
+          <lookup>product_number</lookup>
         </key>
         <date>
-          <name/>
+          <name>modified_date</name>
           <from>date_from</from>
           <to>date_to</to>
         </date>
@@ -188,6 +188,11 @@
           <name>product</name>
           <lookup>product</lookup>
           <update>Punch through</update>
+        </field>
+        <field>
+          <name>source_product_key</name>
+          <lookup>source_product_key</lookup>
+          <update>Insert</update>
         </field>
         <field>
           <name>category</name>
@@ -324,8 +329,8 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <connection>source</connection>
-    <sql>select &#xa;	p.product_id&#xa;	, p.name as product&#xa;	, c.name as category&#xa;	, sc.name as subcategory&#xa;	, p.standard_cost&#xa;	, p.list_price&#xa;	, p.modified_date&#xa;	, p.row_number as stage_product_row_number&#xa;	, p.batch_id as stage_product_batch_id&#xa;	,1 as row_number&#xa;	,1 as batch_id&#xa;	from stage_product p, stage_productcategory c, stage_productsubcategory sc&#xa;	where p.product_subcategory_id &#x3d; sc.product_subcategory_id&#xa;	AND 	sc.product_category_id &#x3d; c.product_category_id&#xa;limit 100</sql>
+    <connection>soure_localhost</connection>
+    <sql>select &#xa;	p.product_id&#xa;	, p.name as product&#xa;	, p.product_number &#xa;	, c.name as category&#xa;	, sc.name as subcategory&#xa;	, p.standard_cost&#xa;	, p.list_price&#xa;	, p.modified_date&#xa;	, p.row_number as stage_product_row_number&#xa;	, p.batch_id as stage_product_batch_id&#xa;	,1 as row_number&#xa;	,1 as batch_id&#xa;	from stage_product p, stage_productcategory c, stage_productsubcategory sc&#xa;	where p.product_subcategory_id &#x3d; sc.product_subcategory_id&#xa;	AND 	sc.product_category_id &#x3d; c.product_category_id&#xa;limit 100</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>

@@ -20,8 +20,9 @@
 		<query>
 			<![CDATA[
 			select 
-			  p.product_id
+			  p.product_id as source_product_key
 			, p.name as product
+			, p.product_number 
 			, c.name as category
 			, sc.name as subcategory
 			, p.standard_cost

@@ -3,22 +3,22 @@
 -- Tables required to run the sample tasks
 
 CREATE TABLE dim_date(
-  date_id 					INT 			NOT NULL 	PRIMARY KEY
-, year 						INT
-, quarter					INT
-, month_number 				INT
+  date_id 					INTGEGER 			NOT NULL 	PRIMARY KEY
+, year 						INTGEGER
+, quarter					INTGEGER
+, month_number 				INTGEGER
 , month_name_full 			VARCHAR(10)
 , month_name_short			VARCHAR(3)
-, day_of_month				INT
-, day_of_year				INT
-, iso_year_of_week			INT
-, iso_week_of_year			INT
-, day_of_week 				INT
+, day_of_month				INTGEGER
+, day_of_year				INTGEGER
+, iso_year_of_week			INTGEGER
+, iso_week_of_year			INTGEGER
+, day_of_week 				INTGEGER
 , day_of_week_full 			VARCHAR(10)
 , day_of_week_short 		VARCHAR(3)
 , date_string 				VARCHAR(10)
 , date_value				DATE
-, batch_id 					INT
+, batch_id 					INTGEGER
 ) engine=myisam;
 CREATE INDEX idx_dim_date_yqm ON dim_date( date_id, year, quarter, month_number, month_name_full );
 CREATE INDEX idx_dim_date_yqmd ON dim_date( date_id, year, quarter, month_number, month_name_full, day_of_month, date_string );
@@ -28,21 +28,21 @@ CREATE INDEX idx_dim_date_lookup ON dim_date( date_id, date_string );
 
 
 CREATE TABLE dim_time(
-  time_id 					INT 			NOT NULL 	PRIMARY KEY
-, hours24 					INT
+  time_id 					INTGEGER 			NOT NULL 	PRIMARY KEY
+, hours24 					INTGEGER
 , hours24_lpad 				VARCHAR(2)
-, hours12 					INT
+, hours12 					INTGEGER
 , hours12_lpad 				VARCHAR(2)
 , am_pm_indicator			VARCHAR(2)
-, minutes 					INT
+, minutes 					INTGEGER
 , minutes_lpad 				VARCHAR(2)
-, seconds 					INT
+, seconds 					INTGEGER
 , seconds_lpad 				VARCHAR(2)
 , time_formatted12_hm 		VARCHAR(7)
 , time_formatted24_hm 		VARCHAR(5)
 , time_formatted12_hms 		VARCHAR(11)
 , time_formatted24_hms 		VARCHAR(9)
-, batch_id 					INT
+, batch_id 					INTGEGER
 ) engine=myisam;
 CREATE INDEX idx_dim_time_hm12 ON dim_time( time_id, hours12, minutes, time_formatted12_hm, am_pm_indicator );
 CREATE INDEX idx_dim_time_hm12lpad ON dim_time( time_id, hours12_lpad, minutes_lpad, time_formatted12_hm, am_pm_indicator );
@@ -61,6 +61,7 @@ CREATE TABLE dim_customer(
 	, version					INTEGER
 	, date_from					DATETIME
 	, date_to					DATETIME
+	, source_customer_key		INTEGER
 	, account_number			VARCHAR(30)		
 	, customer_type				VARCHAR(3)	
 	, territory					VARCHAR(150)	
@@ -72,7 +73,7 @@ CREATE TABLE dim_customer(
 	, batch_id					INTEGER
 )engine=MyISAM;
 CREATE INDEX idx_dim_customer_batch_id on dim_customer(batch_id);
-CREATE INDEX idx_dim_customer_source_batch_id on dim_customer(source_batch_id);
+CREATE INDEX idx_dim_customer_source_batch_id on dim_customer(stage_customer_batch_id);
 CREATE INDEX idx_dim_customer_lookup on dim_customer(customer_id, source_customer_key);
 CREATE INDEX idx_dim_customer_hierarchy on dim_customer(customer_id, country_name, territory, account_number);
 CREATE INDEX idx_dim_customer_type on dim_customer( customer_id, customer_type, account_number);
@@ -84,6 +85,7 @@ CREATE TABLE dim_product(
 	, date_from					DATETIME
 	, date_to					DATETIME
 	, source_product_key		INTEGER
+	, product_number 			VARCHAR(25)
 	, product					VARCHAR(450)
 	, category 					VARCHAR(150)
 	, subcategory				VARCHAR(150)

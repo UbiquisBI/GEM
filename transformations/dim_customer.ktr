@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>dim_customers</name>
+    <name>dim_customer</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -81,8 +81,8 @@
       <note>Table input step for dev purposes only&#x3a; &#xa;Allows running a hardcoded sample query&#xa;and have the complete list of fields inside Spoon.&#xa;Should be deleted in final code reviews.</note>
       <xloc>224</xloc>
       <yloc>64</yloc>
-      <width>275</width>
-      <heigth>66</heigth>
+      <width>356</width>
+      <heigth>86</heigth>
       <fontname>Arial</fontname>
       <fontsize>12</fontsize>
       <fontbold>N</fontbold>
@@ -170,7 +170,7 @@
            <schema_name/>
            </partitioning>
       <schema/>
-      <table>dim_customers</table>
+      <table>dim_customer</table>
       <connection>target</connection>
       <commit>100</commit>
       <update>Y</update>
@@ -188,6 +188,11 @@
           <name>customer_type</name>
           <lookup>customer_type</lookup>
           <update>Punch through</update>
+        </field>
+        <field>
+          <name>source_customer_key</name>
+          <lookup>source_customer_key</lookup>
+          <update>Insert</update>
         </field>
         <field>
           <name>territory</name>
@@ -320,7 +325,7 @@
            <schema_name/>
            </partitioning>
     <connection>source</connection>
-    <sql>select&#xa;	  c.customer_id&#xa;	, c.account_number  &#xa;	, c.customer_type&#xa;	, t.name as territory&#xa;	, t.country_region_code&#xa;	, cr.name as country_name&#xa;	, c.modified_date&#xa;	, c.row_number as stage_customer_row_number&#xa;	, c.batch_id as stage_customer_batch_id&#xa;	, 1 as row_number&#xa;	, 1 as batch_id&#xa;		from &#xa;		stage_customer c ,	stage_salesterritory t,stage_countryregion cr&#xa;  			where c.territory_id &#x3d; t.territory_id and cr.country_region_code &#x3d; t.country_region_code&#xa;limit 100</sql>
+    <sql>select&#xa;	  c.customer_id as customer_source_id&#xa;	, c.account_number  &#xa;	, c.customer_type&#xa;	, t.name as territory&#xa;	, t.country_region_code&#xa;	, cr.name as country_name&#xa;	, c.modified_date&#xa;	, c.row_number as stage_customer_row_number&#xa;	, c.batch_id as stage_customer_batch_id&#xa;	, 1 as row_number&#xa;	, 1 as batch_id&#xa;		from &#xa;		stage_customer c ,	stage_salesterritory t,stage_countryregion cr&#xa;  			where c.territory_id &#x3d; t.territory_id and cr.country_region_code &#x3d; t.country_region_code&#xa;limit 100</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>

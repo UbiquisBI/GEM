@@ -21,6 +21,7 @@
 				SELECT
 				  ProductID 							as product_id
 				, Name 									as name
+				, ProductNumber							as product_number
 				, MakeFlag 								as make_flag
 				, FinishedGoodsFlag 					as finished_goods_flag
 				, Color 								as color

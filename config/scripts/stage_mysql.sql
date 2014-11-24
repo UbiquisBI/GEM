@@ -42,6 +42,7 @@ CREATE INDEX idx_stage_salesorderheader_modified_date on stage_salesorderheader(
 CREATE TABLE stage_product(
 	  product_id				INTEGER 		NOT NULL
 	, name						VARCHAR(150) 	NOT NULL
+	, product_number 			VARCHAR(25)		NOT NULL
 	, make_flag					BIT 			NOT NULL
 	, finished_goods_flag		BIT 			NOT NULL
 	, color						VARCHAR(45)
