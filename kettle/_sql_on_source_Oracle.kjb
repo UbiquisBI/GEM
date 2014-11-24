@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <job>
-  <name>_sql_on_source_MySQL</name>
+  <name>_sql_on_source_Oracle</name>
     <description/>
     <extended_description/>
     <job_version/>
@@ -20,7 +20,7 @@
   <connection>
     <name>source</name>
     <server>&#x24;&#x7b;SOURCE_DATABASE_HOST&#x7d;</server>
-    <type>MYSQL</type>
+    <type>ORACLE</type>
     <access>Native</access>
     <database>&#x24;&#x7b;SOURCE_DATABASE_NAME&#x7d;</database>
     <port>&#x24;&#x7b;SOURCE_DATABASE_PORT&#x7d;</port>
@@ -30,15 +30,13 @@
     <data_tablespace/>
     <index_tablespace/>
     <attributes>
-      <attribute><code>EXTRA_OPTION_MYSQL.defaultFetchSize</code><attribute>1000</attribute></attribute>
-      <attribute><code>EXTRA_OPTION_MYSQL.useCursorFetch</code><attribute>true</attribute></attribute>
+      <attribute><code>EXTRA_OPTION_ORACLE.defaultRowPrefetch</code><attribute>10000</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
       <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;SOURCE_DATABASE_PORT&#x7d;</attribute></attribute>
       <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
-      <attribute><code>STREAM_RESULTS</code><attribute>Y</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
       <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>

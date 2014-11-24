@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>fact_orders</name>
+    <name>_read_from_source_Oracle</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -9,11 +9,6 @@
     <trans_status>0</trans_status>
     <directory>&#x2f;</directory>
     <parameters>
-        <parameter>
-            <name>filename</name>
-            <default_value/>
-            <description/>
-        </parameter>
     </parameters>
     <log>
 <trans-log-table><connection/>
@@ -72,16 +67,58 @@
     <clusterschemas>
     </clusterschemas>
   <created_user>-</created_user>
-  <created_date>2014&#x2f;07&#x2f;29 15&#x3a;29&#x3a;23.493</created_date>
+  <created_date>2014&#x2f;07&#x2f;10 13&#x3a;46&#x3a;52.154</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2014&#x2f;07&#x2f;29 15&#x3a;29&#x3a;23.493</modified_date>
+  <modified_date>2014&#x2f;07&#x2f;10 13&#x3a;46&#x3a;52.154</modified_date>
   </info>
   <notepads>
+    <notepad>
+      <note>Set RECORDS_READ</note>
+      <xloc>320</xloc>
+      <yloc>288</yloc>
+      <width>147</width>
+      <heigth>26</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>Extract from source and materialize to a file</note>
+      <xloc>288</xloc>
+      <yloc>64</yloc>
+      <width>264</width>
+      <heigth>26</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <connection>
     <name>source</name>
     <server>&#x24;&#x7b;SOURCE_DATABASE_HOST&#x7d;</server>
-    <type>MYSQL</type>
+    <type>ORACLE</type>
     <access>Native</access>
     <database>&#x24;&#x7b;SOURCE_DATABASE_NAME&#x7d;</database>
     <port>&#x24;&#x7b;SOURCE_DATABASE_PORT&#x7d;</port>
@@ -91,57 +128,95 @@
     <data_tablespace/>
     <index_tablespace/>
     <attributes>
+      <attribute><code>EXTRA_OPTION_ORACLE.defaultRowPrefetch</code><attribute>10000</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
       <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;SOURCE_DATABASE_PORT&#x7d;</attribute></attribute>
       <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
-      <attribute><code>STREAM_RESULTS</code><attribute>Y</attribute></attribute>
-      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
-      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
-    </attributes>
-  </connection>
-  <connection>
-    <name>target</name>
-    <server>&#x24;&#x7b;TARGET_DATABASE_HOST&#x7d;</server>
-    <type>MYSQL</type>
-    <access>Native</access>
-    <database>&#x24;&#x7b;TARGET_DATABASE_NAME&#x7d;</database>
-    <port>&#x24;&#x7b;TARGET_DATABASE_PORT&#x7d;</port>
-    <username>&#x24;&#x7b;TARGET_DATABASE_USERNAME&#x7d;</username>
-    <password>&#x24;&#x7b;TARGET_DATABASE_PASSWORD&#x7d;</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
-    <attributes>
-      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;TARGET_DATABASE_PORT&#x7d;</attribute></attribute>
-      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
-      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
-      <attribute><code>STREAM_RESULTS</code><attribute>Y</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
       <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
     </attributes>
   </connection>
   <order>
-  <hop> <from>INPUT</from><to>Calculate date strings</to><enabled>N</enabled> </hop>
-  <hop> <from>Calculate date strings</from><to>order_date_id</to><enabled>Y</enabled> </hop>
-  <hop> <from>Table input</from><to>Calculate date strings</to><enabled>Y</enabled> </hop>
-  <hop> <from>dim_date</from><to>order_date_id</to><enabled>Y</enabled> </hop>
-  <hop> <from>order_date_id</from><to>due_date_id</to><enabled>Y</enabled> </hop>
-  <hop> <from>due_date_id</from><to>ship_date_id</to><enabled>Y</enabled> </hop>
-  <hop> <from>dim_date</from><to>due_date_id</to><enabled>Y</enabled> </hop>
-  <hop> <from>dim_date</from><to>ship_date_id</to><enabled>Y</enabled> </hop>
-  <hop> <from>ship_date_id</from><to>dim_online_order</to><enabled>Y</enabled> </hop>
+  <hop> <from>Table input</from><to>Count records</to><enabled>Y</enabled> </hop>
+  <hop> <from>Count records</from><to>If empty stream, RECORDS_READ&#x3d;0</to><enabled>Y</enabled> </hop>
+  <hop> <from>If empty stream, RECORDS_READ&#x3d;0</from><to>Set RECORDS_READ</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add row number</from><to>Get batch_id</to><enabled>Y</enabled> </hop>
+  <hop> <from>Get batch_id</from><to>Serialize EXTRACT file</to><enabled>Y</enabled> </hop>
+  <hop> <from>Table input</from><to>Add row number</to><enabled>Y</enabled> </hop>
   </order>
   <step>
-    <name>INPUT</name>
-    <type>MappingInput</type>
+    <name>Add row number</name>
+    <type>Sequence</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <valuename>row_number</valuename>
+      <use_database>N</use_database>
+      <connection>source</connection>
+      <schema/>
+      <seqname>SEQ_</seqname>
+      <use_counter>Y</use_counter>
+      <counter_name/>
+      <start_at>1</start_at>
+      <increment_by>1</increment_by>
+      <max_value>999999999</max_value>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>256</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Count records</name>
+    <type>GroupBy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <all_rows>N</all_rows>
+      <ignore_aggregate>N</ignore_aggregate>
+      <field_ignore/>
+      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
+      <prefix>grp</prefix>
+      <add_linenr>N</add_linenr>
+      <linenr_fieldname/>
+      <give_back_row>Y</give_back_row>
+      <group>
+      </group>
+      <fields>
+        <field>
+          <aggregate>RECORDS_READ</aggregate>
+          <subject/>
+          <type>COUNT_ANY</type>
+          <valuefield/>
+        </field>
+      </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>256</xloc>
+      <yloc>320</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Get batch_id</name>
+    <type>GetVariable</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -151,19 +226,30 @@
            <schema_name/>
            </partitioning>
     <fields>
-        <select_unspecified>N</select_unspecified>
+      <field>
+        <name>batch_id</name>
+        <variable>&#x24;&#x7b;BATCH_ID&#x7d;</variable>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>both</trim_type>
+      </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>128</xloc>
-      <yloc>224</yloc>
+      <xloc>448</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>OUTPUT</name>
-    <type>MappingOutput</type>
+    <name>If empty stream, RECORDS_READ&#x3d;0</name>
+    <type>IfNull</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -172,42 +258,83 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
+      <replaceAllByValue/>
+      <replaceAllMask/>
+      <selectFields>Y</selectFields>
+      <selectValuesType>N</selectValuesType>
+      <setEmptyStringAll>N</setEmptyStringAll>
+    <valuetypes>
+      </valuetypes>
+    <fields>
+      <field>
+        <name>RECORDS_READ</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+        </field>
+      </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>320</xloc>
-      <yloc>480</yloc>
+      <xloc>448</xloc>
+      <yloc>320</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Serialize EXTRACT file</name>
+    <type>CubeOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <file>
+      <name>&#x24;&#x7b;ETL_TMP_LOCATION&#x7d;&#x2f;EXTRACT_&#x24;&#x7b;TARGET_TABLE_NAME&#x7d;.data</name>
+      <add_to_result_filenames>N</add_to_result_filenames>
+      <do_not_open_newfile_init>Y</do_not_open_newfile_init>
+    </file>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>640</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Set RECORDS_READ</name>
+    <type>SetVariable</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <field_name>RECORDS_READ</field_name>
+        <variable_name>RECORDS_READ</variable_name>
+        <variable_type>ROOT_JOB</variable_type>
+        <default_value>0</default_value>
+        </field>
+      </fields>
+    <use_formatting>Y</use_formatting>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>640</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
     <name>Table input</name>
-    <type>TableInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>source</connection>
-    <sql>select&#xa;	d.sales_order_id&#xa;,	d.sales_order_detail_id&#xa;, 	h.order_date&#xa;,	h.due_date&#xa;, 	h.ship_date&#xa;, 	h.status&#xa;, 	h.online_order_flag&#xa;, 	h.customer_id&#xa;,	h.currency_rate_id&#xa;, 	d.product_id&#xa;,	d.modified_date&#xa;, 	d.order_qty&#xa;, 	d.line_total&#xa;, 	h.row_number as sales_orderheader_row_number&#xa;, 	h.batch_id as sales_orderheader_batch_id&#xa;,	d.row_number as sales_ordetdetail_row_number 	&#xa;, 	d.batch_id as sales_orderdetail_batch_id&#xa;from &#xa;	stage_salesorderdetail d&#xa;,	stage_salesorderheader h&#xa;where&#xa;	d.sales_order_id &#x3d; h.sales_order_id&#xa;-- and d.batch_id &#x3e; 1&#xa;limit 1000</sql>
-    <limit>0</limit>
-    <lookup/>
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>128</xloc>
-      <yloc>96</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>dim_date</name>
     <type>TableInput</type>
     <description/>
     <distribute>N</distribute>
@@ -217,228 +344,17 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <connection>target</connection>
-    <sql>select&#xa;	date_string&#xa;, 	date_id&#xa;from dim_date</sql>
+    <connection>source</connection>
+    <sql>&#x24;&#x7b;SOURCE_QUERY&#x7d;</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
+    <variables_active>Y</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>704</xloc>
-      <yloc>96</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>order_date_id</name>
-    <type>StreamLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <from>dim_date</from>
-    <input_sorted>N</input_sorted>
-    <preserve_memory>Y</preserve_memory>
-    <sorted_list>N</sorted_list>
-    <integer_pair>N</integer_pair>
-    <lookup>
-      <key>
-        <name>order_date_string</name>
-        <field>date_string</field>
-      </key>
-      <value>
-        <name>date_id</name>
-        <rename>order_date_id</rename>
-        <default>0</default>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>512</xloc>
-      <yloc>224</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Calculate date strings</name>
-    <type>Calculator</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-       <calculation><field_name>order_date_string</field_name>
-<calc_type>COPY_FIELD</calc_type>
-<field_a>order_date</field_a>
-<field_b/>
-<field_c/>
-<value_type>String</value_type>
-<value_length>-1</value_length>
-<value_precision>-1</value_precision>
-<remove>N</remove>
-<conversion_mask>yyyy-MM-dd</conversion_mask>
-<decimal_symbol/>
-<grouping_symbol/>
-<currency_symbol/>
-</calculation>
-       <calculation><field_name>due_date_string</field_name>
-<calc_type>COPY_FIELD</calc_type>
-<field_a>due_date</field_a>
-<field_b/>
-<field_c/>
-<value_type>String</value_type>
-<value_length>-1</value_length>
-<value_precision>-1</value_precision>
-<remove>N</remove>
-<conversion_mask>yyyy-MM-dd</conversion_mask>
-<decimal_symbol/>
-<grouping_symbol/>
-<currency_symbol/>
-</calculation>
-       <calculation><field_name>ship_date_string</field_name>
-<calc_type>COPY_FIELD</calc_type>
-<field_a>ship_date</field_a>
-<field_b/>
-<field_c/>
-<value_type>String</value_type>
-<value_length>-1</value_length>
-<value_precision>-1</value_precision>
-<remove>N</remove>
-<conversion_mask>yyyy-MM-dd</conversion_mask>
-<decimal_symbol/>
-<grouping_symbol/>
-<currency_symbol/>
-</calculation>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>320</xloc>
-      <yloc>224</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>due_date_id</name>
-    <type>StreamLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <from>dim_date</from>
-    <input_sorted>N</input_sorted>
-    <preserve_memory>Y</preserve_memory>
-    <sorted_list>N</sorted_list>
-    <integer_pair>N</integer_pair>
-    <lookup>
-      <key>
-        <name>due_date_string</name>
-        <field>date_string</field>
-      </key>
-      <value>
-        <name>date_id</name>
-        <rename>due_date_id</rename>
-        <default>0</default>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>704</xloc>
-      <yloc>224</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>ship_date_id</name>
-    <type>StreamLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <from>dim_date</from>
-    <input_sorted>N</input_sorted>
-    <preserve_memory>Y</preserve_memory>
-    <sorted_list>N</sorted_list>
-    <integer_pair>N</integer_pair>
-    <lookup>
-      <key>
-        <name>ship_date_string</name>
-        <field>date_string</field>
-      </key>
-      <value>
-        <name>date_id</name>
-        <rename>ship_date_id</rename>
-        <default>0</default>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>896</xloc>
-      <yloc>224</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>dim_online_order</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>target</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema/>
-      <table>dim_online_order</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>online_order_flag</name>
-        <field>online_order_type</field>
-        <condition>&#x3d;</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>online_order_id</name>
-        <rename>online_order_id</rename>
-        <default>1</default>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>896</xloc>
-      <yloc>352</yloc>
+      <xloc>64</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -448,7 +364,5 @@
    <slave-step-copy-partition-distribution>
 </slave-step-copy-partition-distribution>
    <slave_transformation>N</slave_transformation>
-<attributes><group><name>DataService</name>
-</group></attributes>
 
 </transformation>
