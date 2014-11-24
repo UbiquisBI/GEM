@@ -42,10 +42,10 @@
 
 
 		
-		<!-- Name of the transformation to be used in the pre-processing step located in the transformation's folder defined in the config file-->
-		<transformation>
+		<!-- Name of the job to be used in the pre-processing step located in the transformation's folder defined in the config file-->
+		<job>
 			
-		</transformation>
+		</job>
 
 	</preProcessing>
 
@@ -56,6 +56,21 @@
 	*Extract Step*
 	**************
 	-->
+
+	<!-- For incremental extract processes, the parameter allows us to define how the ETL determines where to resume the extract -->
+	<parameter>
+		<!-- the parameter name (may be used as a variable in the extract query) -->
+		<name></name>
+		<!-- Default value to use if the query doesn't return any rows -->
+		<default></default>
+		<!-- Query to run in order to determine the parameter value; must return a single row -->
+		<query>
+			<![CDATA[
+			]]>
+		</query>
+	</parameter>
+
+
 	<source>
 
 
@@ -64,27 +79,28 @@
 			- DB (database) - Requires a query
 			- File - Requires a path and a pattern
 			- Custom - Requires a transformation
+			- null - skips the Extract phase, generates empty Extract file
 		-->
 		<type>
 			
 		</type>
 
-	<!--Path and pattern for file or CSV -->	
+		<!--Path and pattern for file or CSV -->	
 		<path>		</path>
-		<pattern	</pattern>
+		<pattern>	</pattern>
 
 
 
-	<!--Query performed if database -->
+		<!--Query performed if database -->
 		<query>
 			<![CDATA[ ]]>
 		</query>
 
 
-	<!-- If custom insert transformation -->
-	<transformation> 
+		<!-- If custom insert transformation -->
+		<transformation> 
 
-	</transformation>
+		</transformation>
 
 	
 

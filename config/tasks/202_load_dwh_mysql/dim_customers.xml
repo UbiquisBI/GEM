@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <task>
 
-	<name>dim_customers</name>
+	<name>dim_customer</name>
 	<blocker>true</blocker>
 
 	<parameter>
@@ -20,7 +20,7 @@
 		<query>
 			<![CDATA[
 			select
-			  c.customer_id
+			  c.customer_id 	as source_customer_key
 			, c.account_number  
 			, c.customer_type
 			, t.name as territory
@@ -45,7 +45,7 @@
 	<target>
 		<loader>MySQL</loader>
 		<table>
-			<name>dim_customers</name>
+			<name>dim_customer</name>
 		</table>
 	</target>
 
