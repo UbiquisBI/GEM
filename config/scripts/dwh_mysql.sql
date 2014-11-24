@@ -3,22 +3,22 @@
 -- Tables required to run the sample tasks
 
 CREATE TABLE dim_date(
-  date_id 					INTGEGER 			NOT NULL 	PRIMARY KEY
-, year 						INTGEGER
-, quarter					INTGEGER
-, month_number 				INTGEGER
+  date_id 					INTEGER 			NOT NULL 	PRIMARY KEY
+, year 						INTEGER
+, quarter					INTEGER
+, month_number 				INTEGER
 , month_name_full 			VARCHAR(10)
 , month_name_short			VARCHAR(3)
-, day_of_month				INTGEGER
-, day_of_year				INTGEGER
-, iso_year_of_week			INTGEGER
-, iso_week_of_year			INTGEGER
-, day_of_week 				INTGEGER
+, day_of_month				INTEGER
+, day_of_year				INTEGER
+, iso_year_of_week			INTEGER
+, iso_week_of_year			INTEGER
+, day_of_week 				INTEGER
 , day_of_week_full 			VARCHAR(10)
 , day_of_week_short 		VARCHAR(3)
 , date_string 				VARCHAR(10)
 , date_value				DATE
-, batch_id 					INTGEGER
+, batch_id 					INTEGER
 ) engine=myisam;
 CREATE INDEX idx_dim_date_yqm ON dim_date( date_id, year, quarter, month_number, month_name_full );
 CREATE INDEX idx_dim_date_yqmd ON dim_date( date_id, year, quarter, month_number, month_name_full, day_of_month, date_string );
@@ -28,21 +28,21 @@ CREATE INDEX idx_dim_date_lookup ON dim_date( date_id, date_string );
 
 
 CREATE TABLE dim_time(
-  time_id 					INTGEGER 			NOT NULL 	PRIMARY KEY
-, hours24 					INTGEGER
+  time_id 					INTEGER 			NOT NULL 	PRIMARY KEY
+, hours24 					INTEGER
 , hours24_lpad 				VARCHAR(2)
-, hours12 					INTGEGER
+, hours12 					INTEGER
 , hours12_lpad 				VARCHAR(2)
 , am_pm_indicator			VARCHAR(2)
-, minutes 					INTGEGER
+, minutes 					INTEGER
 , minutes_lpad 				VARCHAR(2)
-, seconds 					INTGEGER
+, seconds 					INTEGER
 , seconds_lpad 				VARCHAR(2)
 , time_formatted12_hm 		VARCHAR(7)
 , time_formatted24_hm 		VARCHAR(5)
 , time_formatted12_hms 		VARCHAR(11)
 , time_formatted24_hms 		VARCHAR(9)
-, batch_id 					INTGEGER
+, batch_id 					INTEGER
 ) engine=myisam;
 CREATE INDEX idx_dim_time_hm12 ON dim_time( time_id, hours12, minutes, time_formatted12_hm, am_pm_indicator );
 CREATE INDEX idx_dim_time_hm12lpad ON dim_time( time_id, hours12_lpad, minutes_lpad, time_formatted12_hm, am_pm_indicator );
@@ -117,7 +117,7 @@ INSERT INTO dim_online_order values( 3, 'N', 'In store');
 CREATE TABLE dim_currency(
 	  currency_id				INTEGER 		NOT NULL 	PRIMARY KEY 	AUTO_INCREMENT
 	, source_currency_key		INTEGER
-	, currency_code			VARCHAR(9)
+	, currency_code				VARCHAR(9)
 	, modified_date				DATETIME
 	, stage_currency_row_number	INTEGER
 	, stage_currency_batch_id	INTEGER
@@ -130,8 +130,7 @@ CREATE INDEX idx_currency_lookup on dim_currency(currency_id, source_currency_ke
 
 
 CREATE TABLE fact_orders
-(	  sales_id 						INT 		NOT NULL 	PRIMARY KEY 	AUTO_INCREMENT
-	, order_date_id				 	INT 		
+(	  order_date_id				 	INT 		
 	, due_date_id			 		INT
 	, ship_date_id 					INT
 	, online_order_id 		 		INT
@@ -149,10 +148,9 @@ CREATE TABLE fact_orders
 	, row_number 					INT
 	, batch_id 						INT
 )engine=MyISAM;
-CREATE INDEX idx_sales_batch_id on fact_sales(batch_id);
-CREATE INDEX idx_sales_source_batch_id on fact_sales(sales_orderheader_batch_id,sales_orderdetail_batch_id);
-CREATE INDEX idx_sales_lookup on fact_sales(  sales_id
-											, order_date_id	
+CREATE INDEX idx_sales_batch_id on fact_orders(batch_id);
+CREATE INDEX idx_sales_source_batch_id on fact_orders(sales_orderheader_batch_id,sales_orderdetail_batch_id);
+CREATE INDEX idx_sales_lookup on fact_orders( order_date_id	
 											, due_date_id	
 											, ship_date_id 	
 											, online_order_id

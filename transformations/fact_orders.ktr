@@ -142,7 +142,7 @@
   <hop> <from>dim_currency</from><to>dim_customer</to><enabled>Y</enabled> </hop>
   <hop> <from>dim_customer</from><to>dim_product</to><enabled>Y</enabled> </hop>
   <hop> <from>dim_product</from><to>Select values</to><enabled>Y</enabled> </hop>
-  <hop> <from>Select values</from><to>Table output</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values</from><to>OUTPUT</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Calculate date strings</name>
@@ -240,7 +240,7 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>320</xloc>
+      <xloc>128</xloc>
       <yloc>480</yloc>
       <draw>Y</draw>
       </GUI>
@@ -317,6 +317,14 @@
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
+      </field>      <field>        <name>row_number</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>batch_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
@@ -348,104 +356,6 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>128</xloc>
       <yloc>96</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Table output</name>
-    <type>TableOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>target</connection>
-    <schema/>
-    <table>fact_orders</table>
-    <commit>1000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>N</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>Y</return_keys>
-    <return_field>sales_id</return_field>
-    <fields>
-        <field>
-          <column_name>order_date_id</column_name>
-          <stream_name>order_date_id</stream_name>
-        </field>
-        <field>
-          <column_name>due_date_id</column_name>
-          <stream_name>due_date_id</stream_name>
-        </field>
-        <field>
-          <column_name>ship_date_id</column_name>
-          <stream_name>ship_date_id</stream_name>
-        </field>
-        <field>
-          <column_name>online_order_id</column_name>
-          <stream_name>online_order_id</stream_name>
-        </field>
-        <field>
-          <column_name>currency_id</column_name>
-          <stream_name>currency_id</stream_name>
-        </field>
-        <field>
-          <column_name>customer_id</column_name>
-          <stream_name>customer_id_1</stream_name>
-        </field>
-        <field>
-          <column_name>product_id</column_name>
-          <stream_name>product_id_1</stream_name>
-        </field>
-        <field>
-          <column_name>status</column_name>
-          <stream_name>status</stream_name>
-        </field>
-        <field>
-          <column_name>order_qty</column_name>
-          <stream_name>order_qty</stream_name>
-        </field>
-        <field>
-          <column_name>line_total</column_name>
-          <stream_name>line_total</stream_name>
-        </field>
-        <field>
-          <column_name>modified_date</column_name>
-          <stream_name>modified_date</stream_name>
-        </field>
-        <field>
-          <column_name>sales_orderheader_row_number</column_name>
-          <stream_name>sales_orderheader_row_number</stream_name>
-        </field>
-        <field>
-          <column_name>sales_orderheader_batch_id</column_name>
-          <stream_name>sales_orderheader_batch_id</stream_name>
-        </field>
-        <field>
-          <column_name>sales_ordetdetail_row_number</column_name>
-          <stream_name>sales_ordetdetail_row_number</stream_name>
-        </field>
-        <field>
-          <column_name>sales_orderdetail_batch_id</column_name>
-          <stream_name>sales_orderdetail_batch_id</stream_name>
-        </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>128</xloc>
-      <yloc>480</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
