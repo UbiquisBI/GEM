@@ -113,3 +113,50 @@ INSERT INTO dim_online_order values( 2, 'Y', 'Online');
 INSERT INTO dim_online_order values( 3, 'N', 'In store');
 
 
+
+CREATE TABLE dim_currency(
+	  currency_id				INTEGER 		NOT NULL 	PRIMARY KEY 	AUTO_INCREMENT
+	, source_currency_key		INTEGER
+	, currency_code			VARCHAR(9)
+	, modified_date				DATETIME
+	, stage_currency_row_number	INTEGER
+	, stage_currency_batch_id	INTEGER
+	, row_number				INTEGER
+	, batch_id					INTEGER
+)engine=MyISAM;
+CREATE INDEX idx_currency_batch_id on dim_currency(batch_id);
+CREATE INDEX idx_currency_source_batch_id on dim_currency(stage_currency_batch_id);
+CREATE INDEX idx_currency_lookup on dim_currency(currency_id, source_currency_key);
+
+
+CREATE TABLE fact_orders
+(	  sales_id 						INT 		NOT NULL 	PRIMARY KEY 	AUTO_INCREMENT
+	, order_date_id				 	INT 		
+	, due_date_id			 		INT
+	, ship_date_id 					INT
+	, online_order_id 		 		INT
+	, currency_id 					INT
+	, customer_id 		 			INT
+	, product_id 					INT
+	, status 						INT
+	, order_qty 					INT
+	, line_total			 		DOUBLE
+	, modified_date 		 		DATETIME
+	, sales_orderheader_row_number 	INT
+	, sales_orderheader_batch_id 	INT
+	, sales_ordetdetail_row_number 	INT
+	, sales_orderdetail_batch_id	INT
+	, row_number 					INT
+	, batch_id 						INT
+)engine=MyISAM;
+CREATE INDEX idx_sales_batch_id on fact_sales(batch_id);
+CREATE INDEX idx_sales_source_batch_id on fact_sales(sales_orderheader_batch_id,sales_orderdetail_batch_id);
+CREATE INDEX idx_sales_lookup on fact_sales(  sales_id
+											, order_date_id	
+											, due_date_id	
+											, ship_date_id 	
+											, online_order_id
+											, currency_id 	
+											, customer_id 	
+											, product_id 	);
+

@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<task>
+
+	<name>fact_orders</name>
+	<blocker>true</blocker>
+
+	<parameter>
+		<name>batch_id</name>
+		<default>0</default>
+		<query>
+			<![CDATA[
+				select max(batch_id) as batch_id 
+				from ${TARGET_TABLE_NAME}
+			]]>
+		</query>
+	</parameter>
+
+	<source>
+		<type>DB</type>
+		<query>
+			<![CDATA[
+			SELECT
+				d.sales_order_id
+			,	d.sales_order_detail_id
+			, 	h.order_date
+			,	h.due_date
+			, 	h.ship_date
+			, 	h.status
+			, 	h.online_order_flag
+			, 	h.customer_id
+			,	h.currency_rate_id
+			, 	d.product_id
+			,	d.modified_date
+			, 	d.order_qty
+			, 	d.line_total
+			, 	h.row_number as sales_orderheader_row_number
+			, 	h.batch_id as sales_orderheader_batch_id
+			,	d.row_number as sales_ordetdetail_row_number 	
+			, 	d.batch_id as sales_orderdetail_batch_id
+			FROM 
+				stage_salesorderdetail d
+			,	stage_salesorderheader h
+			WHERE
+			d.sales_order_id = h.sales_order_id
+  			AND		d.batch_id > ${batch_id}
+			]]>
+		</query>
+	</source>
+
+	<transform>
+		<transformation>fact_orders.ktr</transformation>
+	</transform>
+
+	<target>
+		<loader>MySQL</loader>
+		<table>
+			<name>fact_orders</name>
+		</table>
+	</target>
+
+
+</task>

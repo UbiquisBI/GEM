@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<task>
+
+	<name>dim_currency</name>
+	<blocker>true</blocker>
+
+	<parameter>
+		<name>batch_id</name>
+		<default>0</default>
+		<query>
+			<![CDATA[
+				select max(batch_id) as batch_id 
+				from ${TARGET_TABLE_NAME}
+			]]>
+		</query>
+	</parameter>
+
+	<source>
+		<type>DB</type>
+		<query>
+			<![CDATA[
+			SELECT
+			c.currency_rate_id 				as source_currency_key
+			, c.to_currency_code			as currency_code
+			, c.modified_date				
+			, c.row_number 					as stage_currency_row_number
+			, c.batch_id 					as stage_currency_batch_id
+			FROM 
+		stage_currencyrate c
+  			WHERE
+  			c.batch_id > ${batch_id}
+			]]>
+		</query>
+	</source>
+
+	<transform>
+		<transformation>dim_currency.ktr</transformation>
+	</transform>
+
+	<target>
+		<loader>MySQL</loader>
+		<table>
+			<name>dim_currency</name>
+		</table>
+	</target>
+
+
+</task>
