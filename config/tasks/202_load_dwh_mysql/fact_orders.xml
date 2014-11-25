@@ -27,17 +27,16 @@
 			, 	h.ship_date
 			, 	h.status
 			, 	h.online_order_flag
-			, 	h.customer_id
-			,	h.currency_rate_id
-			, 	d.product_id
-			,	d.modified_date
+			, 	h.customer_id			as source_customer_key			
+			,	h.currency_rate_id		
+			, 	d.product_id			as source_product_key
 			, 	d.order_qty
 			, 	d.line_total
-			, 	h.row_number as sales_orderheader_row_number
-			, 	h.batch_id as sales_orderheader_batch_id
-			,	d.row_number as sales_ordetdetail_row_number 	
-			, 	d.batch_id as sales_orderdetail_batch_id
-			FROM 
+			, 	h.row_number 			as sales_orderheader_row_number
+			, 	h.batch_id 				as sales_orderheader_batch_id
+			,	d.row_number 			as sales_ordetdetail_row_number 	
+			, 	d.batch_id 				as sales_orderdetail_batch_id
+			FROM 	
 				stage_salesorderdetail d
 			,	stage_salesorderheader h
 			WHERE

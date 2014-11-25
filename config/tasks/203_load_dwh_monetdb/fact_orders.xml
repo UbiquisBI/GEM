@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<task>
+
+	<name>fact_orders</name>
+	<blocker>true</blocker>
+
+	<parameter>
+		<name>batch_id</name>
+		<default>0</default>
+		<query>
+			<![CDATA[
+				select max(batch_id) as batch_id 
+				from ${TARGET_TABLE_NAME}
+			]]>
+		</query>
+	</parameter>
+
+	<source>
+		<type>DB</type>
+		<query>
+			<![CDATA[
+			SELECT
+				*
+			FROM 	
+				fact_orders
+			WHERE
+				batch_id > ${batch_id}
+				]]>
+		</query>
+	</source>
+
+	<transform>
+		<transformation>dummy.ktr</transformation>
+	</transform>
+
+	<target>
+		<loader>MonetDB</loader>
+		<table>
+			<name>fact_orders</name>
+		</table>
+	</target>
+
+
+</task>

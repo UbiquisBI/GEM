@@ -1,4 +1,4 @@
-
+	
 -- DWH database
 -- Tables required to run the sample tasks
 
@@ -89,8 +89,6 @@ CREATE TABLE dim_product(
 	, product					VARCHAR(450)
 	, category 					VARCHAR(150)
 	, subcategory				VARCHAR(150)
-	, standard_cost				DOUBLE
-	, list_price				DOUBLE
 	, modified_date				DATETIME
 	, stage_product_row_number	INTEGER
 	, stage_product_batch_id	INTEGER
@@ -140,7 +138,6 @@ CREATE TABLE fact_orders
 	, status 						INT
 	, order_qty 					INT
 	, line_total			 		DOUBLE
-	, modified_date 		 		DATETIME
 	, sales_orderheader_row_number 	INT
 	, sales_orderheader_batch_id 	INT
 	, sales_ordetdetail_row_number 	INT

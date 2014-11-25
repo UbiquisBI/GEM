@@ -197,21 +197,11 @@
         <field>
           <name>category</name>
           <lookup>category</lookup>
-          <update>Punch through</update>
+          <update>Insert</update>
         </field>
         <field>
           <name>subcategory</name>
           <lookup>subcategory</lookup>
-          <update>Punch through</update>
-        </field>
-        <field>
-          <name>standard_cost</name>
-          <lookup>standard_cost</lookup>
-          <update>Insert</update>
-        </field>
-        <field>
-          <name>list_price</name>
-          <lookup>list_price</lookup>
           <update>Insert</update>
         </field>
         <field>
@@ -329,7 +319,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <connection>soure_localhost</connection>
+    <connection/>
     <sql>select &#xa;	p.product_id&#xa;	, p.name as product&#xa;	, p.product_number &#xa;	, c.name as category&#xa;	, sc.name as subcategory&#xa;	, p.standard_cost&#xa;	, p.list_price&#xa;	, p.modified_date&#xa;	, p.row_number as stage_product_row_number&#xa;	, p.batch_id as stage_product_batch_id&#xa;	,1 as row_number&#xa;	,1 as batch_id&#xa;	from stage_product p, stage_productcategory c, stage_productsubcategory sc&#xa;	where p.product_subcategory_id &#x3d; sc.product_subcategory_id&#xa;	AND 	sc.product_category_id &#x3d; c.product_category_id&#xa;limit 100</sql>
     <limit>0</limit>
     <lookup/>

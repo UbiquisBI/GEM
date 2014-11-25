@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<task>
+
+	<name>dim_date</name>
+	<blocker>true</blocker>
+
+	<parameter>
+		<name>batch_id</name>
+		<default>0</default>
+		<query>
+			<![CDATA[
+				select max(batch_id) as batch_id 
+				from ${TARGET_TABLE_NAME}
+			]]>
+		</query>
+	</parameter>
+
+	<source>
+		<type>DB</type>
+		<query>
+			<![CDATA[
+			select 
+				  date_id
+				, year 				AS year_number
+				, quarter			AS quarter_number
+				, month_number 				
+				, month_name_full 			
+				, month_name_short			
+				, day_of_month				
+				, day_of_year				
+				, iso_year_of_week			
+				, iso_week_of_year			
+				, day_of_week 				
+				, day_of_week_full 			
+				, day_of_week_short 		
+				, date_string 				
+				, date_value				
+				, batch_id 					
+			from 
+				dim_date
+			where 
+				batch_id > ${batch_id}
+			]]>
+		</query>
+	</source>
+
+	<transform>
+		<transformation>dummy.ktr</transformation>
+	</transform>
+
+	<target>
+		<loader>MonetDB</loader>
+		<table>
+			<name>dim_date</name>
+		</table>
+	</target>
+
+
+</task>

@@ -26,8 +26,6 @@
 			, c.name as category
 			, sc.name as subcategory
 			, p.standard_cost
-			, p.list_price
-			, p.modified_date
 			, p.row_number as stage_product_row_number
 			, p.batch_id as stage_product_batch_id
 			from 

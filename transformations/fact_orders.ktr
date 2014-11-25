@@ -277,11 +277,11 @@
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>customer_id_1</name>
+      </field>      <field>        <name>customer_id</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>product_id_1</name>
+      </field>      <field>        <name>product_id</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
@@ -294,10 +294,6 @@
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>line_total</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>modified_date</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
@@ -346,7 +342,7 @@
            <schema_name/>
            </partitioning>
     <connection>source</connection>
-    <sql>select&#xa;	d.sales_order_id&#xa;,	d.sales_order_detail_id&#xa;, 	h.order_date&#xa;,	h.due_date&#xa;, 	h.ship_date&#xa;, 	h.status&#xa;, 	h.online_order_flag&#xa;, 	h.customer_id&#xa;,	h.currency_rate_id&#xa;, 	d.product_id&#xa;,	d.modified_date&#xa;, 	d.order_qty&#xa;, 	d.line_total&#xa;, 	h.row_number as sales_orderheader_row_number&#xa;, 	h.batch_id as sales_orderheader_batch_id&#xa;,	d.row_number as sales_ordetdetail_row_number 	&#xa;, 	d.batch_id as sales_orderdetail_batch_id&#xa;from &#xa;	stage_salesorderdetail d&#xa;,	stage_salesorderheader h&#xa;where&#xa;	d.sales_order_id &#x3d; h.sales_order_id&#xa;-- and d.batch_id &#x3e; 1&#xa;limit 1000</sql>
+    <sql>			SELECT&#xa;				d.sales_order_id&#xa;			,	d.sales_order_detail_id&#xa;			, 	h.order_date&#xa;			,	h.due_date&#xa;			, 	h.ship_date&#xa;			, 	h.status&#xa;			, 	h.online_order_flag&#xa;			, 	h.customer_id			as source_customer_key			&#xa;			,	h.currency_rate_id		&#xa;			, 	d.product_id			as source_product_key&#xa;			,	d.modified_date			&#xa;			, 	d.order_qty&#xa;			, 	d.line_total&#xa;			, 	h.row_number 			as sales_orderheader_row_number&#xa;			, 	h.batch_id 				as sales_orderheader_batch_id&#xa;			,	d.row_number 			as sales_ordetdetail_row_number 	&#xa;			, 	d.batch_id 				as sales_orderdetail_batch_id&#xa;			FROM 	&#xa;				stage_salesorderdetail d&#xa;			,	stage_salesorderheader h&#xa;			WHERE&#xa;			d.sales_order_id &#x3d; h.sales_order_id&#xa;limit 1000</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -372,8 +368,8 @@
            <schema_name/>
            </partitioning>
     <connection>target</connection>
-    <cache>N</cache>
-    <cache_load_all>N</cache_load_all>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
     <cache_size>0</cache_size>
     <lookup>
       <schema/>
@@ -414,8 +410,8 @@
            <schema_name/>
            </partitioning>
     <connection>target</connection>
-    <cache>N</cache>
-    <cache_load_all>N</cache_load_all>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
     <cache_size>0</cache_size>
     <lookup>
       <schema/>
@@ -424,7 +420,7 @@
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>customer_id</name>
+        <name>source_customer_key</name>
         <field>source_customer_key</field>
         <condition>&#x3d;</condition>
         <name2/>
@@ -524,8 +520,8 @@
            <schema_name/>
            </partitioning>
     <connection>target</connection>
-    <cache>N</cache>
-    <cache_load_all>N</cache_load_all>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
     <cache_size>0</cache_size>
     <lookup>
       <schema/>
@@ -534,7 +530,7 @@
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>product_id</name>
+        <name>source_product_key</name>
         <field>source_product_key</field>
         <condition>&#x3d;</condition>
         <name2/>
