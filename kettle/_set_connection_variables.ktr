@@ -218,6 +218,20 @@
           </field>
         <field>
           <field_name>value</field_name>
+          <key_value>SOURCE_DATABASE_SCHEMA</key_value>
+          <target_name>SOURCE_DATABASE_SCHEMA</target_name>
+          <target_type>String</target_type>
+          <target_format/>
+          <target_length>-1</target_length>
+          <target_precision>-1</target_precision>
+          <target_decimal_symbol/>
+          <target_grouping_symbol/>
+          <target_currency_symbol/>
+          <target_null_string/>
+          <target_aggregation_type>-</target_aggregation_type>
+          </field>
+        <field>
+          <field_name>value</field_name>
           <key_value>SOURCE_DATABASE_NAME</key_value>
           <target_name>SOURCE_DATABASE_NAME</target_name>
           <target_type>String</target_type>
@@ -290,6 +304,20 @@
           <field_name>value</field_name>
           <key_value>TARGET_DATABASE_PORT</key_value>
           <target_name>TARGET_DATABASE_PORT</target_name>
+          <target_type>String</target_type>
+          <target_format/>
+          <target_length>-1</target_length>
+          <target_precision>-1</target_precision>
+          <target_decimal_symbol/>
+          <target_grouping_symbol/>
+          <target_currency_symbol/>
+          <target_null_string/>
+          <target_aggregation_type>-</target_aggregation_type>
+          </field>
+        <field>
+          <field_name>value</field_name>
+          <key_value>TARGET_DATABASE_SCHEMA</key_value>
+          <target_name>TARGET_DATABASE_SCHEMA</target_name>
           <target_type>String</target_type>
           <target_format/>
           <target_length>-1</target_length>
@@ -382,6 +410,12 @@
         <default_value/>
         </field>
       <field>
+        <field_name>SOURCE_DATABASE_SCHEMA</field_name>
+        <variable_name>SOURCE_DATABASE_SCHEMA</variable_name>
+        <variable_type>ROOT_JOB</variable_type>
+        <default_value/>
+        </field>
+      <field>
         <field_name>SOURCE_DATABASE_NAME</field_name>
         <variable_name>SOURCE_DATABASE_NAME</variable_name>
         <variable_type>ROOT_JOB</variable_type>
@@ -414,6 +448,12 @@
       <field>
         <field_name>TARGET_DATABASE_PORT</field_name>
         <variable_name>TARGET_DATABASE_PORT</variable_name>
+        <variable_type>ROOT_JOB</variable_type>
+        <default_value/>
+        </field>
+      <field>
+        <field_name>TARGET_DATABASE_SCHEMA</field_name>
+        <variable_name>TARGET_DATABASE_SCHEMA</variable_name>
         <variable_type>ROOT_JOB</variable_type>
         <default_value/>
         </field>

@@ -137,7 +137,7 @@
            </partitioning>
     <connection>target</connection>
     <buffer_size>100000</buffer_size>
-    <schema>sys</schema>
+    <schema>&#x24;&#x7b;TARGET_TABLE_SCHEMA&#x7d;</schema>
     <table>&#x24;&#x7b;TARGET_TABLE_NAME&#x7d;</table>
     <log_file/>
     <truncate>N</truncate>
