@@ -91,7 +91,7 @@
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
       <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;TARGET_DATABASE_PORT&#x7d;</attribute></attribute>
       <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
-      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>Y</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
       <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
@@ -137,7 +137,7 @@
            </partitioning>
     <connection>target</connection>
     <buffer_size>100000</buffer_size>
-    <schema>&#x24;&#x7b;TARGET_TABLE_SCHEMA&#x7d;</schema>
+    <schema>&#x24;&#x7b;TARGET_DATABASE_SCHEMA&#x7d;</schema>
     <table>&#x24;&#x7b;TARGET_TABLE_NAME&#x7d;</table>
     <log_file/>
     <truncate>N</truncate>
