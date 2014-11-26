@@ -34,7 +34,6 @@
 				, day_of_week_full 			
 				, day_of_week_short 		
 				, date_string 				
-				, date_value				
 				, batch_id 					
 			from 
 				dim_date

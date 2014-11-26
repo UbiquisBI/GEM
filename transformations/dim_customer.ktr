@@ -232,8 +232,8 @@
         <return>
           <name>customer_id</name>
           <rename/>
-          <creation_method>autoinc</creation_method>
-          <use_autoinc>Y</use_autoinc>
+          <creation_method>tablemax</creation_method>
+          <use_autoinc>N</use_autoinc>
           <version>version</version>
         </return>
       </fields>

@@ -185,7 +185,7 @@
           <to>date_to</to>
         </date>
         <field>
-          <name>product</name>
+          <name>product_name</name>
           <lookup>product</lookup>
           <update>Punch through</update>
         </field>
@@ -227,8 +227,8 @@
         <return>
           <name>product_id</name>
           <rename/>
-          <creation_method>autoinc</creation_method>
-          <use_autoinc>Y</use_autoinc>
+          <creation_method>tablemax</creation_method>
+          <use_autoinc>N</use_autoinc>
           <version>version</version>
         </return>
       </fields>
@@ -319,8 +319,8 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <connection/>
-    <sql>select &#xa;	p.product_id&#xa;	, p.name as product&#xa;	, p.product_number &#xa;	, c.name as category&#xa;	, sc.name as subcategory&#xa;	, p.standard_cost&#xa;	, p.list_price&#xa;	, p.modified_date&#xa;	, p.row_number as stage_product_row_number&#xa;	, p.batch_id as stage_product_batch_id&#xa;	,1 as row_number&#xa;	,1 as batch_id&#xa;	from stage_product p, stage_productcategory c, stage_productsubcategory sc&#xa;	where p.product_subcategory_id &#x3d; sc.product_subcategory_id&#xa;	AND 	sc.product_category_id &#x3d; c.product_category_id&#xa;limit 100</sql>
+    <connection>source</connection>
+    <sql>				select &#xa;			  p.product_id as source_product_key&#xa;			, p.name as product_name&#xa;			, p.product_number &#xa;			, c.name as category&#xa;			, sc.name as subcategory&#xa;			, p.standard_cost&#xa;			, p.row_number as stage_product_row_number&#xa;			, p.batch_id as stage_product_batch_id&#xa;			from &#xa;			  stage_product p left outer join stage_productsubcategory sc &#xa;  					on p.product_subcategory_id &#x3d; sc.product_subcategory_id &#xa;				left outer join stage_productcategory c&#xa;				on sc.product_category_id &#x3d; c.product_category_id&#xa;limit 100</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>

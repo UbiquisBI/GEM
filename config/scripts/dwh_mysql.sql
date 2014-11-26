@@ -17,7 +17,6 @@ CREATE TABLE dim_date(
 , day_of_week_full 			VARCHAR(10)
 , day_of_week_short 		VARCHAR(3)
 , date_string 				VARCHAR(10)
-, date_value				DATE
 , batch_id 					INTEGER
 ) engine=myisam;
 CREATE INDEX idx_dim_date_yqm ON dim_date( date_id, year, quarter, month_number, month_name_full );

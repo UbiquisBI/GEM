@@ -19,9 +19,9 @@
 		<type>DB</type>
 		<query>
 			<![CDATA[
-			select 
+				select 
 			  p.product_id as source_product_key
-			, p.name as product
+			, p.name as product_name
 			, p.product_number 
 			, c.name as category
 			, sc.name as subcategory
@@ -29,13 +29,12 @@
 			, p.row_number as stage_product_row_number
 			, p.batch_id as stage_product_batch_id
 			from 
-			  stage_product p
-			, stage_productcategory c
-			, stage_productsubcategory sc
-			where 
-			    p.product_subcategory_id = sc.product_subcategory_id
-			AND sc.product_category_id = c.product_category_id
-			AND c.batch_id > ${batch_id}
+			  stage_product p left outer join stage_productsubcategory sc 
+  					on p.product_subcategory_id = sc.product_subcategory_id 
+				left outer join stage_productcategory c
+				on sc.product_category_id = c.product_category_id
+			where
+			p.batch_id > ${batch_id}
 			]]>
 		</query>
 	</source>
