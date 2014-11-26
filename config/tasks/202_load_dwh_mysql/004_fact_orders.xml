@@ -9,8 +9,10 @@
 		<default>0</default>
 		<query>
 			<![CDATA[
-				select max(batch_id) as batch_id 
-				from ${TARGET_TABLE_NAME}
+				SELECT 
+				  MAX(modified_date) 	AS last_modified_date 
+				FROM
+				  ${TARGET_TABLE_NAME}
 			]]>
 		</query>
 	</parameter>
@@ -20,28 +22,29 @@
 		<query>
 			<![CDATA[
 			SELECT
-				d.sales_order_id
-			,	d.sales_order_detail_id
-			, 	h.order_date
-			,	h.due_date
-			, 	h.ship_date
-			, 	h.status
-			, 	h.online_order_flag
-			, 	h.customer_id			as source_customer_key			
-			,	h.currency_rate_id		
-			, 	d.product_id			as source_product_key
-			, 	d.order_qty
-			, 	d.line_total
-			, 	h.row_number 			as sales_orderheader_row_number
-			, 	h.batch_id 				as sales_orderheader_batch_id
-			,	d.row_number 			as sales_ordetdetail_row_number 	
-			, 	d.batch_id 				as sales_orderdetail_batch_id
+			  d.sales_order_id
+			, d.sales_order_detail_id
+			, h.order_date
+			, h.due_date
+			, h.ship_date
+			, h.status
+			, h.online_order_flag
+			, h.customer_id				AS source_customer_key			
+			, h.currency_rate_id		
+			, d.product_id				AS source_product_key
+			, d.order_qty
+			, d.line_total
+			, h.row_number 				AS sales_orderheader_row_number
+			, h.batch_id 				AS sales_orderheader_batch_id
+			, d.row_number 				AS sales_ordetdetail_row_number 	
+			, d.batch_id 				AS sales_orderdetail_batch_id
 			FROM 	
-				stage_salesorderdetail d
-			,	stage_salesorderheader h
+			  stage_salesorderdetail d
+			, stage_salesorderheader h
 			WHERE
-			d.sales_order_id = h.sales_order_id
-  			AND		d.batch_id > ${batch_id}
+			  d.sales_order_id = h.sales_order_id
+  			AND		
+  			  d.batch_id > ${batch_id}
 			]]>
 		</query>
 	</source>

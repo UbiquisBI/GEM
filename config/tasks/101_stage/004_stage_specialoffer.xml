@@ -9,8 +9,10 @@
 		<default>1900-01-01 00:00:00</default>
 		<query>
 			<![CDATA[
-				select max(modified_date) as last_modified_date 
-				from ${TARGET_TABLE_NAME}
+				SELECT 
+				  max(modified_date) 			AS last_modified_date 
+				FROM
+				  ${TARGET_TABLE_NAME}
 			]]>
 		</query>
 	</parameter>
@@ -19,16 +21,16 @@
 		<query>
 			<![CDATA[
 				SELECT
-				  SpecialOfferID  				as special_offer_id 
-		    	, Description 					as description
-		    	, DiscountPct 					as discount_pct
-		    	, Type 							as type
-		    	, Category						as category
-				, cast(StartDate as char) 		as start_Date
-				, cast(EndDate as char) 		as end_Date
-				, MinQty 						as min_qty
-    			, MaxQty						as max_qty
-				, cast(ModifiedDate as char) 	as modified_date
+				  SpecialOfferID  				AS special_offer_id 
+		    	, Description 					AS description
+		    	, DiscountPct 					AS discount_pct
+		    	, Type 							AS type
+		    	, Category						AS category
+				, cast(StartDate AS char) 		AS start_Date
+				, cast(EndDate AS char) 		AS end_Date
+				, MinQty 						AS min_qty
+    			, MaxQty						AS max_qty
+				, cast(ModifiedDate AS char) 	AS modified_date
 				FROM specialoffer
 				Where ModifiedDate > '${last_modified_date}'
 			]]>

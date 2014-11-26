@@ -9,8 +9,10 @@
 		<default>1900-01-01 00:00:00</default>
 		<query>
 			<![CDATA[
-				select max(modified_date) as last_modified_date 
-				from ${TARGET_TABLE_NAME}
+				SELECT 
+				  MAX(modified_date) 			AS last_modified_date 
+				FROM
+				  ${TARGET_TABLE_NAME}
 			]]>
 		</query>
 	</parameter>
@@ -19,13 +21,15 @@
 		<query>
 			<![CDATA[
 				SELECT
-				  CustomerID					as customer_id	
-				, Name							as name 			
-				, SalesPersonID					as sales_person_id
-				, Demographics					as demographics	
-				, cast(ModifiedDate as char) 	as modified_date
-				FROM store
-				Where ModifiedDate > '${last_modified_date}'
+				  CustomerID					AS customer_id	
+				, Name							AS name 			
+				, SalesPersonID					AS sales_person_id
+				, Demographics					AS demographics	
+				, cast(ModifiedDate AS char) 	AS modified_date
+				FROM 
+				  store
+				WHERE 
+				  ModifiedDate > '${last_modified_date}'
 			]]>
 		</query>
 	</source>

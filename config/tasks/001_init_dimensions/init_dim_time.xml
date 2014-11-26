@@ -6,7 +6,7 @@
 	<preProcessing>
 		<targetQuery>
 			<![CDATA[ 
-				truncate table ${TARGET_TABLE_NAME};
+				TRUNCATE table ${TARGET_TABLE_NAME};
 			]]>
 		</targetQuery>
 	</preProcessing>
@@ -14,8 +14,10 @@
 	<source>
 		<type>DB</type>
 		<query>
-			select 
-			  86400 as number_of_rows
+			<![CDATA[ 
+			SELECT 
+			  86400 AS number_of_rows
+			  ]]>
 		</query>
 	</source>
 

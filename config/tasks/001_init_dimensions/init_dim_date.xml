@@ -17,9 +17,9 @@
 		<type>DB</type>
 		<query>
 			<![CDATA[
-				select 
-				  '1999-12-31' as start_date
-				, 20000 as number_of_rows
+				SELECT 
+				  '1999-12-31' 	AS 	start_date
+				, 20000 		AS 	number_of_rows
 			]]>
 		</query>
 	</source>

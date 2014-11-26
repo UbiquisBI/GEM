@@ -9,8 +9,10 @@
 		<default>0</default>
 		<query>
 			<![CDATA[
-				select max(batch_id) as batch_id 
-				from ${TARGET_TABLE_NAME}
+				SELECT 
+				  MAX(modified_date) 			AS last_modified_date 
+				FROM
+				  ${TARGET_TABLE_NAME}
 			]]>
 		</query>
 	</parameter>
@@ -19,7 +21,7 @@
 		<type>DB</type>
 		<query>
 			<![CDATA[
-				select 
+			SELECT 
 			  p.product_id as source_product_key
 			, p.name as product_name
 			, p.product_number 
@@ -28,13 +30,18 @@
 			, p.standard_cost
 			, p.row_number as stage_product_row_number
 			, p.batch_id as stage_product_batch_id
-			from 
-			  stage_product p left outer join stage_productsubcategory sc 
-  					on p.product_subcategory_id = sc.product_subcategory_id 
-				left outer join stage_productcategory c
-				on sc.product_category_id = c.product_category_id
-			where
-			p.batch_id > ${batch_id}
+			FROM 
+			  stage_product p 	
+			  LEFT OUTER JOIN 
+			    stage_productsubcategory sc 
+  					ON
+  					  p.product_subcategory_id = sc.product_subcategory_id 
+			  LEFT OUTER JOIN 
+			    stage_productcategory c
+					ON 
+					  sc.product_category_id = c.product_category_id
+			WHERE
+			  p.batch_id > ${batch_id}
 			]]>
 		</query>
 	</source>

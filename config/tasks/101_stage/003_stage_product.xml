@@ -9,8 +9,10 @@
 		<default>1900-01-01 00:00:00</default>
 		<query>
 			<![CDATA[
-				select max(modified_date) as last_modified_date 
-				from ${TARGET_TABLE_NAME}
+				SELECT 
+				  max(modified_date) 					AS last_modified_date 
+				FROM
+				  ${TARGET_TABLE_NAME}
 			]]>
 		</query>
 	</parameter>
@@ -19,29 +21,31 @@
 		<query>
 			<![CDATA[
 				SELECT
-				  ProductID 							as product_id
-				, Name 									as name
-				, ProductNumber							as product_number
-				, MakeFlag 								as make_flag
-				, FinishedGoodsFlag 					as finished_goods_flag
-				, Color 								as color
-				, StandardCost 							as standard_cost
-				, ListPrice 							as list_price
-				, Size 									as size
-				, SizeUnitMeasureCode 					as size_unit_measure_code
-				, WeightUnitMeasureCode 				as weight_unit_measure_code
-				, Weight 								as weight
-				, ProductLine 							as product_line
-				, Class 								as class
-				, Style 								as style
-				, ProductSubcategoryID 					as product_subcategory_id
-				, ProductModelID 						as product_model_id
-				, cast(SellStartDate as char) 			as sell_start_date
-				, cast(SellEndDate as char) 			as sell_end_date
-				, cast(DiscontinuedDate as char) 		as discontinued_date
-				, cast(ModifiedDate as char) 			as modified_date
-				FROM product
-				Where ModifiedDate > '${last_modified_date}'
+				  ProductID 							AS product_id
+				, Name 									AS name
+				, ProductNumber							AS product_number
+				, MakeFlag 								AS make_flag
+				, FinishedGoodsFlag 					AS finished_goods_flag
+				, Color 								AS color
+				, StandardCost 							AS standard_cost
+				, ListPrice 							AS list_price
+				, Size 									AS size
+				, SizeUnitMeasureCode 					AS size_unit_measure_code
+				, WeightUnitMeasureCode 				AS weight_unit_measure_code
+				, Weight 								AS weight
+				, ProductLine 							AS product_line
+				, Class 								AS class
+				, Style 								AS style
+				, ProductSubcategoryID 					AS product_subcategory_id
+				, ProductModelID 						AS product_model_id
+				, cast(SellStartDate 	AS char) 		AS sell_start_date
+				, cast(SellEndDate 		AS char) 		AS sell_end_date
+				, cast(DiscontinuedDate AS char) 		AS discontinued_date
+				, cast(ModifiedDate 	AS char) 		AS modified_date
+				FROM 
+				  product
+				WHERE
+				  ModifiedDate > '${last_modified_date}'
 			]]>
 		</query>
 	</source>

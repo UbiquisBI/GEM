@@ -9,7 +9,7 @@
 		<default>1900-01-01 00:00:00</default>
 		<query>
 			<![CDATA[
-				select max(modified_date) as last_modified_date 
+				select max(modified_date) AS last_modified_date 
 				from ${TARGET_TABLE_NAME}
 			]]>
 		</query>
@@ -19,15 +19,17 @@
 		<query>
 			<![CDATA[
 				SELECT
-				  CurrencyRateID 					as currency_rate_id
-				, cast(CurrencyRateDate as char) 	as currency_rate_date
-				, FromCurrencyCode					as from_currency_code
-				, ToCurrencyCode					as to_currency_code
-				, AverageRate						as average_rate
-				, EndOfDayRate						as end_of_day_rate
-				, cast(ModifiedDate as char) 		as modified_date
-				FROM currencyrate
-				Where ModifiedDate > '${last_modified_date}'
+				  CurrencyRateID 					AS currency_rate_id
+				, cast(CurrencyRateDate AS char) 	AS currency_rate_date
+				, FromCurrencyCode					AS from_currency_code
+				, ToCurrencyCode					AS to_currency_code
+				, AverageRate						AS average_rate
+				, EndOfDayRate						AS end_of_day_rate
+				, cast(ModifiedDate 	AS char) 	AS modified_date
+				FROM 
+				  currencyrate
+				WHERE
+				  ModifiedDate > '${last_modified_date}'
 			]]>
 		</query>
 	</source>

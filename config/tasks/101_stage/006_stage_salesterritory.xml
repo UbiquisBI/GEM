@@ -9,8 +9,10 @@
 		<default>1900-01-01 00:00:00</default>
 		<query>
 			<![CDATA[
-				select max(modified_date) as last_modified_date 
-				from ${TARGET_TABLE_NAME}
+				SELECT 
+				  max(modified_date) 			AS last_modified_date 
+				FROM
+				  ${TARGET_TABLE_NAME}
 			]]>
 		</query>
 	</parameter>
@@ -19,17 +21,19 @@
 		<query>
 			<![CDATA[
 				SELECT
-			   	  TerritoryID 					as territory_id
-				, Name							as name
-				, CountryRegionCode				as country_region_code
-				, salesterritory.Group			as sales_group
-				, SalesYTD						as sales_ytd
-				, SalesLastYear					as sales_last_year
-				, CostYTD						as cost_ytd
-				, CostLastYear					as cost_last_year
-				, cast(ModifiedDate as char)	as modified_date
-				FROM salesterritory
-				Where ModifiedDate > '${last_modified_date}'
+			   	  TerritoryID 					AS territory_id
+				, Name							AS name
+				, CountryRegionCode				AS country_region_code
+				, salesterritory.Group			AS sales_group
+				, SalesYTD						AS sales_ytd
+				, SalesLastYear					AS sales_last_year
+				, CostYTD						AS cost_ytd
+				, CostLastYear					AS cost_last_year
+				, cast(ModifiedDate AS char)	AS modified_date
+				FROM 
+				  salesterritory
+				WHERE 
+				  ModifiedDate > '${last_modified_date}'
 			]]>
 		</query>
 	</source>

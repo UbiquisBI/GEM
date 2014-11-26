@@ -9,8 +9,10 @@
 		<default>0</default>
 		<query>
 			<![CDATA[
-				select max(batch_id) as batch_id 
-				from ${TARGET_TABLE_NAME}
+				SELECT
+				  MAX(batch_id) 	AS batch_id 
+				FROM
+				  ${TARGET_TABLE_NAME}
 			]]>
 		</query>
 	</parameter>
@@ -20,10 +22,11 @@
 		<query>
 			<![CDATA[
 			SELECT
-				*
+			  *
 			FROM 
-				dim_customer
-  			where batch_id > ${batch_id}
+			  dim_customer
+  			WHERE 
+  			  batch_id > ${batch_id}
 			]]>
 		</query>
 	</source>
