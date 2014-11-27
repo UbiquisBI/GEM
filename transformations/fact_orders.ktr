@@ -305,7 +305,7 @@
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>sales_ordetdetail_row_number</name>
+      </field>      <field>        <name>sales_orderdetail_row_number</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>

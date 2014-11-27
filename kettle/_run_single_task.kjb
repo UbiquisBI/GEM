@@ -573,6 +573,9 @@
             <parameter>            <name>stage</name>
             <stream_name/>
             <value>extract</value>
+            </parameter>            <parameter>            <name>status</name>
+            <stream_name/>
+            <value>running</value>
             </parameter>      </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
@@ -609,6 +612,9 @@
             <parameter>            <name>stage</name>
             <stream_name/>
             <value>pre-processing</value>
+            </parameter>            <parameter>            <name>status</name>
+            <stream_name/>
+            <value>running</value>
             </parameter>      </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
@@ -716,6 +722,9 @@
             <parameter>            <name>stage</name>
             <stream_name/>
             <value>post-processing</value>
+            </parameter>            <parameter>            <name>status</name>
+            <stream_name/>
+            <value>running</value>
             </parameter>      </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>

@@ -10,7 +10,7 @@
 		<query>
 			<![CDATA[
 				SELECT 
-				  MAX(modified_date) 			AS last_modified_date 
+				  MAX(stage_customer_batch_id) 			AS batch_id
 				FROM
 				  ${TARGET_TABLE_NAME}
 			]]>

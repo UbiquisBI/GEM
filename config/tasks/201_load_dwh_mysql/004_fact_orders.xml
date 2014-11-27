@@ -10,7 +10,7 @@
 		<query>
 			<![CDATA[
 				SELECT 
-				  MAX(modified_date) 	AS last_modified_date 
+				  MAX(sales_orderdetail_batch_id) 	AS batch_id 
 				FROM
 				  ${TARGET_TABLE_NAME}
 			]]>
@@ -36,7 +36,7 @@
 			, d.line_total
 			, h.row_number 				AS sales_orderheader_row_number
 			, h.batch_id 				AS sales_orderheader_batch_id
-			, d.row_number 				AS sales_ordetdetail_row_number 	
+			, d.row_number 				AS sales_orderdetail_row_number 	
 			, d.batch_id 				AS sales_orderdetail_batch_id
 			FROM 	
 			  stage_salesorderdetail d
