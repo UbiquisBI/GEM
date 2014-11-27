@@ -10,7 +10,7 @@
 		<query>
 			<![CDATA[
 				SELECT 
-				  MAX(stage_product_batch_id) 			AS stage_product_batch_id
+				  MAX(stage_product_batch_id) 			AS batch_id
 				FROM
 				  ${TARGET_TABLE_NAME}
 			]]>

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<task>
+
+	<name>dim_currency</name>
+	<blocker>true</blocker>
+
+	<preProcessing>
+		<targetQuery>
+			<![CDATA[
+				DELETE FROM ${TARGET_TABLE_NAME}
+			]]>
+		</targetQuery>
+	</preProcessing>
+
+
+	<source>
+		<type>DB</type>
+		<query>
+			<![CDATA[
+			SELECT
+			   currency_id			
+				, source_currency_key			
+				, currency_code					
+				, modified_date					
+				, stage_currency_row_number		
+				, stage_currency_batch_id		
+			FROM 
+			  dim_currency
+			]]>
+		</query>
+	</source>
+
+	<transform>
+		<transformation>dummy.ktr</transformation>
+	</transform>
+
+	<target>
+		<loader>MonetDB</loader>
+		<table>
+			<name>dim_currency</name>
+		</table>
+	</target>
+
+
+</task>

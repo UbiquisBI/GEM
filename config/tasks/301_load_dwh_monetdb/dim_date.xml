@@ -4,18 +4,17 @@
 	<name>dim_date</name>
 	<blocker>true</blocker>
 
-	<parameter>
-		<name>batch_id</name>
-		<default>0</default>
-		<query>
+	<preProcessing>
+		<targetQuery>
 			<![CDATA[
-				SELECT
-				  MAX(batch_id) 	AS batch_id 
-				FROM 
-				  ${TARGET_TABLE_NAME}
+				DELETE
+				FROM
+					${TARGET_TABLE_NAME}
 			]]>
-		</query>
-	</parameter>
+		</targetQuery>
+	</preProcessing>
+
+
 
 	<source>
 		<type>DB</type>
@@ -39,8 +38,6 @@
 				, batch_id 					
 			from 
 				dim_date
-			where 
-				batch_id > ${batch_id}
 			]]>
 		</query>
 	</source>
