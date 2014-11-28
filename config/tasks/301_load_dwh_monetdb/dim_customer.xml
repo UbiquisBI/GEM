@@ -7,8 +7,7 @@
 	<preProcessing>
 		<targetQuery>
 			<![CDATA[
-				DELETE
-				FROM
+				DELETE FROM
 					${TARGET_TABLE_NAME}
 			]]>
 		</targetQuery>
@@ -20,7 +19,18 @@
 		<query>
 			<![CDATA[
 			SELECT
-			  *
+			  customer_id				
+			, version					
+			, date_from					
+			, date_to					
+			, source_customer_key		
+			, account_number			
+			, customer_type				
+			, territory					
+			, country_region_code		
+			, country_name				
+			, stage_customer_row_number	
+			, stage_customer_batch_id	
 			FROM 
 			  dim_customer
 			]]>

@@ -139,7 +139,7 @@ CREATE TABLE fact_orders
 	, line_total			 		DOUBLE
 	, sales_orderheader_row_number 	INTEGER
 	, sales_orderheader_batch_id 	INTEGER
-	, sales_ordetdetail_row_number 	INTEGER
+	, sales_orderdetail_row_number 	INTEGER
 	, sales_orderdetail_batch_id	INTEGER
 	, row_number 					INTEGER
 	, batch_id 						INTEGER

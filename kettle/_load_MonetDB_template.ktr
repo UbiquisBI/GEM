@@ -91,7 +91,7 @@
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
       <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;TARGET_DATABASE_PORT&#x7d;</attribute></attribute>
       <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
-      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>Y</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
       <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
@@ -141,14 +141,14 @@
     <table>&#x24;&#x7b;TARGET_TABLE_NAME&#x7d;</table>
     <log_file/>
     <truncate>N</truncate>
-    <fully_quote_sql>Y</fully_quote_sql>
+    <fully_quote_sql>N</fully_quote_sql>
     <field_separator>&#x7c;</field_separator>
     <field_enclosure>&#x22;</field_enclosure>
     <null_representation>null</null_representation>
     <encoding>UTF-8</encoding>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>480</xloc>
+      <xloc>416</xloc>
       <yloc>160</yloc>
       <draw>Y</draw>
       </GUI>

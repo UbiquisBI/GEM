@@ -20,8 +20,20 @@
 		<query>
 			<![CDATA[
 				SELECT 
-				  *
-				FROM 
+					  time_id 				
+					, hours24 				
+					, hours24_lpad 			
+					, hours12 				
+					, hours12_lpad 			
+					, am_pm_indicator		
+					, minutes 				
+					, minutes_lpad 			
+					, seconds 				
+					, seconds_lpad 			
+					, time_formatted12_hm 	
+					, time_formatted24_hm 	
+					, time_formatted12_hms 	
+					, time_formatted24_hms 					FROM 
 				  dim_time
 			]]>
 		</query>

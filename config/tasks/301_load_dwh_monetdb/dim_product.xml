@@ -19,7 +19,18 @@
 		<query>
 			<![CDATA[
 				SELECT 
-				  *
+				  product_id			
+				, version				
+				, date_from				
+				, date_to				
+				, source_product_key	
+				, product_number 		
+				, product				
+				, category 				
+				, subcategory			
+				, modified_date			
+				, stage_product_row_number
+				, stage_product_batch_id
 				FROM 
 				  dim_product
 			]]>

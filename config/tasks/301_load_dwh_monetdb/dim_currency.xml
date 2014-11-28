@@ -24,7 +24,7 @@
 				, modified_date					
 				, stage_currency_row_number		
 				, stage_currency_batch_id		
-			FROM 
+			 FROM 
 			  dim_currency
 			]]>
 		</query>

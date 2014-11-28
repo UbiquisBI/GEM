@@ -17,6 +17,7 @@ CREATE TABLE dim_date(
 , day_of_week_full 					VARCHAR(10)
 , day_of_week_short 				VARCHAR(3)
 , date_string 						VARCHAR(10)
+, row_number 						BIGINT
 , batch_id 							BIGINT
 );
 
@@ -35,6 +36,7 @@ CREATE TABLE dim_time(
 , time_formatted24_hm 				VARCHAR(5)
 , time_formatted12_hms 				VARCHAR(11)
 , time_formatted24_hms 				VARCHAR(9)
+, row_number 						BIGINT
 , batch_id 							BIGINT
 );
 
@@ -108,7 +110,7 @@ CREATE TABLE fact_orders
 	, line_total			 		DOUBLE
 	, sales_orderheader_row_number 	BIGINT
 	, sales_orderheader_batch_id 	BIGINT
-	, sales_ordetdetail_row_number 	BIGINT
+	, sales_orderdetail_row_number 	BIGINT
 	, sales_orderdetail_batch_id	BIGINT
 	, row_number 					BIGINT
 	, batch_id 						BIGINT

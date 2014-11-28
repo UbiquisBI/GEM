@@ -26,23 +26,48 @@
 		<query>
 			<![CDATA[
 				SELECT
-				  *
+				  order_date_id				 
+				, due_date_id			 		
+				, ship_date_id 					
+				, online_order_id 		 		
+				, currency_id 					
+				, customer_id 		 			
+				, product_id 					
+				, status 						
+				, order_qty 					
+				, line_total			 		
+				, sales_orderheader_row_number
+				, sales_orderheader_batch_id 
+				, sales_orderdetail_row_number
+				, sales_orderdetail_batch_id	
 				FROM 	
 				  fact_orders
 				WHERE
-					sales_orderdetail_batch_id > ${batch_id}
+				  sales_orderdetail_batch_id > ${batch_id}
 				]]>
 		</query>
 	</source>
 
 
-<postProcessing>
+	<postProcessing>
 		<sourceQuery>
+			<!--
+			This query allows us to remove all the batch ids except the last one. 
+			The intermediate subquery is required. Without it we'd run into two errors:
+			SQL Error (1093): You can't specify target table 'table' for update in FROM clause - MySQL doesn't allow you to refer to the table you are deleting from within a direct subquery.
+			SQL Error (1235): This version of MySQL doesn't yet support 'LIMIT & IN/ALL/ANY/SOME subquery' - You can't use the LIMIT clause within a direct subquery of a NOT IN operator.
+			-->
 			<![CDATA[
-				DELETE FROM 
-					fact_sales
-				WHERE
-					sales_orderdetail_batch_id < ( select max( sales_orderdetail_batch_id ) from fact_sales)
+				delete FROM fact_orders
+ 				 WHERE batch_id < (
+ 				   SELECT batch_id
+  				   FROM (
+      			 	SELECT batch_id
+      				FROM fact_orders
+      				ORDER BY batch_id DESC
+      				LIMIT 1 OFFSET 1
+      				) foo
+  				 )
 			]]>
 		</sourceQuery>
 	</postProcessing>
