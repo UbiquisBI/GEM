@@ -6,6 +6,9 @@
 
 	<preProcessing>
 		<targetQuery>
+			<!-- Dims are kept in MySQL and copied over to MonetDB; 
+				 Easiest wy: truncate them on target and load everythin,
+				 thus avoiding costly updates on a column database -->
 			<![CDATA[
 				DELETE FROM ${TARGET_TABLE_NAME}
 			]]>

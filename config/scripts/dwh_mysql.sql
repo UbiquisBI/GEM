@@ -146,11 +146,5 @@ CREATE TABLE fact_orders
 )engine=MyISAM;
 CREATE INDEX idx_sales_batch_id on fact_orders(batch_id);
 CREATE INDEX idx_sales_source_batch_id on fact_orders(sales_orderheader_batch_id,sales_orderdetail_batch_id);
-CREATE INDEX idx_sales_lookup on fact_orders( order_date_id	
-											, due_date_id	
-											, ship_date_id 	
-											, online_order_id
-											, currency_id 	
-											, customer_id 	
-											, product_id 	);
+CREATE INDEX idx_sales_lookup on fact_orders( order_date_id, due_date_id, ship_date_id, online_order_id, currency_id, customer_id, product_id 	);
 
