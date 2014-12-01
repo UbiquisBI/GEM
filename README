@@ -121,34 +121,38 @@ task/source/type: currently the following types are supported: DB (read from the
 
 
 The current GEM installation includes a set of samples you may use. They include three different types of processes:
-a DB based ETL, from Microsoft’s Adventure Works sample database;
-a file based ETL using data from the World bank;
+* a DB based ETL, from Microsoft’s Adventure Works sample database;
+* a file based ETL using data from the World bank;
 a web-service ETL reading exchange rates from the European Central Bank.
 
 For more information on the details of each sample, read their configuration files and the installation notes above.
 
 ## Data lineage
 
-(TO DO)
+The data's origin may be traced back to the original data source by using the row_number and batch_id columns. Each extract task assigns a unique batch_id number and adds a row number field to each row of data. In case the data sources are files, the filename is also added to the data stream. By using the combination batch_id/row_number/filename you will be able to retrace the processing steps to, if needed, the original source of data.
+
+See the sample files provided for examples on how to use the batch_id and row_number fields to trace data back from MonetDB to the stagin area and from there to the original source.
+
+Each batch_id is linked to a specific task run, logged in the task_log table, which provides information regarding the start and end dates, exit status and number of records read/written. 
 
 ## Logging and monitoring
 
 Each ETL run and each task are logged in the ETL database, under etl_log and task_log. For etl_log, the following information is logged:
-a unique integer ID
-start timestamp
-finish timestamp
-PDI version
-status (Aborted, Success, Failure, Running, ...)
+* a unique integer ID
+* start timestamp
+* finish timestamp
+* PDI version
+* status (Aborted, Success, Failure, Running, ...)
 
 Each task will include the following:
-a unique integer ID
-the run Id that launched it
-the start and end timestamps
-the name of the task and the configuration filename used
-the number of records read from source
-the number of records written to the target
-the stage its currently at (Not started, Pre-processing, Extract, Transform, Load, Post-processing or Finished)
-the task result (Success, Failure, Running, …)
+* a unique integer ID
+* the run Id that launched it
+* the start and end timestamps
+* the name of the task and the configuration filename used
+* the number of records read from source
+* the number of records written to the target
+* the stage its currently at (Not started, Pre-processing, Extract, Transform, Load, Post-processing or Finished)
+* the task result (Success, Failure, Running, …)
 
 The number of records read is done immediately after the Extract process finishes and before starting the Transformation part.
 
@@ -158,13 +162,13 @@ The number of records written is read from the Target table, after the Load phas
 ## Future development
 
 GEM is not by any means a complete product. It does make the ETL development process faster, but there’s a lot to be done. The following is a non-exhaustive list of planned future features:
-Support for Create, Drop and Truncate table statements (avoiding running separate SQL scripts);
-Support more source databases (Oracle, MSSQL, PostgreSQL, ...)
-Support more target databases (Vertica, Greenplum, ...)
-Add a user interface to read the ETL results and log files
-Add support for Hadoop based sources and/or targets
-Add support for running GEM inside a PDI cluster, with a dynamic set of Carte slave servers
-Add support for different schedules for different processes (as of now, all processes run everytime GEM is launched)
+* Support for Create, Drop and Truncate table statements (avoiding running separate SQL scripts);
+* Support more source databases (Oracle, MSSQL, PostgreSQL, ...)
+* Support more target databases (Vertica, Greenplum, ...)
+* Add a user interface to read the ETL results and log files
+* Add support for Hadoop based sources and/or targets
+* Add support for running GEM inside a PDI cluster, with a dynamic set of Carte slave servers
+* Add support for different schedules for different processes (as of now, all processes run everytime GEM is launched)
 
 Some of these are likely to be implemented soon (for example, support for Oracle inputs and Vertica outputs), so stay tuned.
 
