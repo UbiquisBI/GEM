@@ -121,16 +121,6 @@ task/source/type: currently the following types are supported: DB (read from the
 * `postProcessing`: similar to preProcessing, but takes place at the end of the Load phase. Useful to archive source files, or re-build indices in the target tables, delete extracted data from the source database, build aggregation tables, etc
 
 
-## Sample tasks
-
-
-The current GEM installation includes a set of samples you may use. They include three different types of processes:
-* a DB based ETL, from Microsoft’s Adventure Works sample database;
-* a file based ETL using data from the World bank;
-a web-service ETL reading exchange rates from the European Central Bank.
-
-For more information on the details of each sample, read their configuration files and the installation notes above.
-
 ## Data lineage
 
 The data's origin may be traced back to the original data source by using the row_number and batch_id columns. Each extract task assigns a unique batch_id number and adds a row number field to each row of data. In case the data sources are files, the filename is also added to the data stream. By using the combination batch_id/row_number/filename you will be able to retrace the processing steps to, if needed, the original source of data.
