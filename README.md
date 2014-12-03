@@ -10,28 +10,28 @@ It’s goal is to limit the amount of configurations available in PDI and allow 
 
 ## Key Concepts
 
-Process: A process is an independent part of an ETL, defined by a single source (a specific database, a type of file, a web service) and a common destination (a staging database, a data warehouse, etc)
+**Process**: A process is an independent part of an ETL, defined by a single source (a specific database, a type of file, a web service) and a common destination (a staging database, a data warehouse, etc)
 
-Task: Each process has one or more tasks, which consist of atomic data extraction, transformation and loading. A task is defined by a single target table (regardless of how many source tables or files it reads from. Tasks are logged in the task_log table of the ETL database.
+**Task**: Each process has one or more tasks, which consist of atomic data extraction, transformation and loading. A task is defined by a single target table (regardless of how many source tables or files it reads from. Tasks are logged in the task_log table of the ETL database.
 
-Run: a run is a single execution of the ETL, iterating over all processes and tasks. Each ETL run is logged in the etl_log table in the ETL database.
+**Run**: a run is a single execution of the ETL, iterating over all processes and tasks. Each ETL run is logged in the etl_log table in the ETL database.
 
-Environment: an environment is simply a name that identifies a machine running GEM. Usual names are dev, uat or prod, but other names may be used freely, e.g., nelson-laptop or miguel-sandbox. Each environment will use different configuration. The ETL environment is defined via the ETL_ENVIRONMENT variable in kettle.properties.
+**Environment**: an environment is simply a name that identifies a machine running GEM. Usual names are dev, uat or prod, but other names may be used freely, e.g., nelson-laptop or miguel-sandbox. Each environment will use different configuration. The ETL environment is defined via the `ETL_ENVIRONMENT` variable in `kettle.properties`.
 
-Config file: by default, the global GEM configuration is located in config/config.${ETL_ENVIRONMENT}.xml. However, a different configuration file may be used by defining the ETL_CONFIG_FILE variable in kettle.properties (e.g., to keep sandbox config files from being comitted to git.
+**Config file**: by default, the global GEM configuration is located in `config/config.${ETL_ENVIRONMENT}.xml`. However, a different configuration file may be used by defining the `ETL_CONFIG_FILE` variable in `kettle.properties`(e.g., to keep sandbox config files from being committed to git.
 
 One of the main features of GEM is the ability to prevent multiple instances from running at the same time. This is called the Watchdog. when GEM starts it will look at the status of every logged run and abort if it finds an ETL run marked as “running” (see Logging and monitoring below). When GEM finishes the status of the run is marked as either Success or Failed, depending on the exit status. However, if GEM fails unexpectedly, the status may not be correctly updated, causing future runs to abort until manual intervention fixes the issue.
 
 ## Installation
 
 * Clone gem into your target machine;
-* Run the config/scripts/etl_mysql.sql script in your desired ETL database (change the script if you want to use a database other than MySQL or MariaDB;
-* Set the ETL_ENVIRONMENT variable in your kettle.properties (e.g., dev)
-* Change the config/config.dev.xml file according to your needs:
+* Run the `config/scripts/etl_mysql.sql` script in your desired ETL database (change the script if you want to use a database other than MySQL or MariaDB;
+* Set the `ETL_ENVIRONMENT` variable in your `kettle.properties` (e.g., dev)
+* Change the `config/config.dev.xml` file according to your needs:
 * Define folder locations;
 * Configure email sending
 * Set up the ETL database connection 
-* Create your ETL process folders inside the config folder and create the database.${ETL_ENVIRONMENT}.properties config file inside each process folder;
+* Create your ETL process folders inside the config folder and create the `database.${ETL_ENVIRONMENT}.properties` config file inside each process folder;
 * Create the configuration files for each ETL task (an XML file) inside the process folders;
 * Create the target tables and run.
 
@@ -50,27 +50,27 @@ If you want to disable a process (e.g, the Dim initialisation process, just move
 
 ## Global configuration
 
-The configuration file is by default located in config/config.${ETL_ENVIRONMENT}.xml. You can change the location of this file by defining the variable ETL_CONFIG_FILE in your kettle.properties file.
+The configuration file is by default located in `config/config.${ETL_ENVIRONMENT}.xml`. You can change the location of this file by defining the variable `ETL_CONFIG_FILE` in your `kettle.properties` file.
 
 The configuration of GEM is made of the following items:
 
-* locations/root: the GEM base folder
-* locations/log: the destination of all GEM log files
-* locations/tmp: where all temporary files (created at the end of the Extract and Transform phases) will be located
-* locations/tasks: the folder where GEM processes and tasks will be located
-* locations/transformations: where task specific ktr and kjb files will be placed
-* locations/inbox: a prefix to add to the file path of any input file (see below)
+* `locations/root`: the GEM base folder
+* `locations/log`: the destination of all GEM log files
+* `locations/tmp`: where all temporary files (created at the end of the Extract and Transform phases) will be located
+* `locations/tasks`: the folder where GEM processes and tasks will be located
+* `locations/transformations`: where task specific ktr and kjb files will be placed
+* `locations/inbox`: a prefix to add to the file path of any input file (see below)
 
-* email/smtp: the SMTP server to use to send emails; you may choose to use an Authenticated SMTP server (supports only SSL for the time being), or not
-* email/sender: the name and email address to be used as sender of all emails
-* email/destination: To, Cc and Bcc email addresses (you may use a comma separated list of emails or a mailing list)
-email/success: whether to send an email if the ETL succeeds, its subject and message body
-* email/warning: whether to send an email when a non-blocking task fails, its subject and message body
-* email/error: whether to send an email on a fatal ETL error, its subject and message body
+* `email/smtp`: the SMTP server to use to send emails; you may choose to use an Authenticated SMTP server (supports only SSL for the time being), or not
+* `email/sender`: the name and email address to be used as sender of all emails
+* `email/destination`: To, Cc and Bcc email addresses (you may use a comma separated list of emails or a mailing list)
+`email/success`: whether to send an email if the ETL succeeds, its subject and message body
+* `email/warning`: whether to send an email when a non-blocking task fails, its subject and message body
+* `email/error`: whether to send an email on a fatal ETL error, its subject and message body
 
-* database: the database connection to use to log each ETL run (currently supported: MySQL and PostgreSQL)
+* `database`: the database connection to use to log each ETL run (currently supported: MySQL and PostgreSQL)
 
-About the locations/inbox configuration: In a common scenario, when the ETL is meant to parse files, the file path is fixed. For example, /mnt/serverlogs/my_webapp; When developing such an ETL it’s usually necessary to mimic that folder structure in a development laptop. However, putting all files in a single place may be a disadvantage, especially when processing ETLs for multiple projects. It’s preferable to have those files in a project-specific folder, e.g., /home/user/projects/myproject/inbox. The locations/inbox folder allows us to define a path prefix to file locations. In this example, we would copy a sample of files into /home/user/projects/myproject/inbox/mnt/serverlogs/my_webapp and GEM would be able to find them in DEV, using a path relative to the inbox path, and in PROD, using an absolute path (no inbox path defined).
+About the locations/inbox configuration: In a common scenario, when the ETL is meant to parse files, the file path is fixed. For example, `/mnt/serverlogs/my_webapp`; When developing such an ETL it’s usually necessary to mimic that folder structure in a development laptop. However, putting all files in a single place may be a disadvantage, especially when processing ETLs for multiple projects. It’s preferable to have those files in a project-specific folder, e.g., `/home/user/projects/myproject/inbox`. The `locations/inbox` folder allows us to define a path prefix to file locations. In this example, we would copy a sample of files into `/home/user/projects/myproject/inbox/mnt/serverlogs/my_webapp`and GEM would be able to find them in DEV, using a path relative to the inbox path, and in PROD, using an absolute path (no inbox path defined).
 	
 
 ## Defining database connections
@@ -79,42 +79,46 @@ Each project accepts only one source and one target database connections. That i
 
 Each database connection is defined by its type, host, port, database name, username and password.
 
-We may have different database connections defined for different environments, by creating multiple database.${ETL_ENVIRONMENT}.properties files.
+We may have different database connections defined for different environments, by creating multiple `database.${ETL_ENVIRONMENT}.properties` files.
 
 ## Creating your own processes and tasks
 
-The config/disabled_tasks/000_template.xml file includes all the XML tags currently supported by GEM and the role they play in the overall ETL process.
+The `config/disabled_tasks/000_template.xml` file includes all the XML tags currently supported by GEM and the role they play in the overall ETL process.
 
 The structure of a task XML is as follows:
 
-* task/name: a human readable name for the task
+* `task/name`: a human readable name for the task
 
-* task/blocker: whether the whole ETL should stop if the task returns an error, or ignore the error and continue. When a non-blocking task returns an error a warning email is sent (if so defined in the config file). Defaults to true
+* `task/blocker`: whether the whole ETL should stop if the task returns an error, or ignore the error and continue. When a non-blocking task returns an error a warning email is sent (if so defined in the config file). Defaults to true
 
-* task/preProcessing: a set of tasks to execute before the Extract phase. These tasks may be of three types: a sourceQuery (SQL statement to run on the source database), a targetQuery (SQL statement to run on the target database) and a job. Can be used to drop indexes before running the ETL, truncate target tables, or download a set of files
+* `task/preProcessing`: a set of tasks to execute before the Extract phase. These tasks may be of three types: a sourceQuery (SQL statement to run on the source database), a targetQuery (SQL statement to run on the target database) and a job. Can be used to drop indexes before running the ETL, truncate target tables, or download a set of files
 
-* task/parameter: for incremental Extract processes, defines the parameter name to use, how to query its value and which default value to use.
+* `task/parameter`: for incremental Extract processes, defines the parameter name to use, how to query its value and which default value to use.
 task/parameter/name: the parameter name to use. May be used as a variable, for example in the source/extract/query. Will be used to filter filenames if Extract type is defined as File (only filenames greater than the parameter value will be read)
-task/parameter/query: the query to run on the Target database to determine the value to use (e.g., the max filename present in the target or the max timestamp already extracted); must return a single row
+
+* `task/parameter/query`: the query to run on the Target database to determine the value to use (e.g., the max filename present in the target or the max timestamp already extracted); must return a single row
 task/parameter/default: the default value to use if the parameter query returns no results
 
-* task/source: the definition of the Extract process
+* `task/source`: the definition of the Extract process
 task/source/type: currently the following types are supported: DB (read from the source database defined in the database.properties file), File (extract from a file or set of files), Custom (e.g. to read from a web service) or null (empty extract phase)
 
-* task/source/query: for Extracts of the DB type, the SQL query to run on the source system. It may (should?) include a filter based on a parameter value
+* `task/source/query`: for Extracts of the DB type, the SQL query to run on the source system. It may (should?) include a filter based on a parameter value
 
-* task/source/path: base path of files to read, if type is set to File
-* task/source/pattern: fiename pattern, if type is set to File
+* `task/source/path`: base path of files to read, if type is set to File
 
-* task/transformation: for File or Custom extract types, a specific transformation for the task at hand (e.g., a CSV file input specifying the field names expected, or a HTTP client to query a web service).
+* `task/source/pattern`: filename pattern, if type is set to File
 
-* task/transform: the task specific logic for the Transform part of the ETL. It includes only 1 sub-tag, the transformation, with the ktr filename to use (from the locations/transformations folder)
+* `task/transformation`: for File or Custom extract types, a specific transformation for the task at hand (e.g., a CSV file input specifying the field names expected, or a HTTP client to query a web service).
 
-* target: The definitions of the Load stage
-* target/loader: the specific bulk loader to use. Currently supported are MySQL, MonetDB and InfiniDB
-* target/table/name: the name where the data should land
+* `task/transform`: the task specific logic for the Transform part of the ETL. It includes only 1 sub-tag, the transformation, with the ktr filename to use (from the `locations/transformations` folder)
 
-* postProcessing: similar to preProcessing, but takes place at the end of the Load phase. Useful to archive source files, or re-build indices in the target tables, delete extracted data from the source database, build aggregation tables, etc
+* `target`: The definitions of the Load stage
+
+* `target/loader`: the specific bulk loader to use. Currently supported are MySQL, MonetDB and InfiniDB
+
+* `target/table/name`: the name where the data should land
+
+* `postProcessing`: similar to preProcessing, but takes place at the end of the Load phase. Useful to archive source files, or re-build indices in the target tables, delete extracted data from the source database, build aggregation tables, etc
 
 
 ## Sample tasks
@@ -171,5 +175,4 @@ GEM is not by any means a complete product. It does make the ETL development pro
 * Add support for different schedules for different processes (as of now, all processes run everytime GEM is launched)
 
 Some of these are likely to be implemented soon (for example, support for Oracle inputs and Vertica outputs), so stay tuned.
-
 

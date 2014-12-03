@@ -77,7 +77,7 @@
 		<!-- Type of extraction:
 			- CSV - Requires a path and a pattern
 			- DB (database) - Requires a query
-			- File - Requires a path and a pattern
+			- File - Requires a path a pattern and a transformation
 			- Custom - Requires a transformation
 			- null - skips the Extract phase, generates empty Extract file
 		-->
@@ -97,7 +97,7 @@
 		</query>
 
 
-		<!-- If custom insert transformation -->
+		<!-- If custom or file insert transformation -->
 		<transformation> 
 
 		</transformation>
@@ -118,7 +118,7 @@
 		
 
 
-		<!--Name of the transformation to be used in the pre-processing step located in the transformation's folder defined in the config file -->
+		<!--Name of the transformation to be used in the transform step located in the transformation's folder defined in the config file -->
 		<transformation>
 			
 		</transformation>
@@ -195,5 +195,5 @@
 
 
 
-	</preProcessing>
+	</postProcessing>
 </task>
